@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# PORTAL WEB
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a href="https://sidcar.car.gov.co/"><img src="https://carcundinamarca.maps.arcgis.com/sharing/rest/content/items/fb8302b93c704a05a335bad71d5d6166/resources/inConfig/4738865913432373.png" align="center" height="150" width="150"></a>
+# Colaboradores
+<table>
+    <tr>
+        <th>Rol</th>
+        <th>Responsable</th>
+    </tr>
+	 <tr>
+        <td>Lider de requerimientos</td>
+        <td>Natalia Acosta</td>
+    </tr>
+    <tr>
+        <td>Líder de desarrollo</td>
+        <td>Hilder Moscote</td>
+    </tr>
+    <tr>
+        <td>Arquitecto de software</td>
+        <td>Alvaro Castellano</td>
+    </tr>
+    <tr>
+        <td>Desarrolladores</td>
+        <td>
+            <ul>
+                <li>Juan Camilo Ramírez</li>
+            </ul>
+        </td>
+    </tr>
+</table>
 
-## Available Scripts
+# Control de cambios
+<table>
+    <tr>
+        <th>Versión</th>
+        <th>Fecha de Cambio</th>
+        <th>Cambios realizados</th>
+    </tr>
+    <tr>
+        <td>0.1.0</td>
+        <td>30-03-2022</td>
+        <td>Se crea el home siguendo los requirimientos establecidos segun el cronograma para la fecha del 31 de julio</td>
+    </tr>
+</table>
 
-In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Todos los derechos reservados para la Corporación Autonóma Regional de Cundinamarca - &copy; 2022
