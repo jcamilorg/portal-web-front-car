@@ -1,46 +1,19 @@
 import React, { Component } from "react";
 //Components
-import Header from "./utils/Header";
-import Footer from "./utils/Footer";
-import Slider from "./utils/Slider";
-import Dropdown from "./utils/Dropdown";
+import Header from "../utils/Header";
+import Footer from "../utils/Footer";
+import Slider from "../utils/Slider";
+import StickyMenu from "../utils/StickyMenu";
 import Carousel from "react-multi-carousel";
+// Functions
+import getData from "../utils/getData";
 import "react-multi-carousel/lib/styles.css";
+
 // Importacion de las imagenes
-const images = require.context("../assets/img/", true);
+const images = require.context("../../assets/img/", true);
 //Leectura de datos fetch ------------------------------------------------------------------
 let urlData = "../data.json";
 
-async function getData(url) {
-  try {
-    let res = await fetch(url),
-      json = await res.json();
-    return json;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-class StickyMenu extends Component {
-  render() {
-    let menuItemsStyled = this.props.data.map((item, index) => {
-      return (
-        <div
-          key={index}
-          className="bg-acua text-light px-2 py-1 border-end border-start border-light border-1 mt-1"
-        >
-          {item}
-        </div>
-      );
-    });
-
-    return (
-      <div className="d-flex flex-wrap justify-content-center sticky-top bg-white ">
-        {menuItemsStyled}
-      </div>
-    );
-  }
-}
 // Custom for Carrouselll---------
 const responsive = {
   superLargeDesktop: {
@@ -91,7 +64,7 @@ const CustomLeftArrow = ({ onClick }) => {
     />
   );
 };
-//--------------------
+//----------------------------------
 const BtnNews = () => {
   return (
     <div className="Btn-News type1 text-light text-end pe-2 fs-12px fw-bold position-relative  d-flex justify-content-between align-items-center">
@@ -194,7 +167,7 @@ class HomePage extends Component {
             ImgSrc={item.ImgSrc}
           />
         ));
-        console.log(datajson.newsCARInfo.mainNew.title);
+
         let mainNew = (
           <MainNew
             title={datajson.newsCARInfo.mainNew.title}
@@ -205,40 +178,6 @@ class HomePage extends Component {
 
         return {
           sliderImages: sliderImages,
-          menuItems: [
-            <span>Inicio </span>,
-            <Dropdown
-              name="Nosotros"
-              items={datajson.infoStickyMenu.nosotros}
-              className="bg-transparent text-light"
-            />,
-            <Dropdown
-              name="Servicio al ciudadano"
-              items={datajson.infoStickyMenu.servicioAlCiudadano}
-              className="bg-transparent text-light"
-            />,
-            <Dropdown
-              name="Sala de prensa"
-              items={datajson.infoStickyMenu.salaDePrensa}
-              className="bg-transparent text-light"
-            />,
-            <Dropdown
-              name="Planes y programas"
-              items={datajson.infoStickyMenu.planesYProgramas}
-              className="bg-transparent text-light"
-            />,
-
-            <Dropdown
-              name="Temas ambientales"
-              items={datajson.infoStickyMenu.temasAmbientales}
-              className="bg-transparent text-light"
-            />,
-            <Dropdown
-              name="Transparencia"
-              items={datajson.infoStickyMenu.transparencia}
-              className="bg-transparent text-light"
-            />,
-          ],
           sliderServices: sliderServices,
           newsCAR: news,
           mainNew: mainNew,
@@ -249,7 +188,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="d-flex flex-column justify-content-between vh-100">
+      <div>
         <Header />
         <Slider
           classItems="py-1"
@@ -257,8 +196,8 @@ class HomePage extends Component {
           id="slider-banner-informate"
         />
         <div className="row justify-content-center ">
-          <StickyMenu data={this.state.menuItems} />
-          <section className="col-8 my-4 px-0">
+          <StickyMenu url={urlData} />
+          <section className="row col-8 my-4 px-0">
             <Carousel
               responsive={responsive}
               className="text-center py-4"
@@ -270,6 +209,18 @@ class HomePage extends Component {
             </Carousel>
 
             <NewsCAR news={this.state.newsCAR} mainNew={this.state.mainNew} />
+
+            <img
+              className="img-fluid"
+              src={images("./contadorArboles.png")}
+              alt="Contador arboles"
+            />
+            <div className="row col-8">
+              <h3>Micrositios Car</h3>
+            </div>
+            <div className="col-4">
+              <h3>Boletín NewsCAR</h3>
+            </div>
           </section>
         </div>
 
