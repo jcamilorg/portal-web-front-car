@@ -117,9 +117,32 @@
   },
 
   "microSitios": [
-    { "name": "hola", "imgSrc": "./", "link": "/" },
-    { "name": "mundo", "imgSrc": "./", "link": "/" },
-    { "name": "hola", "imgSrc": "./", "link": "/" }
+    {
+      "name": "Parques",
+      "imgSrc": "./micrositios/parques.png",
+      "link": "https://parques.car.gov.co/"
+    },
+    {
+      "name": "Laboratorio e innovación ambiental",
+      "imgSrc": "./micrositios/dlia.png",
+      "link": "https://www.car.gov.co/laboratorio/inicio"
+    },
+    {
+      "name": "biblioteca CAR",
+      "imgSrc": "./micrositios/bibliotecaCar.png",
+      "link": "https://car.gov.co/"
+    },
+    {
+      "name": "Negocios Verdes",
+      "imgSrc": "./micrositios/negociosVerdes.png",
+      "link": "/"
+    },
+    {
+      "name": "Banco de proyectos",
+      "imgSrc": "./micrositios/bancoDeProyectos.png",
+      "link": "/"
+    },
+    { "name": "Niños", "imgSrc": "./micrositios/ninios.png", "link": "/" }
   ],
 
   "granJero": [

@@ -11,6 +11,7 @@ import "react-multi-carousel/lib/styles.css";
 
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
+const icons = require.context("../../assets/icons/", true);
 //Leectura de datos fetch ------------------------------------------------------------------
 let urlData = "../data.json";
 
@@ -67,7 +68,7 @@ const CustomLeftArrow = ({ onClick }) => {
 //----------------------------------
 const BtnNews = () => {
   return (
-    <div className="Btn-News type1 text-light text-end pe-2 fs-12px fw-bold position-relative  d-flex justify-content-between align-items-center">
+    <div className="Btn-News type1 text-light text-end pe-2 fs-responsive-xs fw-bold position-relative  d-flex justify-content-between align-items-center">
       <div className="Btn-News type2">
         <div className="Btn-News type3"></div>
       </div>
@@ -82,8 +83,8 @@ const MainNew = (props) => {
   return (
     <div className="p-3">
       <img className="img-fluid" src={images(props.ImgSrc)} alt="Noticias" />
-      <h5 className="text-main pt-2 mb-1">{props.title}</h5>
-      <p className="text-main fs-14px">{props.description}</p>
+      <h5 className="text-main pt-2 mb-1 fs-responsive-l">{props.title}</h5>
+      <p className="text-main fs-responsive-s">{props.description}</p>
       <BtnNews />
     </div>
   );
@@ -96,8 +97,8 @@ const New = (props) => {
         <img className="img-fluid" src={images(props.ImgSrc)} alt="Noticias" />
       </div>
       <div className="col-9">
-        <h6>{props.title}</h6>
-        <p className="fs-14px">{props.description}</p>
+        <h6 className="fs-responsive-m">{props.title}</h6>
+        <p className="fs-responsive-s">{props.description}</p>
         <BtnNews />
       </div>
     </div>
@@ -117,10 +118,55 @@ const NewsCAR = (props) => {
         <hr className="hr-header hr-type-two bg-green-f ms-1 " />
       </div>
 
-      <div className="col-5">{props.mainNew}</div>
-      <div className="col-7">
+      <div className="col-8 col-lg-5">{props.mainNew}</div>
+      <div className="col-12 col-lg-7">
         <div className="p-3">{props.news}</div>
       </div>
+    </div>
+  );
+};
+
+const MicroSitio = (props) => {
+  return (
+    <div className="col-4 mx-0 px-1 py-2">
+      <a href={props.link}>
+        <img
+          className="img-fluid rounded-top"
+          src={images(props.imgSrc)}
+          alt={props.name}
+        />
+        <div
+          id="text-micrositios"
+          className="text-micrositios ps-2 fs-responsive-xs position-relative top-n20px bg-black-op text-white"
+          style={props.styles}
+        >
+          <b>{props.name}</b>
+        </div>
+      </a>
+    </div>
+  );
+};
+
+const MicrositiosGroup = (props) => {
+  return (
+    <div className="ms-0 me-0 pe-0 row ">
+      <h4 className="bg-green-f text-white col-6 rounded-car py-2 mt-4 fs-responsive-m">
+        Micrositios Car
+      </h4>
+      <div className="col-6 " />
+      {props.children}
+    </div>
+  );
+};
+
+const BoletinNewsCar = (props) => {
+  return (
+    <div className="ms-0 me-0 pe-0 row ">
+      <h4 className="bg-green text-white  rounded-car py-2 mt-4 fs-responsive-m">
+        Boletín NewsCAR
+      </h4>
+      <div className="col-12 " />
+      {props.children}
     </div>
   );
 };
@@ -133,6 +179,7 @@ class HomePage extends Component {
     sliderServices: [],
     newsCar: [],
     mainNew: [],
+    microSitios: [],
   };
 
   componentDidMount() {
@@ -167,7 +214,18 @@ class HomePage extends Component {
             ImgSrc={item.ImgSrc}
           />
         ));
-
+        let microSitios = datajson.microSitios.map((item, index) => {
+          return (
+            <MicroSitio
+              key={index}
+              name={item.name}
+              imgSrc={item.imgSrc}
+              link={item.link}
+              styles={{ top: "-18px" }}
+            ></MicroSitio>
+          );
+        });
+        console.log(microSitios);
         let mainNew = (
           <MainNew
             title={datajson.newsCARInfo.mainNew.title}
@@ -181,6 +239,7 @@ class HomePage extends Component {
           sliderServices: sliderServices,
           newsCAR: news,
           mainNew: mainNew,
+          microSitios: microSitios,
         };
       });
     });
@@ -188,16 +247,17 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid px-0">
         <Header />
         <Slider
           classItems="py-1"
           data={this.state.sliderImages}
           id="slider-banner-informate"
         />
+
         <div className="row justify-content-center ">
           <StickyMenu url={urlData} />
-          <section className="row col-8 my-4 px-0">
+          <section className="row col-11 col-lg-9 my-4 px-0">
             <Carousel
               responsive={responsive}
               className="text-center py-4"
@@ -215,11 +275,24 @@ class HomePage extends Component {
               src={images("./contadorArboles.png")}
               alt="Contador arboles"
             />
-            <div className="row col-8">
-              <h3>Micrositios Car</h3>
+            <div className=" col-8">
+              <MicrositiosGroup>{this.state.microSitios}</MicrositiosGroup>
             </div>
             <div className="col-4">
-              <h3>Boletín NewsCAR</h3>
+              <BoletinNewsCar>
+                <img
+                  className="img-fluid px-0 mx-0 pt-2"
+                  src={images("./micrositios/newsCar.png")}
+                  alt="newsCar"
+                />
+                <button className="btn border border-success my-2 text-main">
+                  <b>Ver la edición más reciente</b>
+                </button>
+                <button className="btn my-2 text-main bg-acua text-light">
+                  <img width="40px" src={icons("./sucribirse.png")} alt="..." />{" "}
+                  <b>Suscribase al newsCAR</b>
+                </button>
+              </BoletinNewsCar>
             </div>
           </section>
         </div>
