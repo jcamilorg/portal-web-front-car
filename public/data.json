@@ -1,0 +1,280 @@
+{
+  "infoStickyMenu": {
+    "inicio": "/",
+    "nosotros": [
+      { "name": "Reseña historica", "link": "/" },
+      { "name": "Misión y Visión", "link": "/" },
+      { "name": "Valores y Principios", "link": "/" },
+      { "name": "Objetivos y funciones", "link": "/" },
+      { "name": "Sistema integrado de gestion publica", "link": "/" },
+      { "name": "Jurisdicción CAR", "link": "/" },
+      { "name": "Organigrama", "link": "/" },
+      { "name": "Recurso humano", "link": "/" },
+      { "name": "Consejo directivo", "link": "/" },
+      { "name": "Consejo directivo", "link": "/" },
+      { "name": "Directorio Corporativo", "link": "/" },
+      { "name": "Cómo llegar", "link": "/" }
+    ],
+    "servicioAlCiudadano": [
+      { "name": "PQR", "link": "/" },
+      { "name": "Preguntas frecuentes", "link": "/" },
+      { "name": "Glosario de Términos Ambientales", "link": "/" },
+      { "name": "Carta de trato digno al usuario", "link": "/" },
+      { "name": "Pagos en Línea", "link": "/" },
+      { "name": "Centro de Documentación", "link": "/" },
+      { "name": "Protocolo de Atención al Ciudadano", "link": "/" },
+      { "name": "Caracterización de usuarios", "link": "/" },
+      { "name": "Portafolio de servicios CAR", "link": "/" }
+    ],
+    "salaDePrensa": [
+      {
+        "name": "Multimedia",
+        "link": "/",
+        "content": [
+          { "name": "El GranJeroo", "link": "/gran-jero" },
+          { "name": "Ancestral", "link": "/ancestral" }
+        ]
+      },
+      { "name": "...El GranJero", "link": "/gran-jero" },
+      { "name": "...Ancestral", "link": "/ancestral" },
+      { "name": "Nuestras Historias", "link": "/" },
+      { "name": "Comunicados de Prensa", "link": "/" },
+      { "name": "Manual de Imagen Corporativa", "link": "/" }
+    ],
+    "planesYProgramas": [
+      { "name": "Planes", "link": "/" },
+      { "name": "Programas", "link": "/" }
+    ],
+    "temasAmbientales": [{ "name": "Por definir", "link": "/" }],
+    "transparencia": [{ "name": "Por definir", "link": "/" }]
+  },
+
+  "sliderServicesImg": [
+    {
+      "ImgSrc": "https://www.car.gov.co/assets/images/Rendicion_Cuentas.png",
+      "link": "https://www.car.gov.co/vercontenido/4015"
+    },
+    {
+      "ImgSrc": "https://www.car.gov.co/assets/images/Pagos_Linea.png",
+      "link": "https://www.car.gov.co/vercontenido/2274"
+    },
+    {
+      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_Parques.png",
+      "link": "https://parques.car.gov.co/"
+    },
+    {
+      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_Rio.png",
+      "link": "https://www.car.gov.co/rio_bogota"
+    },
+    {
+      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_bicicar.png",
+      "link": "https://bicicar.car.gov.co/"
+    },
+    {
+      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_PTAR.png",
+      "link": "https://ptarsalitre.com.co/"
+    },
+    {
+      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_Jerusalen.png",
+      "link": "https://www.car.gov.co/jerusalen"
+    },
+    {
+      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_fuquene.png",
+      "link": "https://www.car.gov.co/fuquene"
+    },
+    {
+      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_LIA.png",
+      "link": "https://www.car.gov.co/laboratorio/inicio"
+    }
+  ],
+
+  "sliderImages": ["./SliderHome1.png", "./SliderHome1.png"],
+
+  "newsCARInfo": {
+    "mainNew": {
+      "ImgSrc": "./Main_new.png",
+      "title": "La CAR realizará foro, ¿Qué hacer para enfrentar el cambio climático?",
+      "description": "El evento contará con cinco ponencias internacionales y un conversatorio para hablar de las acciones que permitan mitigar los impactos."
+    },
+
+    "news": [
+      {
+        "ImgSrc": "./new1.png",
+        "title": "`CAR Cundinamarca lideró jornada de reforestación en honor a quienes han fallecido por Covid-19`",
+        "description": "`Con una siembra de árboles nativos, la entidad y voluntarios ambientales honraron la memoria de personas en el parque Puente Sopó`"
+      },
+      {
+        "ImgSrc": "./new2.png",
+        "title": "`La CAR Cundinamarca invita a su primer festival recreativo en el parque Embalse El Hato`",
+        "description": "`Habrá jornada de siembra, talleres de pesca, actividades culturales y concurso de cometas.`"
+      },
+      {
+        "ImgSrc": "./new3.png",
+        "title": "`Con capacitaciones para conocer el manejo adecuado del caracol gigante africano, la CAR hace frente a esta especie invasora`",
+        "description": "`La entidad ha capacitado a más de 300 personas y efectúa jornadas de control físico-químico.`"
+      }
+    ]
+  },
+
+  "microSitios": [
+    { "name": "hola", "imgSrc": "./", "link": "/" },
+    { "name": "mundo", "imgSrc": "./", "link": "/" },
+    { "name": "hola", "imgSrc": "./", "link": "/" }
+  ],
+
+  "granJero": [
+    {
+      "id": 1,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 2,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 3,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 4,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 5,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 6,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 7,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 8,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 9,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 10,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 11,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 12,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 13,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 14,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 15,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 16,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 17,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 18,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    },
+    {
+      "id": 19,
+      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
+      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
+    }
+  ],
+
+  "ancestral": [
+    {
+      "id": 1,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 2,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 3,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 4,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 5,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 6,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 7,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 8,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 9,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 10,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    },
+    {
+      "id": 11,
+      "title": "Ancestral - Capítulo final #15 / Serie CAR",
+      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
+    }
+  ]
+}
