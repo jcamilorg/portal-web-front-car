@@ -3,11 +3,13 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="text-light fs-6">
-      <div className="row justify-content-center bg-acua py-2">
+      <div className="row justify-content-center bg-acua-dark pt-2">
         <div className="col-9">
-          <h5>Corporación Autónoma Regional de Cundinamarca (CAR)</h5>
+          <h5 className="pt-2 pb-3">
+            Corporación Autónoma Regional de Cundinamarca (CAR)
+          </h5>
           <div className="row justify-content-center align-items-center  lh-sm">
-            <div className="col-4 ">
+            <div className="col-12 col-lg-4 ">
               <p>
                 Calle 24 (Av. Esperanza) # 60 - 50,
                 <br />
@@ -23,7 +25,7 @@ export default function Footer() {
                 <br /> Jornada continua
               </p>
             </div>
-            <div className="col-4 border-start ps-5">
+            <div className="col-12 col-lg-4 border-start ps-5">
               <p>
                 <b>Contáctenos</b>
                 <br />
@@ -41,7 +43,7 @@ export default function Footer() {
                 buzonjudicial@car.gov.co
               </p>
             </div>
-            <div className="col-4 border-start ps-5">
+            <div className="col-12 col-lg-4 border-start ps-5">
               <p>
                 <b>Suscríbase al boletín NewsCAR</b>
                 <br />
@@ -61,9 +63,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="bg-dark-blue py-2 text-center">
-        COPYRIGHT © 2020 CAR. Políticas de Privacidad y Condiciones de Uso.
+        <div className="bg-dark-blue py-2 mt-3 text-center">
+          COPYRIGHT © 2020 CAR. Políticas de Privacidad y Condiciones de Uso.
+        </div>
       </div>
     </footer>
   );

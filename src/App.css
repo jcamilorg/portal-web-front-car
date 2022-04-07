@@ -9,6 +9,12 @@
   background-color: #067185;
 }
 
+
+
+.bg-acua-dark {
+  background-color: #015C65;
+}
+
 .bg-dark-blue {
   background-color: #012b38;
 }
@@ -25,9 +31,17 @@
   background-color: #00000074;
 }
 
+.bg-gray{
+  background-color:#E0EEF1;
+}
+
 
 .text-main {
   color: #5c5c5f;
+}
+
+.text-acua {
+  color: #14A296;
 }
 
 .text-green-f {
@@ -136,7 +150,7 @@
   background-color: #89d335;
   width: 70%;
 }
-/* Styles for NestedDrowpdown */
+/* Styles for NestedDrowpdown TODO: Implementar el nested drowpdown*/  
 .dropdown-menu li {
   position: relative;
 }
@@ -156,9 +170,5 @@
 .dropdown-menu > li:hover > .dropdown-submenu {
   display: block;
 }
-
-/*styles for micrositios*/
-
-
 
 /* Styles Footer */
