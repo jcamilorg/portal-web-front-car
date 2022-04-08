@@ -173,10 +173,10 @@ const MicroSitio = (props) => {
 const MicrositiosGroup = (props) => {
   return (
     <div className="ms-0 me-0 pe-0 row ">
-      <h4 className="bg-green-f text-white col-6 rounded-car py-2 mt-4 fs-responsive-m">
+      <h4 className="bg-green-f text-white col-12 rounded-car py-2 mt-4 fs-responsive-m">
         Micrositios Car
       </h4>
-      <div className="col-6 " />
+      <div className="" />
       {props.children}
     </div>
   );

@@ -88,7 +88,7 @@
     }
   ],
 
-  "sliderImages": ["./SliderHome1.avif", "./SliderHome1.webp"],
+  "sliderImages": ["./SliderHome1.avif", "./SliderHome1.avif"],
 
   "newsCARInfo": {
     "mainNew": {

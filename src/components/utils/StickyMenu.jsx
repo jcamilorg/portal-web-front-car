@@ -20,7 +20,6 @@ export default class StickyMenu extends Component {
           let title = result.charAt(0).toUpperCase() + result.slice(1);
 
           if (Array.isArray(datajson.infoStickyMenu[property])) {
-            console.log(typeof datajson.infoStickyMenu[property]);
             menuItems[index++] = (
               <Dropdown
                 name={title}
