@@ -9,6 +9,12 @@
   background-color: #067185;
 }
 
+
+
+.bg-acua-dark {
+  background-color: #015C65;
+}
+
 .bg-dark-blue {
   background-color: #012b38;
 }
@@ -21,8 +27,21 @@
   background-color: #89d335;
 }
 
+.bg-black-op{
+  background-color: #00000074;
+}
+
+.bg-gray{
+  background-color:#E0EEF1;
+}
+
+
 .text-main {
   color: #5c5c5f;
+}
+
+.text-acua {
+  color: #14A296;
 }
 
 .text-green-f {
@@ -36,15 +55,56 @@
   height: 20px;
 }
 
+.rounded-car {
+  border-radius: 10px 10px 10px 10px;
+}
+
 .rounded-top-car {
   border-radius: 10px 10px 0 0;
+}
+
+.fs-16px {
+  font-size: 16px;
 }
 
 .fs-14px {
   font-size: 14px;
 }
+
 .fs-12px {
   font-size: 12px;
+}
+
+.fs-11px {
+  font-size: 10.5px;
+}
+
+.fs-10px {
+  font-size: 10px;
+}
+
+.fs-8px {
+  font-size: 8px;
+}
+
+.fs-responsive-m{
+  font-size: calc(0.5em + 0.7vw) !important;
+}
+
+.fs-responsive-s{
+  font-size: calc(0.5em + 0.5vw) !important;
+}
+
+.fs-responsive-xs{
+  font-size: calc(0.4em + 0.4vw)  !important;
+}
+
+.fs-responsive-l{
+  font-size: calc(1em + 0.5vw) !important;
+}
+
+.fs-responsive-xl{
+  font-size: calc(1.2em + 1vw) !important;
 }
 
 /*Styles header*/
@@ -90,7 +150,7 @@
   background-color: #89d335;
   width: 70%;
 }
-/* Styles for NestedDrowpdown */
+/* Styles for NestedDrowpdown TODO: Implementar el nested drowpdown*/  
 .dropdown-menu li {
   position: relative;
 }
@@ -110,6 +170,5 @@
 .dropdown-menu > li:hover > .dropdown-submenu {
   display: block;
 }
-
 
 /* Styles Footer */

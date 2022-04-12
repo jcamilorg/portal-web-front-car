@@ -10,42 +10,54 @@ import getData from "../utils/getData";
 const images = require.context("../../assets/img/", true);
 //Impor data
 let urlData = "../data.json";
+let GranJeroVideos =
+  "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UC8oglW3vOZU0ypk84ktFZ3Q&maxResults=19&type=video&key=AIzaSyBbLz3ktoO3T_8JXqom6IiHfzJrsE-NXGw";
 
 export default class GranJeroPage extends Component {
   state = {
-    granJeroVideos: [],
-    mainVideo: {},
-    videoLeftTop: {},
-    videoLeftBottom: {},
+    granJeroVideosUrl: [],
+    mainVideo: {
+      url: "",
+      title: "",
+    },
+    videoLeftTopUrl: {},
+    videoLeftBottomUrl: {},
   };
   componentDidMount() {
-    getData(urlData).then((data) => {
+    getData(GranJeroVideos).then((data) => {
       this.setState(() => {
-        let granJeroVideos = data.granJero.map((item, index) => {
-          return item;
+        let granJeroVideosUrl = data.items.map((item, index) => {
+          if (index >= 3) {
+            let url = "https://www.youtube.com/embed/" + item.id.videoId;
+            return url;
+          } else {
+            return null;
+          }
         });
+        granJeroVideosUrl = granJeroVideosUrl.filter(Boolean);
 
         return {
-          granJeroVideos: granJeroVideos,
-          mainVideo: data.granJero[0],
-          videoLeftTop: data.granJero[1],
-          videoLeftBottom: data.granJero[2],
+          granJeroVideosUrl: granJeroVideosUrl,
+          mainVideo: {
+            url: "https://www.youtube.com/embed/" + data.items[0].id.videoId,
+            title: data.items[0].snippet.title,
+          },
+          videoLeftTopUrl:
+            "https://www.youtube.com/embed/" + data.items[1].id.videoId,
+          videoLeftBottomUrl:
+            "https://www.youtube.com/embed/" + data.items[2].id.videoId,
         };
       });
     });
   }
   render() {
-    let moreVideos = this.state.granJeroVideos.map((item, index) => {
-      if (index >= 3) {
-        return (
-          <div className="col-3">
-            <Iframe link={item.link} />
-            <br />
-          </div>
-        );
-      } else {
-        return <React.Fragment />;
-      }
+    let moreVideos = this.state.granJeroVideosUrl.map((item, index) => {
+      return (
+        <div key="index" className="col-6 col-md-4 col-lg-3">
+          <Iframe link={item} />
+          <br />
+        </div>
+      );
     });
 
     return (
@@ -65,16 +77,16 @@ export default class GranJeroPage extends Component {
               <h3 className="text-main">
                 <b>{this.state.mainVideo.title}</b>
               </h3>
-              <Iframe link={this.state.mainVideo.link} />
+              <Iframe link={this.state.mainVideo.url} />
             </div>
             <div className="col-4 py-2">
               <h4 className="text-green-f">
                 <b>últimos capitulos</b>
               </h4>
               <hr className="mt-1 mb-4" />
-              <Iframe link={this.state.videoLeftTop.link} />
+              <Iframe link={this.state.videoLeftTopUrl} />
               <br />
-              <Iframe link={this.state.videoLeftBottom.link} />
+              <Iframe link={this.state.videoLeftBottomUrl} />
             </div>
 
             <div className="row col-12">
@@ -85,7 +97,7 @@ export default class GranJeroPage extends Component {
             </div>
             <a
               href="https://www.youtube.com/c/ElgranJero/videos"
-              class="btn btn-success d-inline col-4 my-3"
+              className="btn btn-success d-inline col-4 my-3"
             >
               <b>Todos los capítulos aquí</b>
             </a>

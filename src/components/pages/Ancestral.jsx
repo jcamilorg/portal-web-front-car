@@ -10,40 +10,58 @@ import getData from "../utils/getData";
 const images = require.context("../../assets/img/", true);
 //Impor data
 let urlData = "../data.json";
+let ancestralVideos =
+  "https://www.googleapis.com/youtube/v3/playlistItems/?part=snippet&maxResults=18&channelId=UCDR_Bqz6vCW535ydrXcp4oA&playlistId=PL4Hz7tdqWVVjP3MWnNzsLdwhZCj7MwBPZ&key=AIzaSyBbLz3ktoO3T_8JXqom6IiHfzJrsE-NXGw";
 
 export default class Ancestral extends Component {
   state = {
-    ancestralVideos: [],
-    mainVideo: {},
-    videoLeft: {},
+    ancestralVideosUrl: [],
+    mainVideo: {
+      url: "",
+      title: "",
+      description: "dayan",
+    },
+    videoLeftUrl: "",
   };
   componentDidMount() {
-    getData(urlData).then((data) => {
+    getData(ancestralVideos).then((data) => {
       this.setState(() => {
-        let ancestralVideos = data.ancestral.map((item, index) => {
-          return item;
+        let ancestralVideosUrl = data.items.map((item, index) => {
+          if (index >= 2) {
+            let url =
+              "https://www.youtube.com/embed/" +
+              item.snippet.resourceId.videoId;
+            return url;
+          } else {
+            return null;
+          }
         });
+        ancestralVideosUrl = ancestralVideosUrl.filter(Boolean);
 
         return {
-          ancestralVideos: ancestralVideos,
-          mainVideo: data.ancestral[0],
-          videoLeft: data.ancestral[1],
+          ancestralVideosUrl: ancestralVideosUrl,
+          mainVideo: {
+            url:
+              "https://www.youtube.com/embed/" +
+              data.items[0].snippet.resourceId.videoId,
+            title: data.items[0].snippet.title,
+            description: data.items[0].snippet.description,
+          },
+          videoLeftUrl:
+            "https://www.youtube.com/embed/" +
+            data.items[1].snippet.resourceId.videoId,
         };
       });
     });
   }
   render() {
-    let moreVideos = this.state.ancestralVideos.map((item, index) => {
-      if (index >= 2) {
-        return (
-          <div className="col-3">
-            <Iframe link={item.link} />
-            <br />
-          </div>
-        );
-      } else {
-        return <React.Fragment />;
-      }
+    let moreVideos = this.state.ancestralVideosUrl.map((item, index) => {
+      return (
+        <div key={index} className="col-6 col-md-4">
+          <Iframe link={item} />
+          <br />
+        </div>
+      );
     });
 
     return (
@@ -60,17 +78,11 @@ export default class Ancestral extends Component {
               alt="GranJero"
             />
             <div className="col-8 my-2 p-3 border-dashed border-warning">
-              <Iframe link={this.state.mainVideo.link} />
+              <Iframe link={this.state.mainVideo.url} />
               <h3 className="text-main pt-3">
                 <b>{this.state.mainVideo.title}</b>
               </h3>
-              <p className="pt-4">
-                🥘 Con un típico cocido cundiboyacense a base de productos
-                cultivados en huertos caseros damos fin a esta aventura que
-                llamamos #Ancestral 🎬📲, una expedición que nos llevó por los
-                aromas, saberes y sabores tradicionales de nuestro territorio
-                CAR 🦋
-              </p>
+              <p className="pt-4">{this.state.mainVideo.description}</p>
             </div>
             <div className="col-4 py-2">
               <h4 className="text-green-f">
@@ -85,7 +97,7 @@ export default class Ancestral extends Component {
                 />
               </div>
               <br />
-              <Iframe link={this.state.videoLeft.link} />
+              <Iframe link={this.state.videoLeftUrl} />
             </div>
 
             <div className="row col-12">
@@ -96,7 +108,7 @@ export default class Ancestral extends Component {
             </div>
             <a
               href="https://www.youtube.com/c/ElgranJero/videos"
-              class="btn btn-success d-inline col-4 my-3"
+              className="btn btn-success d-inline col-4 my-3"
             >
               <b>Todos los capítulos aquí</b>
             </a>

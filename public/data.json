@@ -88,7 +88,7 @@
     }
   ],
 
-  "sliderImages": ["./SliderHome1.png", "./SliderHome1.png"],
+  "sliderImages": ["./SliderHome1.avif", "./SliderHome1.avif"],
 
   "newsCARInfo": {
     "mainNew": {
@@ -117,9 +117,69 @@
   },
 
   "microSitios": [
-    { "name": "hola", "imgSrc": "./", "link": "/" },
-    { "name": "mundo", "imgSrc": "./", "link": "/" },
-    { "name": "hola", "imgSrc": "./", "link": "/" }
+    {
+      "name": "Parques",
+      "imgSrc": "./micrositios/parques.png",
+      "link": "https://parques.car.gov.co/"
+    },
+    {
+      "name": "Laboratorio e innovación ambiental",
+      "imgSrc": "./micrositios/dlia.png",
+      "link": "https://www.car.gov.co/laboratorio/inicio"
+    },
+    {
+      "name": "biblioteca CAR",
+      "imgSrc": "./micrositios/bibliotecaCar.png",
+      "link": "https://car.gov.co/"
+    },
+    {
+      "name": "Negocios Verdes",
+      "imgSrc": "./micrositios/negociosVerdes.png",
+      "link": "/"
+    },
+    {
+      "name": "Banco de proyectos",
+      "imgSrc": "./micrositios/bancoDeProyectos.png",
+      "link": "/"
+    },
+    { "name": "Niños", "imgSrc": "./micrositios/ninios.png", "link": "/" }
+  ],
+
+  "specialsCar": [
+    {
+      "title": "Cumplimos 60 años por la vida en el territorio",
+      "imgSrc": "./specialsCAR/special1.png",
+      "link": "/"
+    },
+    {
+      "title": "Recuperemos el valor del agua",
+      "imgSrc": "./specialsCAR/special2.png",
+      "link": "/"
+    },
+    {
+      "title": "Recuperemos el valor del Río Bogotá",
+      "imgSrc": "./specialsCAR/special3.png",
+      "link": "/"
+    }
+  ],
+
+  "interestLinks": [
+    {
+      "imgSrc": "./EnlacesDeInteres/siac.png",
+      "link": "http://www.siac.gov.co/"
+    },
+    {
+      "imgSrc": "./EnlacesDeInteres/secop.png",
+      "link": "https://colombiacompra.gov.co/secop-ii"
+    },
+    {
+      "imgSrc": "./EnlacesDeInteres/banco2.png",
+      "link": "https://banco2.com/"
+    },
+    {
+      "imgSrc": "./EnlacesDeInteres/theGlobalGoals.png",
+      "link": "https://www.globalgoals.org/"
+    }
   ],
 
   "granJero": [

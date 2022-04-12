@@ -45,17 +45,21 @@ export default function Header() {
         <i className="fa-solid fa-right-from-bracket"></i>
       </div>
       <div>
-        <div className="d-flex px-5 py-4">
-          <img
-            height="50px"
-            src={require("../../assets/logos/logo_car.png")}
-            alt="..."
-          />
-          <img
-            height="50px"
-            src={require("../../assets/logos/logo_gobierno_colombia.png")}
-            alt="..."
-          />
+        <div className="row px-5 py-4">
+          <div className="row col-3 col-lg-2">
+            <img
+              className="col-10 img-fluid "
+              src={require("../../assets/logos/logo_car.png")}
+              alt="..."
+            />
+          </div>
+          <div className="col-5 col-lg-3">
+            <img
+              className="img-fluid col-10"
+              src={require("../../assets/logos/logo_gobierno_colombia.png")}
+              alt="..."
+            />
+          </div>
         </div>
         <div className="d-flex justify-content-between">
           <hr className="hr-header hr-type-one bg-green-f" />
