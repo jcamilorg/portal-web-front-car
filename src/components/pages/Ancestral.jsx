@@ -19,7 +19,7 @@ export default class Ancestral extends Component {
     mainVideo: {
       url: "",
       title: "",
-      description: "dayan",
+      description: "",
     },
     videoLeftUrl: "",
   };
