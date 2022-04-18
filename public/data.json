@@ -2,7 +2,7 @@
   "infoStickyMenu": {
     "inicio": "/",
     "nosotros": [
-      { "name": "Reseña historica", "link": "/" },
+      { "name": "Reseña historica", "link": "/acerca-de-la-car" },
       { "name": "Misión y Visión", "link": "/" },
       { "name": "Valores y Principios", "link": "/" },
       { "name": "Objetivos y funciones", "link": "/" },
@@ -10,7 +10,6 @@
       { "name": "Jurisdicción CAR", "link": "/" },
       { "name": "Organigrama", "link": "/" },
       { "name": "Recurso humano", "link": "/" },
-      { "name": "Consejo directivo", "link": "/" },
       { "name": "Consejo directivo", "link": "/" },
       { "name": "Directorio Corporativo", "link": "/" },
       { "name": "Cómo llegar", "link": "/" }
@@ -37,6 +36,10 @@
       },
       { "name": "...El GranJero", "link": "/gran-jero" },
       { "name": "...Ancestral", "link": "/ancestral" },
+      {
+        "name": "Así trabajamos nuestro territorio",
+        "link": "/asi-trabajamos-nuestro-territorio"
+      },
       { "name": "Nuestras Historias", "link": "/" },
       { "name": "Comunicados de Prensa", "link": "/" },
       { "name": "Manual de Imagen Corporativa", "link": "/" }
