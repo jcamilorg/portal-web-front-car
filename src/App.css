@@ -66,63 +66,32 @@
 }
 
 
-.fs-16px {
-  font-size: 16px;
-}
-
-.fs-14px {
-  font-size: 14px;
-}
-
-.fs-12px {
-  font-size: 12px;
-}
-
-.fs-11px {
-  font-size: 10.5px;
-}
-
-.fs-10px {
-  font-size: 10px;
-}
-
-.fs-8px {
-  font-size: 8px;
-}
 
 .fs-responsive-m{
-  font-size: calc(0.5em + 0.7vw) !important;
+  font-size: calc(0.5em + 0.7vw) 
 }
 
 .fs-responsive-s{
-  font-size: calc(0.5em + 0.5vw) !important;
+  font-size: calc(0.5em + 0.5vw) 
 }
 
 .fs-responsive-xs{
-  font-size: calc(0.4em + 0.4vw)  !important;
+  font-size: calc(0.4em + 0.4vw)  
 }
 
 .fs-responsive-l{
-  font-size: calc(1em + 0.5vw) !important;
+  font-size: calc(1em + 0.5vw) 
 }
 
 .fs-responsive-xl{
-  font-size: calc(1.2em + 1vw) !important;
+  font-size: calc(1.2em + 1vw) 
 }
 
 .topN15px{
   top:-15px;
 }
 
-/*Styles header*/
-.input-header {
-  height: 20px;
-  width: 130px;
-  text-align: right;
-  border-radius: 5px;
-}
-
-.hr-header {
+.hr-car {
   opacity: 100;
   margin: 0;
   padding-top: 3px;
@@ -132,6 +101,7 @@
 .hr-type-one {
   width: 70%;
 }
+
 .hr-type-two {
   width: 29.5%;
 }
@@ -139,6 +109,37 @@
 .border-dashed {
   border-style: dashed !important;
 }
+
+.mb-1px{
+  margin-bottom: 1px;
+}
+/*Styles header*/
+.input-header {
+  width: 130px;
+  text-align: right;
+  border-radius: 10px;
+  
+}
+
+.input-header::placeholder{
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 600; 
+}
+
+
+
+/*Styles for menu*/
+
+.menu-item:hover {
+  background-color: #89d335;
+  text-shadow: 1px 1px 2px black;
+}
+
+.subSubItem:hover{
+background-color: #f2f2f2 !important
+}
+
+
 /*Styles HomePage */
 .Btn-News {
   border-radius: 20px;
@@ -178,4 +179,4 @@
   display: block;
 }
 
-/* Styles Footer */
+/* Styles menuS */

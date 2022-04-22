@@ -30,12 +30,10 @@
         "name": "Multimedia",
         "link": "/",
         "content": [
-          { "name": "El GranJeroo", "link": "/gran-jero" },
+          { "name": "El GranJero", "link": "/gran-jero" },
           { "name": "Ancestral", "link": "/ancestral" }
         ]
       },
-      { "name": "...El GranJero", "link": "/gran-jero" },
-      { "name": "...Ancestral", "link": "/ancestral" },
       {
         "name": "Así trabajamos nuestro territorio",
         "link": "/asi-trabajamos-nuestro-territorio"
@@ -54,40 +52,24 @@
 
   "sliderServicesImg": [
     {
-      "ImgSrc": "https://www.car.gov.co/assets/images/Rendicion_Cuentas.png",
+      "ImgSrc": "./enlacesRapidos/pqrs.png",
       "link": "https://www.car.gov.co/vercontenido/4015"
     },
     {
-      "ImgSrc": "https://www.car.gov.co/assets/images/Pagos_Linea.png",
+      "ImgSrc": "./enlacesRapidos/participacion.png",
       "link": "https://www.car.gov.co/vercontenido/2274"
     },
     {
-      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_Parques.png",
+      "ImgSrc": "./enlacesRapidos/pagos.png",
       "link": "https://parques.car.gov.co/"
     },
     {
-      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_Rio.png",
+      "ImgSrc": "./enlacesRapidos/rendicion.png",
       "link": "https://www.car.gov.co/rio_bogota"
     },
     {
-      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_bicicar.png",
+      "ImgSrc": "./enlacesRapidos/tramites.png",
       "link": "https://bicicar.car.gov.co/"
-    },
-    {
-      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_PTAR.png",
-      "link": "https://ptarsalitre.com.co/"
-    },
-    {
-      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_Jerusalen.png",
-      "link": "https://www.car.gov.co/jerusalen"
-    },
-    {
-      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_fuquene.png",
-      "link": "https://www.car.gov.co/fuquene"
-    },
-    {
-      "ImgSrc": "https://www.car.gov.co/assets/images/Megaproyecto_LIA.png",
-      "link": "https://www.car.gov.co/laboratorio/inicio"
     }
   ],
 

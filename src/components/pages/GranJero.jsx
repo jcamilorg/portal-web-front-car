@@ -10,8 +10,10 @@ import getData from "../utils/getData";
 const images = require.context("../../assets/img/", true);
 //Impor data
 let urlData = "../data.json";
-let GranJeroVideos =
-  "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UC8oglW3vOZU0ypk84ktFZ3Q&maxResults=19&type=video&key=AIzaSyBbLz3ktoO3T_8JXqom6IiHfzJrsE-NXGw";
+//api youtube to list videos
+let apiKey = "AIzaSyDaDNHM9CvIqd9Z-jPSKyH586XEU75Yyr4";
+let numberOfVideos = "19";
+let GranJeroVideos = `https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UC8oglW3vOZU0ypk84ktFZ3Q&maxResults=${numberOfVideos}&type=video&key=${apiKey}`;
 
 export default class GranJeroPage extends Component {
   state = {
