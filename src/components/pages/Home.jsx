@@ -5,6 +5,7 @@ import Footer from "../utils/Footer";
 import Slider from "../utils/Slider";
 import StickyMenu from "../utils/StickyMenu";
 import Carousel from "react-multi-carousel";
+import TitleCar from "../utils/TitleCar";
 // Functions
 import getData from "../utils/getData";
 import "react-multi-carousel/lib/styles.css";
@@ -131,16 +132,7 @@ const New = (props) => {
 const NewsCAR = (props) => {
   return (
     <div className="row justify-content-center border-end-0 border-start-0 border-bottom-0 border-dashed border-warning">
-      <div className="col-12 d-flex justify-content-center ">
-        <h5 className="bg-green border-warning text-white rounded-top-car d-inline-block mt-3 mb-1 px-5">
-          Noticias CAR
-        </h5>
-      </div>
-      <div className="col-12 d-flex px-0 mx-0">
-        <hr className="hr-header hr-type-one bg-green " />
-        <hr className="hr-header hr-type-two bg-green-f ms-1 " />
-      </div>
-
+      <TitleCar title={"Noticias CAR"} />
       <div className="col-8 col-lg-5">{props.mainNew}</div>
       <div className="col-12 col-lg-7">
         <div className="p-3">{props.news}</div>
@@ -197,15 +189,7 @@ const BoletinNewsCar = (props) => {
 const SpecialsCar = (props) => {
   return (
     <div className="row justify-content-center border-end-0 border-start-0 border-bottom-0 border-dashed border-warning">
-      <div className="col-12 d-flex justify-content-center ">
-        <h5 className="bg-green border-warning text-white rounded-top-car d-inline-block mt-3 mb-1 px-5">
-          Especials Car
-        </h5>
-      </div>
-      <div className="col-12 d-flex px-0 mx-0">
-        <hr className="hr-header hr-type-one bg-green " />
-        <hr className="hr-header hr-type-two bg-green-f ms-1 " />
-      </div>
+      <TitleCar title={"Especiales CAR"} />
 
       <div className="col-12">{props.children}</div>
     </div>
@@ -243,15 +227,7 @@ const InteresLink = (props) => {
 const InteresLinks = (props) => {
   return (
     <div className="row justify-content-center border-end-0 border-start-0 border-bottom-0 border-dashed border-warning">
-      <div className="col-12 d-flex justify-content-center ">
-        <h5 className="bg-green-f border-warning text-white rounded-top-car d-inline-block mt-3 mb-1 px-5">
-          Enlaces de interés CAR
-        </h5>
-      </div>
-      <div className="col-12 d-flex px-0 mx-0 pb-4">
-        <hr className="hr-header hr-type-one bg-green-f " />
-        <hr className="hr-header hr-type-two bg-green ms-1 " />
-      </div>
+      <TitleCar title={"Enlaces de interés CAR"} type2 />
       <div className="row col-10">{props.children}</div>
     </div>
   );
@@ -276,7 +252,7 @@ class HomePage extends Component {
         let sliderServices = datajson.sliderServicesImg.map((item, index) => (
           <div key={index}>
             <a href={item.link}>
-              <img height="120px" src={item.ImgSrc} alt="..." />
+              <img height="120px" src={icons(item.ImgSrc)} alt="..." />
             </a>
           </div>
         ));

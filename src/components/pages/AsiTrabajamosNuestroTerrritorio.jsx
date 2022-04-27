@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
 import StickyMenu from "../utils/StickyMenu";
-import Iframe from "../utils/Iframe";
+import TitleCar from "../utils/TitleCar";
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
 const icons = require.context("../../assets/icons/", true);
@@ -13,7 +13,13 @@ let urlData = "../data.json";
 const AsiTrabajamosGrid = () => {
   return (
     <div className="text-center">
-      <b>Así trabajamos </b>por nuestro territorio
+      <TitleCar
+        title={
+          <>
+            <b>Así trabajamos </b>por nuestro territorio
+          </>
+        }
+      />
       <div className="row">
         <AsiTrabajamosItem />
         <AsiTrabajamosItem />
@@ -31,9 +37,11 @@ const AsiTrabajamosItem = (props) => {
     <div className="col-4 bg-light ">
       <hr />
       <img className="img-fluid" src={images("./new1.png")} alt="noticia" />
-      <div className="bg-white mx-2 topN15px position-relative fs-12px">
-        <h5>Un titulo va aqui</h5>
-        <p>Aqui va la descripcion de la noticia como seria </p>
+      <div className="bg-white mx-2 topN15px position-relative fs-responsive-xs">
+        <h6 className="fs-responsive-m">Un titulo va aqui</h6>
+        <p className="fs-responsive-s">
+          Aqui va la descripcion de la noticia como seria{" "}
+        </p>
       </div>
     </div>
   );
@@ -50,18 +58,21 @@ const FormNewsCard = () => {
         <label for="nombre" className="my-0 d-block">
           Nombre <b>*</b>
         </label>
-        <input
-          type="text"
-          id="nombre"
-          placeholder="nombre"
-          className="me-2 input"
-        />
-        <input
-          type="text"
-          id="apellido"
-          placeholder="apellidos"
-          className="input"
-        />
+        <div className="d-flex justify-content-between">
+          <input
+            type="text"
+            id="nombre"
+            placeholder="Nombre"
+            className="me-2 input flex-fill"
+          />
+          <input
+            type="text"
+            id="apellido"
+            placeholder="Apellidos"
+            className="input flex-fill "
+          />
+        </div>
+
         <br />
         <br />
         <label for="email" className="my-0 d-block">
@@ -101,7 +112,7 @@ export default class AsiTrabajamosNuestroTerrritorio extends Component {
               <img
                 className="img-fluid"
                 src={images("./bannerAsiTrabajamos.png")}
-                alt="GranJero"
+                alt="..."
               />
             </div>
             <div className="col-6">

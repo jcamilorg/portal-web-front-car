@@ -24,17 +24,19 @@ export default class StickyMenu extends Component {
               <Dropdown
                 name={title}
                 items={datajson.infoStickyMenu[property]}
-                className="bg-transparent text-light"
+                className="bg-acua text-light px-4 py-2 menu-item"
               />
             );
           } else {
             menuItems[index++] = (
-              <Link
-                to={datajson.infoStickyMenu[property]}
-                className="text-white text-decoration-none"
-              >
-                {title}
-              </Link>
+              <div className="bg-acua px-4 py-2 menu-item">
+                <Link
+                  to={datajson.infoStickyMenu[property]}
+                  className="text-decoration-none text-light"
+                >
+                  {title}
+                </Link>
+              </div>
             );
           }
         }
@@ -51,7 +53,7 @@ export default class StickyMenu extends Component {
       return (
         <div
           key={index}
-          className="bg-acua text-light px-4 py-2 border-end border-start border-light border-1 mt-1"
+          className="border-end border-start border-light border-1 mt-1 fs-responsive-s"
         >
           {item}
         </div>

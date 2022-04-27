@@ -10,8 +10,9 @@ import getData from "../utils/getData";
 const images = require.context("../../assets/img/", true);
 //Impor data
 let urlData = "../data.json";
-let ancestralVideos =
-  "https://www.googleapis.com/youtube/v3/playlistItems/?part=snippet&maxResults=18&channelId=UCDR_Bqz6vCW535ydrXcp4oA&playlistId=PL4Hz7tdqWVVjP3MWnNzsLdwhZCj7MwBPZ&key=AIzaSyBbLz3ktoO3T_8JXqom6IiHfzJrsE-NXGw";
+let apiKey = "AIzaSyDaDNHM9CvIqd9Z-jPSKyH586XEU75Yyr4";
+let numberOfVideos = "18";
+let ancestralVideos = `https://www.googleapis.com/youtube/v3/playlistItems/?part=snippet&maxResults=${numberOfVideos}&channelId=UCDR_Bqz6vCW535ydrXcp4oA&playlistId=PL4Hz7tdqWVVjP3MWnNzsLdwhZCj7MwBPZ&key=${apiKey}`;
 
 export default class Ancestral extends Component {
   state = {
