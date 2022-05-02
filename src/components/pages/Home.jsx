@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
 import Slider from "../utils/Slider";
-import StickyMenu from "../utils/StickyMenu";
+
 import Carousel from "react-multi-carousel";
 import TitleCar from "../utils/TitleCar";
 // Functions
@@ -327,14 +327,10 @@ class HomePage extends Component {
     return (
       <div className="container-fluid px-0">
         <Header />
-        <Slider
-          classItems="py-1"
-          data={this.state.sliderImages}
-          id="slider-banner-informate"
-        />
+
+        <Slider data={this.state.sliderImages} id="slider-banner-informate" />
 
         <div className="row justify-content-center ">
-          <StickyMenu url={urlData} />
           <section className="row col-11 col-lg-9 my-4 px-0">
             <Carousel
               responsive={responsive}

@@ -24,7 +24,7 @@ export default class StickyMenu extends Component {
               <Dropdown
                 name={title}
                 items={datajson.infoStickyMenu[property]}
-                className="bg-acua text-light px-4 py-2 menu-item"
+                className="bg-acua text-light px-4 py-2 menu-item fw-bolder"
               />
             );
           } else {
@@ -32,7 +32,7 @@ export default class StickyMenu extends Component {
               <div className="bg-acua px-4 py-2 menu-item">
                 <Link
                   to={datajson.infoStickyMenu[property]}
-                  className="text-decoration-none text-light"
+                  className="text-decoration-none text-light fw-bolder"
                 >
                   {title}
                 </Link>
@@ -51,17 +51,14 @@ export default class StickyMenu extends Component {
   render() {
     let menuItemsStyled = this.state.menuItems.map((item, index) => {
       return (
-        <div
-          key={index}
-          className="border-end border-start border-light border-1 mt-1 fs-responsive-s"
-        >
+        <div key={index} className="fs-responsive-s">
           {item}
         </div>
       );
     });
 
     return (
-      <div className="d-flex flex-wrap justify-content-center sticky-top bg-white ">
+      <div className="bg-acua d-flex flex-wrap justify-content-center sticky-top mt-1 ">
         {menuItemsStyled}
       </div>
     );

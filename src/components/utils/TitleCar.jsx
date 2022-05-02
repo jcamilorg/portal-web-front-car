@@ -14,7 +14,7 @@ const TitleCar = (props) => {
     <>
       <div className="col-12 d-flex justify-content-center ">
         <h5
-          className={`${bgClass} border-warning text-white rounded-top-car d-inline-block mt-3 px-5 mb-1px fs-responsive-m`}
+          className={`${bgClass} border-warning text-white rounded-top-car d-inline-block mt-3 px-5 mb-0 fs-responsive-m`}
         >
           {props.title}
         </h5>

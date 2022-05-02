@@ -1,5 +1,6 @@
 import React from "react";
 import Dropdown from "./Dropdown";
+import StickyMenu from "./StickyMenu";
 
 let Idiomas = [
   {
@@ -11,6 +12,8 @@ let Idiomas = [
     link: "http://rae.es",
   },
 ];
+
+let urlData = "../data.json";
 
 export default function Header() {
   //let increaseNumber = 0;
@@ -71,58 +74,61 @@ export default function Header() {
   }
 
   return (
-    <header>
-      <div className="conintainer d-flex justify-content-end pe-5 bg-acua align-items-center text-light">
-        <input
-          className="input-header px-2 py-0 my-1 border"
-          type="text"
-          placeholder=""
-        />
-        <div className="vertical-line my-2 mx-2"></div>
-        <Dropdown
-          className="bg-transparent text-light"
-          name="Selecionar idioma"
-          items={Idiomas}
-        />
-        <div className="vertical-line my-2 mx-2"></div>
-        <span>
-          <b role="button" onClick={handleIncreaseFontSize}>
-            A+
-          </b>
-        </span>
-        <div className="vertical-line my-2 mx-2"></div>
-        <span>
-          <b role="button" onClick={handleDecreaseFontSize}>
-            A-
-          </b>
-        </span>
-        <div className="vertical-line my-2 mx-2"></div>
-        <i className="fa-solid fa-circle-half-stroke"></i>
-        <div className="vertical-line my-2 mx-2"></div>
-        <i className="fa-solid fa-right-from-bracket"></i>
-      </div>
-      <div>
-        <div className="row px-5 py-4">
-          <div className="row col-3 col-lg-2">
-            <img
-              className="col-10 img-fluid "
-              src={require("../../assets/logos/logo_car.png")}
-              alt="..."
-            />
+    <>
+      <header>
+        <div className="conintainer d-flex justify-content-end pe-5 bg-acua align-items-center text-light">
+          <input
+            className="input-header px-2 py-0 my-1 border"
+            type="text"
+            placeholder=""
+          />
+          <div className="vertical-line my-2 mx-2"></div>
+          <Dropdown
+            className="bg-transparent text-light"
+            name="Selecionar idioma"
+            items={Idiomas}
+          />
+          <div className="vertical-line my-2 mx-2"></div>
+          <span>
+            <b role="button" onClick={handleIncreaseFontSize}>
+              A+
+            </b>
+          </span>
+          <div className="vertical-line my-2 mx-2"></div>
+          <span>
+            <b role="button" onClick={handleDecreaseFontSize}>
+              A-
+            </b>
+          </span>
+          <div className="vertical-line my-2 mx-2"></div>
+          <i className="fa-solid fa-circle-half-stroke"></i>
+          <div className="vertical-line my-2 mx-2"></div>
+          <i className="fa-solid fa-right-from-bracket"></i>
+        </div>
+        <div>
+          <div className="row ps-5 ms-5 py-3">
+            <div className="row col-3 col-lg-2">
+              <img
+                className="col-10 img-fluid "
+                src={require("../../assets/logos/logo_car.png")}
+                alt="..."
+              />
+            </div>
+            <div className="col-5 col-lg-3">
+              <img
+                className="img-fluid col-10"
+                src={require("../../assets/logos/logo_gobierno_colombia.png")}
+                alt="..."
+              />
+            </div>
           </div>
-          <div className="col-5 col-lg-3">
-            <img
-              className="img-fluid col-10"
-              src={require("../../assets/logos/logo_gobierno_colombia.png")}
-              alt="..."
-            />
+          <div className="d-flex justify-content-between">
+            <hr className="hr-car hr-type-one bg-green-f" />
+            <hr className="hr-car hr-type-two bg-green" />
           </div>
         </div>
-        <div className="d-flex justify-content-between">
-          <hr className="hr-car hr-type-one bg-green-f" />
-          <hr className="hr-car hr-type-two bg-green" />
-        </div>
-      </div>
-    </header>
+      </header>
+      <StickyMenu url={urlData} />
+    </>
   );
 }
