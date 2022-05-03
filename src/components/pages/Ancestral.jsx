@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
-import StickyMenu from "../utils/StickyMenu";
+
 import Iframe from "../utils/Iframe";
 //Import functions
 import getData from "../utils/getData";
@@ -9,7 +9,6 @@ import getData from "../utils/getData";
 // Import img
 const images = require.context("../../assets/img/", true);
 //Impor data
-let urlData = "../data.json";
 let apiKey = "AIzaSyDaDNHM9CvIqd9Z-jPSKyH586XEU75Yyr4";
 let numberOfVideos = "18";
 let ancestralVideos = `https://www.googleapis.com/youtube/v3/playlistItems/?part=snippet&maxResults=${numberOfVideos}&channelId=UCDR_Bqz6vCW535ydrXcp4oA&playlistId=PL4Hz7tdqWVVjP3MWnNzsLdwhZCj7MwBPZ&key=${apiKey}`;
@@ -68,11 +67,9 @@ export default class Ancestral extends Component {
     return (
       <div>
         <Header />
-        <br />
-        <StickyMenu url={urlData} />
 
         <div className="row justify-content-center">
-          <div className="row col-9 py-2 justify-content-center">
+          <div className="row col-9 pb-2 justify-content-center">
             <img
               className="img-fluid"
               src={images("./bannerAncestral.png")}
