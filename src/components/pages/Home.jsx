@@ -109,6 +109,9 @@ const MainNew = (props) => {
       <img className="img-fluid" src={images(props.ImgSrc)} alt="Noticias" />
       <h5 className="text-main pt-2 mb-1 fs-responsive-l">{props.title}</h5>
       <p className="text-main fs-responsive-s">{props.description}</p>
+      <br />
+      <i class="fa-regular fa-clock"></i>
+      <span>{" " + props.date}</span>
       <BtnNews />
     </div>
   );
@@ -116,13 +119,16 @@ const MainNew = (props) => {
 
 const New = (props) => {
   return (
-    <div className="row border-end-0 border-start-0 border-top-0 border-dashed border-warning py-3">
-      <div className="col-3 px-1">
+    <div className="row border-end-0 border-start-0 border-top-0 border py-3">
+      <div className="col-4 px-1">
         <img className="img-fluid" src={images(props.ImgSrc)} alt="Noticias" />
       </div>
-      <div className="col-9">
+      <div className="col-8">
         <h6 className="fs-responsive-m">{props.title}</h6>
         <p className="fs-responsive-s">{props.description}</p>
+        <br />
+        <i class="fa-regular fa-clock"></i>
+        <span>{" " + props.date}</span>
         <BtnNews />
       </div>
     </div>
@@ -131,11 +137,45 @@ const New = (props) => {
 
 const NewsCAR = (props) => {
   return (
-    <div className="row justify-content-center border-end-0 border-start-0 border-bottom-0 border-dashed border-warning">
+    <div className="row justify-content-center pb-0">
       <TitleCar title={"Noticias CAR"} />
       <div className="col-8 col-lg-5">{props.mainNew}</div>
       <div className="col-12 col-lg-7">
         <div className="p-3">{props.news}</div>
+      </div>
+    </div>
+  );
+};
+
+const DigitCounterTree = (props) => {
+  return (
+    <span className="bg-white text-main fs-responsive-xl rounded-3 px-2 mx-1 ">
+      <b>{props.number}</b>
+    </span>
+  );
+};
+
+const CounterTrees = (props) => {
+  let arrayNumberTrees = Array.from(String(props.numberTrees));
+  let arrarrayDigits = arrayNumberTrees.map((item, index) => (
+    <DigitCounterTree key={index} number={item} />
+  ));
+
+  return (
+    <div className="row justify-content-center bg-counter-trees">
+      <div className="col-8 d-flex justify-content-center py-3 align-items-center">
+        <b className="text-white fs-responsive-l">
+          Ya son
+          <br />
+          más de:
+        </b>
+        <span className="text-white fs-responsive-l  px-3">
+          {arrarrayDigits}
+        </span>
+        <b className="text-white fs-responsive-l">
+          árboles <br />
+          sembrados
+        </b>
       </div>
     </div>
   );
@@ -165,8 +205,8 @@ const MicroSitio = (props) => {
 const MicrositiosGroup = (props) => {
   return (
     <div className="ms-0 me-0 pe-0 row ">
-      <h4 className="bg-green-f text-white col-12 rounded-car py-2 mt-4 fs-responsive-m">
-        Micrositios Car
+      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l">
+        <b>Micrositios</b> Car
       </h4>
       <div className="" />
       {props.children}
@@ -177,8 +217,8 @@ const MicrositiosGroup = (props) => {
 const BoletinNewsCar = (props) => {
   return (
     <div className="ms-0 me-0 pe-0 row ">
-      <h4 className="bg-green text-white  rounded-car py-2 mt-4 fs-responsive-m">
-        Boletín NewsCAR
+      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l">
+        <b>Boletín</b> NewsCAR
       </h4>
       <div className="col-12 " />
       {props.children}
@@ -188,8 +228,8 @@ const BoletinNewsCar = (props) => {
 
 const SpecialsCar = (props) => {
   return (
-    <div className="row justify-content-center border-end-0 border-start-0 border-bottom-0 border-dashed border-warning">
-      <TitleCar title={"Especiales CAR"} />
+    <div className="row justify-content-center pt-4">
+      <TitleCar title={"Especiales CAR"} type2 />
 
       <div className="col-12">{props.children}</div>
     </div>
@@ -226,9 +266,9 @@ const InteresLink = (props) => {
 
 const InteresLinks = (props) => {
   return (
-    <div className="row justify-content-center border-end-0 border-start-0 border-bottom-0 border-dashed border-warning">
-      <TitleCar title={"Enlaces de interés CAR"} type2 />
-      <div className="row col-10">{props.children}</div>
+    <div className="row justify-content-center pt-4">
+      <TitleCar title={"Enlaces de interés CAR"} />
+      <div className="row col-10 py-3">{props.children}</div>
     </div>
   );
 };
@@ -251,8 +291,17 @@ class HomePage extends Component {
       this.setState(() => {
         let sliderServices = datajson.sliderServicesImg.map((item, index) => (
           <div key={index}>
-            <a href={item.link}>
+            <a
+              href={item.link}
+              style={{ textDecoration: "none" }}
+              className="text-main"
+            >
               <img height="120px" src={icons(item.ImgSrc)} alt="..." />
+              <p>
+                <b>{item.bold}</b>
+                <br />
+                <span>{item.normal}</span>
+              </p>
             </a>
           </div>
         ));
@@ -261,7 +310,7 @@ class HomePage extends Component {
             return (
               <img
                 key={index}
-                className="img-fluid"
+                className="w-100"
                 src={images(item)}
                 alt="Slider"
               />
@@ -276,6 +325,7 @@ class HomePage extends Component {
             title={item.title}
             description={item.description}
             ImgSrc={item.ImgSrc}
+            date={item.date}
           />
         ));
         let microSitios = datajson.microSitios.map((item, index) => {
@@ -307,6 +357,7 @@ class HomePage extends Component {
             title={datajson.newsCARInfo.mainNew.title}
             description={datajson.newsCARInfo.mainNew.description}
             ImgSrc={datajson.newsCARInfo.mainNew.ImgSrc}
+            date={datajson.newsCARInfo.mainNew.date}
           />
         );
 
@@ -328,7 +379,11 @@ class HomePage extends Component {
       <div className="container-fluid px-0">
         <Header />
 
-        <Slider data={this.state.sliderImages} id="slider-banner-informate" />
+        <Slider
+          data={this.state.sliderImages}
+          id="slider-banner-informate"
+          classItems="w-100"
+        />
 
         <div className="row justify-content-center ">
           <section className="row col-11 col-lg-9 my-4 px-0">
@@ -343,12 +398,9 @@ class HomePage extends Component {
             </Carousel>
 
             <NewsCAR news={this.state.newsCAR} mainNew={this.state.mainNew} />
-
-            <img
-              className="img-fluid"
-              src={images("./contadorArboles.png")}
-              alt="Contador arboles"
-            />
+          </section>
+          <CounterTrees numberTrees="09425" />
+          <section className="row col-11 col-lg-9 my-4 px-0">
             <div className=" col-8">
               <MicrositiosGroup>{this.state.microSitios}</MicrositiosGroup>
             </div>

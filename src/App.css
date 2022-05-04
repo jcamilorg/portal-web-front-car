@@ -113,6 +113,11 @@
 .mb-1px{
   margin-bottom: 1px;
 }
+
+.bg-counter-trees{
+  background-image: url("/src/assets/img/FondoBannerContadorDeArboles.svg");
+  background-size: cover;
+}
 /*Styles header*/
 .input-header {
   width: 130px;

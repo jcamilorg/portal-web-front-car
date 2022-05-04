@@ -1,12 +1,12 @@
 import React from "react";
 
 const TitleCar = (props) => {
-  let classHr1 = "hr-car hr-type-one bg-green ";
+  let classHr1 = "hr-car hr-type-one bg-acua ";
   let classHr2 = "hr-car hr-type-two bg-green-f ms-1 ";
-  let bgClass = "bg-green";
+  let bgClass = "bg-acua";
   if (props.type2) {
     classHr1 = "hr-car hr-type-one bg-green-f ";
-    classHr2 = "hr-car hr-type-two bg-green ms-1 ";
+    classHr2 = "hr-car hr-type-two bg-acua ms-1 ";
     bgClass = "bg-green-f";
   }
 
