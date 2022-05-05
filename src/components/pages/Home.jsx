@@ -37,25 +37,6 @@ const responsive = {
   },
 };
 
-const responsiveSpecialsCAR = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 4,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
 const CustomRightArrow = ({ onClick }) => {
   function handleClick() {
     onClick();
@@ -246,7 +227,7 @@ const SpecialsCar = (props) => {
       <TitleCar title={"Especiales CAR"} type2 />
 
       <div className="col-12">{props.children}</div>
-      <div className="position-absolute top-75 start-50 d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 z-index">
+      <div className="position-absolute top-75  d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 z-index">
         {texts[props.index]}
         <button className="border rounded-2 bg-green-f text-light me-5 ">
           <i class="fa-solid fa-eye"></i> <b>Ver especial</b>
@@ -273,7 +254,7 @@ const SpecialCar = (props) => {
 const SpecialCar2 = (props) => {
   return (
     <>
-      <div className="container">
+      <div className="px-1">
         <img
           className="img-fluid position-relative"
           src={images(props.imgSrc)}
@@ -294,7 +275,7 @@ const RightArrowSpecialsCAR = ({ onClick, changeIndex }) => {
     <button
       onClick={handleClick}
       aria-label="Go to next slide"
-      style={{ right: "26%", top: "73%", zIndex: "3000" }}
+      style={{ right: "38%", top: "73%", zIndex: "3000" }}
       className="position-absolute bg-transparent border-0"
     >
       <img src={icons("./btn-slider-derecha.png")} alt="<" />
@@ -312,7 +293,7 @@ const LeftArrowSpecialsCAR = ({ onClick, changeIndex }) => {
     <button
       onClick={handleClick}
       aria-label="Go to next slide"
-      style={{ left: "68%", top: "73%", zIndex: "3000" }}
+      style={{ left: "56%", top: "73%", zIndex: "3000" }}
       className="position-absolute bg-transparent border-0"
     >
       <img src={icons("./btn-slider-izquierda.png")} alt="<" />
@@ -537,7 +518,7 @@ class HomePage extends Component {
                 index={this.state.actualSpecialCar}
               >
                 <Carousel
-                  responsive={responsiveSpecialsCAR}
+                  responsive={responsive}
                   className=" pt-4 pb-5 my-1 position-relative"
                   infinite={true}
                   autoPlay={false}

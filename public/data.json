@@ -164,6 +164,11 @@
       "title": ["Recuperemos ", "el valor del Río Bogotá"],
       "imgSrc": "./specialsCAR/special3.png",
       "link": "/"
+    },
+    {
+      "title": ["Cambio ", "Climático"],
+      "imgSrc": "./specialsCAR/special4.png",
+      "link": "/"
     }
   ],
 
