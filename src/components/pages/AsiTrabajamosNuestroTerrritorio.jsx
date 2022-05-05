@@ -2,13 +2,10 @@ import React, { Component } from "react";
 //Import de componentes
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
-import StickyMenu from "../utils/StickyMenu";
 import TitleCar from "../utils/TitleCar";
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
 const icons = require.context("../../assets/icons/", true);
-//Variables definitions
-let urlData = "../data.json";
 
 const AsiTrabajamosGrid = () => {
   return (
@@ -105,7 +102,6 @@ export default class AsiTrabajamosNuestroTerrritorio extends Component {
     return (
       <div>
         <Header></Header>
-        <StickyMenu url={urlData} />
         <div className="container px-5">
           <div className="row justify-content-center">
             <div className="col-10 py-3">

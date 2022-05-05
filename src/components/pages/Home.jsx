@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
 import Slider from "../utils/Slider";
-import StickyMenu from "../utils/StickyMenu";
+
 import Carousel from "react-multi-carousel";
 import TitleCar from "../utils/TitleCar";
 // Functions
@@ -105,10 +105,17 @@ const BtnNews = () => {
 
 const MainNew = (props) => {
   return (
-    <div className="p-3">
-      <img className="img-fluid" src={images(props.ImgSrc)} alt="Noticias" />
-      <h5 className="text-main pt-2 mb-1 fs-responsive-l">{props.title}</h5>
-      <p className="text-main fs-responsive-s">{props.description}</p>
+    <div className="px-3 pb-3 pt-4">
+      <img
+        className="img-fluid rounded-2"
+        src={images(props.ImgSrc)}
+        alt="Noticias"
+      />
+      <h5 className="text-main py-3 mb-0 fs-responsive-l">{props.title}</h5>
+      <p className="text-main fs-responsive-s ">{props.description}</p>
+      <br />
+      <i class="fa-regular fa-clock"></i>
+      <span>{" " + props.date}</span>
       <BtnNews />
     </div>
   );
@@ -116,13 +123,20 @@ const MainNew = (props) => {
 
 const New = (props) => {
   return (
-    <div className="row border-end-0 border-start-0 border-top-0 border-dashed border-warning py-3">
-      <div className="col-3 px-1">
-        <img className="img-fluid" src={images(props.ImgSrc)} alt="Noticias" />
+    <div className="row border-end-0 border-start-0 border-top-0 border pt-4 pb-3">
+      <div className="col-4 px-1">
+        <img
+          className="img-fluid rounded-2"
+          src={images(props.ImgSrc)}
+          alt="Noticias"
+        />
       </div>
-      <div className="col-9">
+      <div className="col-8">
         <h6 className="fs-responsive-m">{props.title}</h6>
         <p className="fs-responsive-s">{props.description}</p>
+        <br />
+        <i class="fa-regular fa-clock"></i>
+        <span>{" " + props.date}</span>
         <BtnNews />
       </div>
     </div>
@@ -131,11 +145,43 @@ const New = (props) => {
 
 const NewsCAR = (props) => {
   return (
-    <div className="row justify-content-center border-end-0 border-start-0 border-bottom-0 border-dashed border-warning">
+    <div className="row justify-content-center pb-0">
       <TitleCar title={"Noticias CAR"} />
       <div className="col-8 col-lg-5">{props.mainNew}</div>
-      <div className="col-12 col-lg-7">
-        <div className="p-3">{props.news}</div>
+      <div className="col-12 col-lg-7">{props.news}</div>
+    </div>
+  );
+};
+
+const DigitCounterTree = (props) => {
+  return (
+    <span className="bg-white text-main fs-responsive-xl rounded-3 px-2 mx-1 ">
+      <b>{props.number}</b>
+    </span>
+  );
+};
+
+const CounterTrees = (props) => {
+  let arrayNumberTrees = Array.from(String(props.numberTrees));
+  let arrarrayDigits = arrayNumberTrees.map((item, index) => (
+    <DigitCounterTree key={index} number={item} />
+  ));
+
+  return (
+    <div className="row justify-content-center bg-counter-trees">
+      <div className="col-8 d-flex justify-content-center py-3 align-items-center">
+        <b className="text-white fs-responsive-l">
+          Ya son
+          <br />
+          más de:
+        </b>
+        <span className="text-white fs-responsive-l  px-3">
+          {arrarrayDigits}
+        </span>
+        <b className="text-white fs-responsive-l">
+          árboles <br />
+          sembrados
+        </b>
       </div>
     </div>
   );
@@ -165,8 +211,8 @@ const MicroSitio = (props) => {
 const MicrositiosGroup = (props) => {
   return (
     <div className="ms-0 me-0 pe-0 row ">
-      <h4 className="bg-green-f text-white col-12 rounded-car py-2 mt-4 fs-responsive-m">
-        Micrositios Car
+      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l">
+        <b>Micrositios</b> Car
       </h4>
       <div className="" />
       {props.children}
@@ -177,8 +223,8 @@ const MicrositiosGroup = (props) => {
 const BoletinNewsCar = (props) => {
   return (
     <div className="ms-0 me-0 pe-0 row ">
-      <h4 className="bg-green text-white  rounded-car py-2 mt-4 fs-responsive-m">
-        Boletín NewsCAR
+      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l">
+        <b>Boletín</b> NewsCAR
       </h4>
       <div className="col-12 " />
       {props.children}
@@ -187,11 +233,25 @@ const BoletinNewsCar = (props) => {
 };
 
 const SpecialsCar = (props) => {
+  let texts = props.data.map((item) => (
+    <p>
+      <b>{item[0]}</b>
+      <br />
+      {item[1]}
+    </p>
+  ));
+
   return (
-    <div className="row justify-content-center border-end-0 border-start-0 border-bottom-0 border-dashed border-warning">
-      <TitleCar title={"Especiales CAR"} />
+    <div className="row justify-content-center pt-4 mb-4 position-relative">
+      <TitleCar title={"Especiales CAR"} type2 />
 
       <div className="col-12">{props.children}</div>
+      <div className="position-absolute top-75 start-50 d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 z-index">
+        {texts[props.index]}
+        <button className="border rounded-2 bg-green-f text-light me-5 ">
+          <i class="fa-solid fa-eye"></i> <b>Ver especial</b>
+        </button>
+      </div>
     </div>
   );
 };
@@ -207,6 +267,56 @@ const SpecialCar = (props) => {
         </span>
       </a>
     </div>
+  );
+};
+
+const SpecialCar2 = (props) => {
+  return (
+    <>
+      <div className="container">
+        <img
+          className="img-fluid position-relative"
+          src={images(props.imgSrc)}
+          alt="Especial"
+        />
+      </div>
+    </>
+  );
+};
+
+const RightArrowSpecialsCAR = ({ onClick, changeIndex }) => {
+  function handleClick() {
+    onClick();
+    changeIndex();
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      aria-label="Go to next slide"
+      style={{ right: "26%", top: "73%", zIndex: "3000" }}
+      className="position-absolute bg-transparent border-0"
+    >
+      <img src={icons("./btn-slider-derecha.png")} alt="<" />
+    </button>
+  );
+};
+
+const LeftArrowSpecialsCAR = ({ onClick, changeIndex }) => {
+  function handleClick() {
+    onClick();
+    changeIndex();
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      aria-label="Go to next slide"
+      style={{ left: "68%", top: "73%", zIndex: "3000" }}
+      className="position-absolute bg-transparent border-0"
+    >
+      <img src={icons("./btn-slider-izquierda.png")} alt="<" />
+    </button>
   );
 };
 
@@ -226,9 +336,9 @@ const InteresLink = (props) => {
 
 const InteresLinks = (props) => {
   return (
-    <div className="row justify-content-center border-end-0 border-start-0 border-bottom-0 border-dashed border-warning">
-      <TitleCar title={"Enlaces de interés CAR"} type2 />
-      <div className="row col-10">{props.children}</div>
+    <div className="row justify-content-center pt-4">
+      <TitleCar title={"Enlaces de interés CAR"} />
+      <div className="row col-10 py-3">{props.children}</div>
     </div>
   );
 };
@@ -242,7 +352,9 @@ class HomePage extends Component {
     newsCar: [],
     mainNew: [],
     microSitios: [],
+    specialCarTitles: [],
     specialsCar: [],
+    actualSpecialCar: 1,
     interestLinks: [],
   };
 
@@ -251,8 +363,17 @@ class HomePage extends Component {
       this.setState(() => {
         let sliderServices = datajson.sliderServicesImg.map((item, index) => (
           <div key={index}>
-            <a href={item.link}>
+            <a
+              href={item.link}
+              style={{ textDecoration: "none" }}
+              className="text-main"
+            >
               <img height="120px" src={icons(item.ImgSrc)} alt="..." />
+              <p>
+                <b>{item.bold}</b>
+                <br />
+                <span>{item.normal}</span>
+              </p>
             </a>
           </div>
         ));
@@ -261,7 +382,7 @@ class HomePage extends Component {
             return (
               <img
                 key={index}
-                className="img-fluid"
+                className="w-100"
                 src={images(item)}
                 alt="Slider"
               />
@@ -276,6 +397,7 @@ class HomePage extends Component {
             title={item.title}
             description={item.description}
             ImgSrc={item.ImgSrc}
+            date={item.date}
           />
         ));
         let microSitios = datajson.microSitios.map((item, index) => {
@@ -289,13 +411,18 @@ class HomePage extends Component {
             ></MicroSitio>
           );
         });
-        let specialsCar = datajson.specialsCar.map((item, index) => (
-          <SpecialCar
-            title={item.title}
-            imgSrc={item.imgSrc}
-            link={item.link}
-          />
-        ));
+        let specialCarTitles = [];
+        let specialsCar = datajson.specialsCar.map((item, index) => {
+          specialCarTitles.push([item.title[0], item.title[1]]);
+
+          return (
+            <SpecialCar2
+              title={item.title}
+              imgSrc={item.imgSrc}
+              link={item.link}
+            />
+          );
+        });
 
         let interestLinks = datajson.interestLinks.map((item, index) => (
           <InteresLink imgSrc={item.imgSrc} link={item.link} />
@@ -307,6 +434,7 @@ class HomePage extends Component {
             title={datajson.newsCARInfo.mainNew.title}
             description={datajson.newsCARInfo.mainNew.description}
             ImgSrc={datajson.newsCARInfo.mainNew.ImgSrc}
+            date={datajson.newsCARInfo.mainNew.date}
           />
         );
 
@@ -316,6 +444,7 @@ class HomePage extends Component {
           newsCAR: news,
           mainNew: mainNew,
           microSitios: microSitios,
+          specialCarTitles: specialCarTitles,
           specialsCar: specialsCar,
           interestLinks: interestLinks,
         };
@@ -323,18 +452,51 @@ class HomePage extends Component {
     });
   }
 
+  changeIndexUp = () => {
+    this.setState(() => {
+      let actualSpecialCar = this.state.actualSpecialCar;
+      if (
+        this.state.actualSpecialCar <
+        this.state.specialCarTitles.length - 1
+      ) {
+        actualSpecialCar++;
+      } else {
+        actualSpecialCar = 0;
+      }
+
+      return {
+        actualSpecialCar: actualSpecialCar,
+      };
+    });
+  };
+
+  changeIndexDown = () => {
+    this.setState(() => {
+      let actualSpecialCar = this.state.actualSpecialCar;
+      if (this.state.actualSpecialCar > 0) {
+        actualSpecialCar--;
+      } else {
+        actualSpecialCar = this.state.specialCarTitles.length - 1;
+      }
+
+      return {
+        actualSpecialCar: actualSpecialCar,
+      };
+    });
+  };
+
   render() {
     return (
       <div className="container-fluid px-0">
         <Header />
+
         <Slider
-          classItems="py-1"
           data={this.state.sliderImages}
           id="slider-banner-informate"
+          classItems="w-100"
         />
 
         <div className="row justify-content-center ">
-          <StickyMenu url={urlData} />
           <section className="row col-11 col-lg-9 my-4 px-0">
             <Carousel
               responsive={responsive}
@@ -347,12 +509,9 @@ class HomePage extends Component {
             </Carousel>
 
             <NewsCAR news={this.state.newsCAR} mainNew={this.state.mainNew} />
-
-            <img
-              className="img-fluid"
-              src={images("./contadorArboles.png")}
-              alt="Contador arboles"
-            />
+          </section>
+          <CounterTrees numberTrees="09425" />
+          <section className="row col-11 col-lg-9 my-4 px-0">
             <div className=" col-8">
               <MicrositiosGroup>{this.state.microSitios}</MicrositiosGroup>
             </div>
@@ -373,13 +532,22 @@ class HomePage extends Component {
               </BoletinNewsCar>
             </div>
             <div className="col-12">
-              <SpecialsCar>
+              <SpecialsCar
+                data={this.state.specialCarTitles}
+                index={this.state.actualSpecialCar}
+              >
                 <Carousel
                   responsive={responsiveSpecialsCAR}
-                  className="text-center py-4  my-1 bg-gray"
+                  className=" pt-4 pb-5 my-1 position-relative"
                   infinite={true}
-                  customRightArrow={<CustomRightArrow />}
-                  customLeftArrow={<CustomLeftArrow />}
+                  autoPlay={false}
+                  shouldResetAutoplay={false}
+                  customRightArrow={
+                    <RightArrowSpecialsCAR changeIndex={this.changeIndexUp} />
+                  }
+                  customLeftArrow={
+                    <LeftArrowSpecialsCAR changeIndex={this.changeIndexDown} />
+                  }
                 >
                   {this.state.specialsCar}
                 </Carousel>

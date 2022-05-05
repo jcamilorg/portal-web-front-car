@@ -52,51 +52,70 @@
 
   "sliderServicesImg": [
     {
-      "ImgSrc": "./enlacesRapidos/pqrs.png",
-      "link": "https://www.car.gov.co/vercontenido/4015"
+      "ImgSrc": "./enlacesRapidos/pqrs.svg",
+      "link": "https://www.car.gov.co/vercontenido/4015",
+      "bold": "Radicar petición, queja,",
+      "normal": "Reclamo o sugerencia"
     },
     {
-      "ImgSrc": "./enlacesRapidos/participacion.png",
-      "link": "https://www.car.gov.co/vercontenido/2274"
+      "ImgSrc": "./enlacesRapidos/participacion.svg",
+      "link": "https://www.car.gov.co/vercontenido/2274",
+      "bold": "Participación",
+      "normal": "ciudadana"
     },
     {
-      "ImgSrc": "./enlacesRapidos/pagos.png",
-      "link": "https://parques.car.gov.co/"
+      "ImgSrc": "./enlacesRapidos/pagos.svg",
+      "link": "https://parques.car.gov.co/",
+      "bold": "Pagos",
+      "normal": "en línea"
     },
     {
-      "ImgSrc": "./enlacesRapidos/rendicion.png",
-      "link": "https://www.car.gov.co/rio_bogota"
+      "ImgSrc": "./enlacesRapidos/rendicion.svg",
+      "link": "https://www.car.gov.co/rio_bogota",
+      "bold": "Rendición",
+      "normal": "de cuentas"
     },
     {
-      "ImgSrc": "./enlacesRapidos/tramites.png",
-      "link": "https://bicicar.car.gov.co/"
+      "ImgSrc": "./enlacesRapidos/tramites.svg",
+      "link": "https://bicicar.car.gov.co/",
+      "bold": "Seguimiento",
+      "normal": "a trámites"
     }
   ],
 
-  "sliderImages": ["./SliderHome1.avif", "./SliderHome1.avif"],
+  "sliderImages": [
+    "./banner1.jpg",
+    "./banner2.jpg",
+    "./banner3.jpg",
+    "./banner4.jpg"
+  ],
 
   "newsCARInfo": {
     "mainNew": {
       "ImgSrc": "./Main_new.png",
       "title": "La CAR realizará foro, ¿Qué hacer para enfrentar el cambio climático?",
-      "description": "El evento contará con cinco ponencias internacionales y un conversatorio para hablar de las acciones que permitan mitigar los impactos."
+      "description": "El evento contará con cinco ponencias internacionales y un conversatorio para hablar de las acciones que permitan mitigar los impactos.",
+      "date": "26 abril, 2022"
     },
 
     "news": [
       {
         "ImgSrc": "./new1.png",
-        "title": "`CAR Cundinamarca lideró jornada de reforestación en honor a quienes han fallecido por Covid-19`",
-        "description": "`Con una siembra de árboles nativos, la entidad y voluntarios ambientales honraron la memoria de personas en el parque Puente Sopó`"
+        "title": "CAR Cundinamarca lideró jornada de reforestación en honor a quienes han fallecido por Covid-19",
+        "description": "Con una siembra de árboles nativos, la entidad y voluntarios ambientales honraron la memoria de personas en el parque Puente Sopó",
+        "date": "26 abril, 2022"
       },
       {
         "ImgSrc": "./new2.png",
-        "title": "`La CAR Cundinamarca invita a su primer festival recreativo en el parque Embalse El Hato`",
-        "description": "`Habrá jornada de siembra, talleres de pesca, actividades culturales y concurso de cometas.`"
+        "title": "La CAR Cundinamarca invita a su primer festival recreativo en el parque Embalse El Hato",
+        "description": "Habrá jornada de siembra, talleres de pesca, actividades culturales y concurso de cometas.",
+        "date": "26 abril, 2022"
       },
       {
         "ImgSrc": "./new3.png",
-        "title": "`Con capacitaciones para conocer el manejo adecuado del caracol gigante africano, la CAR hace frente a esta especie invasora`",
-        "description": "`La entidad ha capacitado a más de 300 personas y efectúa jornadas de control físico-químico.`"
+        "title": "Con capacitaciones para conocer el manejo adecuado del caracol gigante africano, la CAR hace frente a esta especie invasora",
+        "description": "La entidad ha capacitado a más de 300 personas y efectúa jornadas de control físico-químico.",
+        "date": "26 abril, 2022"
       }
     ]
   },
@@ -132,17 +151,17 @@
 
   "specialsCar": [
     {
-      "title": "Cumplimos 60 años por la vida en el territorio",
+      "title": ["Cumplimos 60 años ", "por la vida en el territorio"],
       "imgSrc": "./specialsCAR/special1.png",
       "link": "/"
     },
     {
-      "title": "Recuperemos el valor del agua",
+      "title": ["Recuperemos ", "el valor del agua"],
       "imgSrc": "./specialsCAR/special2.png",
       "link": "/"
     },
     {
-      "title": "Recuperemos el valor del Río Bogotá",
+      "title": ["Recuperemos ", "el valor del Río Bogotá"],
       "imgSrc": "./specialsCAR/special3.png",
       "link": "/"
     }
@@ -164,162 +183,6 @@
     {
       "imgSrc": "./EnlacesDeInteres/theGlobalGoals.png",
       "link": "https://www.globalgoals.org/"
-    }
-  ],
-
-  "granJero": [
-    {
-      "id": 1,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 2,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 3,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 4,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 5,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 6,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 7,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 8,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 9,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 10,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 11,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 12,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 13,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 14,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 15,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 16,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 17,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 18,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    },
-    {
-      "id": 19,
-      "title": "😎🏞️ Puente Sopó, un parque ecoturístico muy cerca de Bogotá que debes visitar - El granJero",
-      "link": "https://www.youtube.com/embed/xF_FVGK1GMk"
-    }
-  ],
-
-  "ancestral": [
-    {
-      "id": 1,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 2,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 3,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 4,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 5,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 6,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 7,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 8,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 9,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 10,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
-    },
-    {
-      "id": 11,
-      "title": "Ancestral - Capítulo final #15 / Serie CAR",
-      "link": "https://www.youtube.com/embed/j8-EFrTC5Jg"
     }
   ]
 }

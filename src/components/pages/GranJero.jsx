@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
-import StickyMenu from "../utils/StickyMenu";
 import Iframe from "../utils/Iframe";
 //Import functions
 import getData from "../utils/getData";
-
 // Import img
 const images = require.context("../../assets/img/", true);
-//Impor data
-let urlData = "../data.json";
 //api youtube to list videos
 let apiKey = "AIzaSyDaDNHM9CvIqd9Z-jPSKyH586XEU75Yyr4";
 let numberOfVideos = "19";
@@ -65,11 +61,9 @@ export default class GranJeroPage extends Component {
     return (
       <div>
         <Header />
-        <br />
-        <StickyMenu url={urlData} />
 
         <div className="row justify-content-center">
-          <div className="row col-9 py-2 justify-content-center">
+          <div className="row col-9 pb-2 justify-content-center">
             <img
               className="img-fluid"
               src={images("./bannerGranJero.png")}
