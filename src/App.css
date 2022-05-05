@@ -91,6 +91,18 @@
   top:-15px;
 }
 
+.top-75{
+  top:75%;
+}
+
+.start-75{
+  left: 75%;
+}
+
+.z-index{
+  z-index: 1000;
+}
+
 .hr-car {
   opacity: 100;
   margin: 0;

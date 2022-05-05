@@ -58,7 +58,7 @@ export default class StickyMenu extends Component {
     });
 
     return (
-      <div className="bg-acua d-flex flex-wrap justify-content-center sticky-top mt-1 ">
+      <div className="bg-acua d-flex flex-wrap justify-content-center sticky-top">
         {menuItemsStyled}
       </div>
     );
