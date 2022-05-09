@@ -239,20 +239,6 @@ const SpecialsCar = (props) => {
 
 const SpecialCar = (props) => {
   return (
-    <div className="d-flex flex-column mx-4 h-100 px-4 py-3 rounded shadow border bg-white">
-      <a className="text-decoration-none " href={props.link}>
-        <img className="img-fluid" src={images(props.imgSrc)} alt="Especial" />
-        <h5 className="text-main">{props.title}</h5>
-        <span className="fs-responsive-s text-acua">
-          <b>ver special</b>
-        </span>
-      </a>
-    </div>
-  );
-};
-
-const SpecialCar2 = (props) => {
-  return (
     <>
       <div className="px-1">
         <img
@@ -397,7 +383,7 @@ class HomePage extends Component {
           specialCarTitles.push([item.title[0], item.title[1]]);
 
           return (
-            <SpecialCar2
+            <SpecialCar
               title={item.title}
               imgSrc={item.imgSrc}
               link={item.link}
