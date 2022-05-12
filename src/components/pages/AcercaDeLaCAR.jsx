@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 //Import de componentes
-import Header from "../utils/Header";
-import Footer from "../utils/Footer";
+import DefaultLayout from "../utils/DefaultLayout";
 import Iframe from "../utils/Iframe";
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
@@ -10,9 +9,7 @@ const images = require.context("../../assets/img/", true);
 export default class AcercaDeLaCar extends Component {
   render() {
     return (
-      <div>
-        <Header></Header>
-
+      <DefaultLayout>
         <div className="container text-center">
           <h2 className="text-green-f py-3">
             <b>Acerca de la CAR</b>
@@ -34,8 +31,7 @@ export default class AcercaDeLaCar extends Component {
             </div>
           </div>
         </div>
-        <Footer></Footer>
-      </div>
+      </DefaultLayout>
     );
   }
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import Dropdown from "./Dropdown";
-import StickyMenu from "./StickyMenu";
 
 let Idiomas = [
   {
@@ -12,8 +11,6 @@ let Idiomas = [
     link: "http://rae.es",
   },
 ];
-
-let urlData = "../data.json";
 
 export default function Header() {
   //let increaseNumber = 0;
@@ -122,13 +119,12 @@ export default function Header() {
               />
             </div>
           </div>
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between my-1">
             <hr className="hr-car hr-type-one bg-green-f" />
             <hr className="hr-car hr-type-two bg-green" />
           </div>
         </div>
       </header>
-      <StickyMenu url={urlData} />
     </>
   );
 }

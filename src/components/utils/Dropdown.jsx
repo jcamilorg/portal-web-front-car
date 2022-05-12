@@ -22,7 +22,7 @@ export default function Dropdown(props) {
             className="dropdown-item subSubItem pe-5"
             to={item.link}
           >
-            <span>{item.name}</span>
+            <span>{item.name} </span>
           </Link>
         );
       });
@@ -35,7 +35,7 @@ export default function Dropdown(props) {
           className="position-relative"
         >
           <Link className="dropdown-item menu-2" to={item.link}>
-            <span>{item.name}</span> <i class="fa-solid fa-caret-right"></i>
+            <span>{item.name} </span> <i class="fa-solid fa-caret-right"></i>
           </Link>
           <div
             className={"bg-white rounded border position-absolute  " + show}

@@ -134,7 +134,7 @@
 .input-header {
   width: 130px;
   text-align: right;
-  border-radius: 10px;
+  border-radius: 5px;
   
 }
 
@@ -149,13 +149,16 @@
 
 .menu-item:hover {
   background-color: #89d335;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 1px 1px 3px #012b38;
 }
 
-.subSubItem:hover{
-background-color: #f2f2f2 !important
-}
 
+.dropdown-item:hover{
+  background-color: #89d335;
+  color: #fff ;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px #012b38;
+}
 
 /*Styles HomePage */
 .Btn-News {
@@ -196,4 +199,16 @@ background-color: #f2f2f2 !important
   display: block;
 }
 
-/* Styles menuS */
+/* Animation Foooter */
+@keyframes animation-footer {
+  0% {}
+  100% {transform: scale(1.25,1.25) rotate(10deg)}
+}
+
+.footer-link :hover{
+  animation-name: animation-footer;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+
+
+}

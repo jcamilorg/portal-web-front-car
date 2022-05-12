@@ -52,21 +52,21 @@ export default function Footer() {
               <div className="col-3">
                 <img
                   className="img-fluid"
-                  src={images("./footer/footerCo.png")}
+                  src={images("./footer/footerCo.svg")}
                   alt="colombia"
                 />
               </div>
               <div className="col-9 border-start">
                 <img
                   className="img-fluid"
-                  src={images("./footer/footerGov.png")}
+                  src={images("./footer/footerGov.svg")}
                   alt="colombia"
                 />
               </div>
               <div className="col-6 py-3">
                 <img
                   className="img-fluid"
-                  src={images("./footer/footerSGS.png")}
+                  src={images("./footer/footerSGS.svg")}
                   alt="colombia"
                 />
               </div>
@@ -74,26 +74,46 @@ export default function Footer() {
                 <span className="col-4 px-0 ">
                   <b>Nuestras redes</b>
                 </span>
-                <img
-                  className="col-2 img-fluid  px-1"
-                  src={logos("./footer_facebook.svg")}
-                  alt="colombia"
-                />
-                <img
-                  className="col-2 img-fluid px-1"
-                  src={logos("./footer_Instagram.svg")}
-                  alt="colombia"
-                />
-                <img
-                  className="col-2 img-fluid px-1"
-                  src={logos("./footer_twitter.svg")}
-                  alt="colombia"
-                />
-                <img
-                  className="col-2 img-fluid px-1"
-                  src={logos("./footer_Youtube.svg")}
-                  alt="colombia"
-                />
+                <a
+                  href="https://www.facebook.com/CAR.Cundi/"
+                  className="col-2 px-1 footer-link"
+                >
+                  <img
+                    className="img-fluid"
+                    src={logos("./footer_facebook.svg")}
+                    alt="colombia"
+                  />
+                </a>
+                <a
+                  href="https://www.instagram.com/car_cundi/"
+                  className="col-2 px-1 footer-link"
+                >
+                  <img
+                    className="img-fluid "
+                    src={logos("./footer_Instagram.svg")}
+                    alt="colombia"
+                  />
+                </a>
+                <a
+                  href="https://twitter.com/CAR_Cundi"
+                  className="col-2 px-1 footer-link"
+                >
+                  <img
+                    className=" img-fluid "
+                    src={logos("./footer_twitter.svg")}
+                    alt="colombia"
+                  />
+                </a>
+                <a
+                  href="https://www.youtube.com/c/Corporaci%C3%B3nAut%C3%B3nomaRegionaldeCundinamarca"
+                  className="col-2 px-1 footer-link"
+                >
+                  <img
+                    className=" img-fluid "
+                    src={logos("./footer_Youtube.svg")}
+                    alt="colombia"
+                  />
+                </a>
               </div>
             </div>
           </div>

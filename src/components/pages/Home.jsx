@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 //Components
-import Header from "../utils/Header";
-import Footer from "../utils/Footer";
+import DefaultLayout from "../utils/DefaultLayout";
 import Slider from "../utils/Slider";
-
 import Carousel from "react-multi-carousel";
 import TitleCar from "../utils/TitleCar";
 // Functions
@@ -37,25 +35,6 @@ const responsive = {
   },
 };
 
-const responsiveSpecialsCAR = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 4,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
 const CustomRightArrow = ({ onClick }) => {
   function handleClick() {
     onClick();
@@ -227,7 +206,18 @@ const BoletinNewsCar = (props) => {
         <b>Boletín</b> NewsCAR
       </h4>
       <div className="col-12 " />
-      {props.children}
+      <img
+        className="img-fluid px-0 mx-0 pt-2"
+        src={images(props.imgSrc)}
+        alt="newsCar"
+      />
+      <button className="btn border border-success my-2 text-main">
+        <b>Ver la edición más reciente</b>
+      </button>
+      <button className="btn my-2 text-main bg-acua text-light">
+        <img width="40px" src={icons("./sucribirse.png")} alt="..." />{" "}
+        <b>Suscribase al newsCAR</b>
+      </button>
     </div>
   );
 };
@@ -246,7 +236,7 @@ const SpecialsCar = (props) => {
       <TitleCar title={"Especiales CAR"} type2 />
 
       <div className="col-12">{props.children}</div>
-      <div className="position-absolute top-75 start-50 d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 z-index">
+      <div className="position-absolute top-75  d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 z-index">
         {texts[props.index]}
         <button className="border rounded-2 bg-green-f text-light me-5 ">
           <i class="fa-solid fa-eye"></i> <b>Ver especial</b>
@@ -258,22 +248,8 @@ const SpecialsCar = (props) => {
 
 const SpecialCar = (props) => {
   return (
-    <div className="d-flex flex-column mx-4 h-100 px-4 py-3 rounded shadow border bg-white">
-      <a className="text-decoration-none " href={props.link}>
-        <img className="img-fluid" src={images(props.imgSrc)} alt="Especial" />
-        <h5 className="text-main">{props.title}</h5>
-        <span className="fs-responsive-s text-acua">
-          <b>ver special</b>
-        </span>
-      </a>
-    </div>
-  );
-};
-
-const SpecialCar2 = (props) => {
-  return (
     <>
-      <div className="container">
+      <div className="px-1">
         <img
           className="img-fluid position-relative"
           src={images(props.imgSrc)}
@@ -294,7 +270,7 @@ const RightArrowSpecialsCAR = ({ onClick, changeIndex }) => {
     <button
       onClick={handleClick}
       aria-label="Go to next slide"
-      style={{ right: "26%", top: "73%", zIndex: "3000" }}
+      style={{ right: "38%", top: "73%", zIndex: "3000" }}
       className="position-absolute bg-transparent border-0"
     >
       <img src={icons("./btn-slider-derecha.png")} alt="<" />
@@ -312,7 +288,7 @@ const LeftArrowSpecialsCAR = ({ onClick, changeIndex }) => {
     <button
       onClick={handleClick}
       aria-label="Go to next slide"
-      style={{ left: "68%", top: "73%", zIndex: "3000" }}
+      style={{ left: "56%", top: "73%", zIndex: "3000" }}
       className="position-absolute bg-transparent border-0"
     >
       <img src={icons("./btn-slider-izquierda.png")} alt="<" />
@@ -416,7 +392,7 @@ class HomePage extends Component {
           specialCarTitles.push([item.title[0], item.title[1]]);
 
           return (
-            <SpecialCar2
+            <SpecialCar
               title={item.title}
               imgSrc={item.imgSrc}
               link={item.link}
@@ -487,9 +463,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="container-fluid px-0">
-        <Header />
-
+      <DefaultLayout>
         <Slider
           data={this.state.sliderImages}
           id="slider-banner-informate"
@@ -507,7 +481,6 @@ class HomePage extends Component {
             >
               {this.state.sliderServices}
             </Carousel>
-
             <NewsCAR news={this.state.newsCAR} mainNew={this.state.mainNew} />
           </section>
           <CounterTrees numberTrees="09425" />
@@ -516,20 +489,7 @@ class HomePage extends Component {
               <MicrositiosGroup>{this.state.microSitios}</MicrositiosGroup>
             </div>
             <div className="col-4">
-              <BoletinNewsCar>
-                <img
-                  className="img-fluid px-0 mx-0 pt-2"
-                  src={images("./micrositios/newsCar.png")}
-                  alt="newsCar"
-                />
-                <button className="btn border border-success my-2 text-main">
-                  <b>Ver la edición más reciente</b>
-                </button>
-                <button className="btn my-2 text-main bg-acua text-light">
-                  <img width="40px" src={icons("./sucribirse.png")} alt="..." />{" "}
-                  <b>Suscribase al newsCAR</b>
-                </button>
-              </BoletinNewsCar>
+              <BoletinNewsCar imgSrc="./micrositios/newsCar.png" />
             </div>
             <div className="col-12">
               <SpecialsCar
@@ -537,7 +497,7 @@ class HomePage extends Component {
                 index={this.state.actualSpecialCar}
               >
                 <Carousel
-                  responsive={responsiveSpecialsCAR}
+                  responsive={responsive}
                   className=" pt-4 pb-5 my-1 position-relative"
                   infinite={true}
                   autoPlay={false}
@@ -561,9 +521,7 @@ class HomePage extends Component {
             alt="grayTrees"
           />
         </div>
-
-        <Footer />
-      </div>
+      </DefaultLayout>
     );
   }
 }
