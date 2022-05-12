@@ -1,6 +1,5 @@
 import React from "react";
 import Dropdown from "./Dropdown";
-import StickyMenu from "./StickyMenu";
 
 let Idiomas = [
   {
@@ -12,8 +11,6 @@ let Idiomas = [
     link: "http://rae.es",
   },
 ];
-
-let urlData = "../data.json";
 
 export default function Header() {
   //let increaseNumber = 0;
@@ -74,7 +71,7 @@ export default function Header() {
   }
 
   return (
-    <div>
+    <>
       <header>
         <div className="conintainer d-flex justify-content-end pe-5 bg-acua align-items-center text-light">
           <input
@@ -128,7 +125,6 @@ export default function Header() {
           </div>
         </div>
       </header>
-      <StickyMenu url={urlData} />
-    </div>
+    </>
   );
 }

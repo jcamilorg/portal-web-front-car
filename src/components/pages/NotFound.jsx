@@ -3,7 +3,7 @@ import DefaultLayout from "../utils/DefaultLayout";
 
 export default function NotFoundPage() {
   return (
-    <DefaultLayout className="vh-100">
+    <DefaultLayout className="vh-100" noMenu>
       <h1 className="container">
         <b>404</b>, no encontramos la pagina que buscas
       </h1>

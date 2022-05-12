@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
+import StickyMenu from "./StickyMenu";
+let urlData = "../data.json";
 
 export const DefaultLayout = (props) => {
   return (
@@ -11,6 +13,7 @@ export const DefaultLayout = (props) => {
       }
     >
       <Header />
+      {props.noMenu ? <></> : <StickyMenu url={urlData} />}
       {props.children}
       <Footer />
     </div>
