@@ -74,7 +74,7 @@ export default function Header() {
   }
 
   return (
-    <>
+    <div>
       <header>
         <div className="conintainer d-flex justify-content-end pe-5 bg-acua align-items-center text-light">
           <input
@@ -122,13 +122,13 @@ export default function Header() {
               />
             </div>
           </div>
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between my-1">
             <hr className="hr-car hr-type-one bg-green-f" />
             <hr className="hr-car hr-type-two bg-green" />
           </div>
         </div>
       </header>
       <StickyMenu url={urlData} />
-    </>
+    </div>
   );
 }

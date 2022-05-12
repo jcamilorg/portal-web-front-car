@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Header from "../utils/Header";
-import Footer from "../utils/Footer";
+import DefaultLayout from "../utils/DefaultLayout";
 import Iframe from "../utils/Iframe";
 //Import functions
 import getData from "../utils/getData";
@@ -59,9 +58,7 @@ export default class GranJeroPage extends Component {
     });
 
     return (
-      <div>
-        <Header />
-
+      <DefaultLayout>
         <div className="row justify-content-center">
           <div className="row col-9 pb-2 justify-content-center">
             <img
@@ -99,9 +96,7 @@ export default class GranJeroPage extends Component {
             </a>
           </div>
         </div>
-
-        <Footer />
-      </div>
+      </DefaultLayout>
     );
   }
 }

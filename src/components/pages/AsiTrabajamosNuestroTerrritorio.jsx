@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 //Import de componentes
-import Header from "../utils/Header";
-import Footer from "../utils/Footer";
+import DefaultLayout from "../utils/DefaultLayout";
 import TitleCar from "../utils/TitleCar";
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
@@ -100,8 +99,7 @@ const FormNewsCard = () => {
 export default class AsiTrabajamosNuestroTerrritorio extends Component {
   render() {
     return (
-      <div>
-        <Header></Header>
+      <DefaultLayout>
         <div className="container px-5">
           <div className="row justify-content-center">
             <div className="col-10 py-3">
@@ -129,8 +127,7 @@ export default class AsiTrabajamosNuestroTerrritorio extends Component {
             </div>
           </div>
         </div>
-        <Footer></Footer>
-      </div>
+      </DefaultLayout>
     );
   }
 }

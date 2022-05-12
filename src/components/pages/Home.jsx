@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 //Components
-import Header from "../utils/Header";
-import Footer from "../utils/Footer";
+import DefaultLayout from "../utils/DefaultLayout";
 import Slider from "../utils/Slider";
-
 import Carousel from "react-multi-carousel";
 import TitleCar from "../utils/TitleCar";
 // Functions
@@ -208,7 +206,18 @@ const BoletinNewsCar = (props) => {
         <b>Boletín</b> NewsCAR
       </h4>
       <div className="col-12 " />
-      {props.children}
+      <img
+        className="img-fluid px-0 mx-0 pt-2"
+        src={images(props.imgSrc)}
+        alt="newsCar"
+      />
+      <button className="btn border border-success my-2 text-main">
+        <b>Ver la edición más reciente</b>
+      </button>
+      <button className="btn my-2 text-main bg-acua text-light">
+        <img width="40px" src={icons("./sucribirse.png")} alt="..." />{" "}
+        <b>Suscribase al newsCAR</b>
+      </button>
     </div>
   );
 };
@@ -454,9 +463,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="container-fluid px-0">
-        <Header />
-
+      <DefaultLayout>
         <Slider
           data={this.state.sliderImages}
           id="slider-banner-informate"
@@ -474,7 +481,6 @@ class HomePage extends Component {
             >
               {this.state.sliderServices}
             </Carousel>
-
             <NewsCAR news={this.state.newsCAR} mainNew={this.state.mainNew} />
           </section>
           <CounterTrees numberTrees="09425" />
@@ -483,20 +489,7 @@ class HomePage extends Component {
               <MicrositiosGroup>{this.state.microSitios}</MicrositiosGroup>
             </div>
             <div className="col-4">
-              <BoletinNewsCar>
-                <img
-                  className="img-fluid px-0 mx-0 pt-2"
-                  src={images("./micrositios/newsCar.png")}
-                  alt="newsCar"
-                />
-                <button className="btn border border-success my-2 text-main">
-                  <b>Ver la edición más reciente</b>
-                </button>
-                <button className="btn my-2 text-main bg-acua text-light">
-                  <img width="40px" src={icons("./sucribirse.png")} alt="..." />{" "}
-                  <b>Suscribase al newsCAR</b>
-                </button>
-              </BoletinNewsCar>
+              <BoletinNewsCar imgSrc="./micrositios/newsCar.png" />
             </div>
             <div className="col-12">
               <SpecialsCar
@@ -528,9 +521,7 @@ class HomePage extends Component {
             alt="grayTrees"
           />
         </div>
-
-        <Footer />
-      </div>
+      </DefaultLayout>
     );
   }
 }
