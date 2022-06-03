@@ -91,14 +91,14 @@
   ],
 
   "newsCARInfo": {
-    "mainNew": {
-      "ImgSrc": "./Main_new.png",
-      "title": "La CAR realizará foro, ¿Qué hacer para enfrentar el cambio climático?",
-      "description": "El evento contará con cinco ponencias internacionales y un conversatorio para hablar de las acciones que permitan mitigar los impactos.",
-      "date": "26 abril, 2022"
-    },
-
     "news": [
+      {
+        "ImgSrc": "./Main_new.png",
+        "title": "La CAR realizará foro, ¿Qué hacer para enfrentar el cambio climático?",
+        "description": "El evento contará con cinco ponencias internacionales y un conversatorio para hablar de las acciones que permitan mitigar los impactos.",
+        "date": "26 abril, 2022",
+        "main": true
+      },
       {
         "ImgSrc": "./new1.png",
         "title": "CAR Cundinamarca lideró jornada de reforestación en honor a quienes han fallecido por Covid-19",

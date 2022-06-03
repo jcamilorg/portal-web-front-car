@@ -199,7 +199,7 @@
   display: block;
 }
 
-/* Animation Foooter */
+/* Animation  */
 @keyframes animation-footer {
   0% {}
   100% {transform: scale(1.25,1.25) rotate(10deg)}
@@ -209,6 +209,17 @@
   animation-name: animation-footer;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+}
 
+@keyframes animation-link {
+  0%{}
+  100%{width: 54%;
+  }
 
+}
+
+.type1:hover .type2 {  
+  animation-name: animation-link;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }

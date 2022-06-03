@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 //Components
 import DefaultLayout from "../utils/DefaultLayout";
 import Slider from "../utils/Slider";
@@ -122,12 +122,39 @@ const New = (props) => {
   );
 };
 
-const NewsCAR = (props) => {
+const NewsCAR = ({ newsCARInfo }) => {
+  let mainNew = [];
+  let news = [];
+  if (newsCARInfo.news) {
+    news = newsCARInfo.news.map((item, index) => {
+      if (item.main) {
+        mainNew = (
+          <MainNew
+            title={item.title}
+            description={item.description}
+            ImgSrc={item.ImgSrc}
+            date={item.date}
+          />
+        );
+        return null;
+      } else {
+        return (
+          <New
+            key={index}
+            title={item.title}
+            description={item.description}
+            ImgSrc={item.ImgSrc}
+            date={item.date}
+          />
+        );
+      }
+    });
+  }
   return (
     <div className="row justify-content-center pb-0">
       <TitleCar title={"Noticias CAR"} />
-      <div className="col-8 col-lg-5">{props.mainNew}</div>
-      <div className="col-12 col-lg-7">{props.news}</div>
+      <div className="col-8 col-lg-5">{mainNew}</div>
+      <div className="col-12 col-lg-7">{news}</div>
     </div>
   );
 };
@@ -325,8 +352,7 @@ class HomePage extends Component {
     sliderImages: [],
     menuItems: [],
     sliderServices: [],
-    newsCar: [],
-    mainNew: [],
+    newsCARInfo: [],
     microSitios: [],
     specialCarTitles: [],
     specialsCar: [],
@@ -335,17 +361,48 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
+    //get Imagenes del slider principal
+    getData(
+      "http://sgccontratos.car.gov.co:8082/api/slider/true?state=true"
+    ).then((datajson) => {
+      this.setState(() => {
+        let sliderImages = datajson.map((item, index) => {
+          if (item.sliderType.name === "main" && item.active_title === true) {
+            try {
+              return (
+                <img
+                  key={index}
+                  className="w-100"
+                  src={item.imageURL}
+                  alt="Slider"
+                />
+              );
+            } catch (e) {
+              return <p>{e.message}</p>;
+            }
+          } else {
+            return null;
+          }
+        });
+        sliderImages = sliderImages.filter(Boolean);
+        console.log(sliderImages);
+        return {
+          sliderImages: sliderImages,
+        };
+      });
+    });
+
     getData(urlData).then((datajson) => {
       this.setState(() => {
         let sliderServices = datajson.sliderServicesImg.map((item, index) => (
-          <div key={index}>
+          <div key={index} className="">
             <a
               href={item.link}
               style={{ textDecoration: "none" }}
-              className="text-main"
+              className="text-main footer-link "
             >
               <img height="120px" src={icons(item.ImgSrc)} alt="..." />
-              <p>
+              <p className="pt-3">
                 <b>{item.bold}</b>
                 <br />
                 <span>{item.normal}</span>
@@ -353,20 +410,7 @@ class HomePage extends Component {
             </a>
           </div>
         ));
-        let sliderImages = datajson.sliderImages.map((item, index) => {
-          try {
-            return (
-              <img
-                key={index}
-                className="w-100"
-                src={images(item)}
-                alt="Slider"
-              />
-            );
-          } catch (e) {
-            return <p>{e.message}</p>;
-          }
-        });
+
         let news = datajson.newsCARInfo.news.map((item, index) => (
           <New
             key={index}
@@ -404,21 +448,12 @@ class HomePage extends Component {
           <InteresLink imgSrc={item.imgSrc} link={item.link} />
         ));
 
-        console.log(microSitios);
-        let mainNew = (
-          <MainNew
-            title={datajson.newsCARInfo.mainNew.title}
-            description={datajson.newsCARInfo.mainNew.description}
-            ImgSrc={datajson.newsCARInfo.mainNew.ImgSrc}
-            date={datajson.newsCARInfo.mainNew.date}
-          />
-        );
+        console.log(datajson.newsCARInfo);
 
         return {
-          sliderImages: sliderImages,
           sliderServices: sliderServices,
           newsCAR: news,
-          mainNew: mainNew,
+          newsCARInfo: datajson.newsCARInfo,
           microSitios: microSitios,
           specialCarTitles: specialCarTitles,
           specialsCar: specialsCar,
@@ -481,7 +516,7 @@ class HomePage extends Component {
             >
               {this.state.sliderServices}
             </Carousel>
-            <NewsCAR news={this.state.newsCAR} mainNew={this.state.mainNew} />
+            <NewsCAR newsCARInfo={this.state.newsCARInfo} />
           </section>
           <CounterTrees numberTrees="09425" />
           <section className="row col-11 col-lg-9 my-4 px-0">
