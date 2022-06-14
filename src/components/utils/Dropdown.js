@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 /*Dropdown generico se debe estar usando bootstrap recibe como parametro un arreglo de objetos con name y link*/
 /*con className se puede anadir estilos al boton */
@@ -20,7 +21,7 @@ export default function Dropdown(props) {
           <Link
             key={index}
             className="dropdown-item subSubItem pe-5"
-            to={item.link}
+            to={item.destination_uri}
           >
             <span>{item.name} </span>
           </Link>
@@ -35,7 +36,8 @@ export default function Dropdown(props) {
           className="position-relative"
         >
           <Link className="dropdown-item menu-2" to={item.link}>
-            <span>{item.name} </span> <i class="fa-solid fa-caret-right"></i>
+            <span>{item.name} </span>{" "}
+            <i className="fa-solid fa-caret-right"></i>
           </Link>
           <div
             className={"bg-white rounded border position-absolute  " + show}
@@ -48,7 +50,7 @@ export default function Dropdown(props) {
     } else {
       return (
         <li key={index}>
-          <Link className="dropdown-item" to={item.link}>
+          <Link className="dropdown-item" to={item.destination_uri}>
             <span>{item.name}</span>
           </Link>
         </li>
@@ -73,3 +75,9 @@ export default function Dropdown(props) {
     </div>
   );
 }
+
+Dropdown.propTypes = {
+  className: PropTypes.string,
+  name: PropTypes.string,
+  items: PropTypes.array,
+};

@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
 import StickyMenu from "./StickyMenu";
-let urlData = "../data.json";
+import { Menu } from "./MenuActions";
+import { BaseUrl } from "../../config.js";
 
 export const DefaultLayout = (props) => {
+  const [subMenus, setSubMenus] = useState([]);
+
+  let menuActions = new Menu(BaseUrl + "/api/submenu");
+  useEffect(() => {
+    menuActions.getAll().then((data) => {
+      setSubMenus(data);
+    });
+  }, []);
+
   return (
     <div
       className={
@@ -13,7 +23,13 @@ export const DefaultLayout = (props) => {
       }
     >
       <Header />
-      {props.noMenu ? <></> : <StickyMenu url={urlData} />}
+      {props.noMenu ? (
+        <></>
+      ) : subMenus ? (
+        <StickyMenu items={subMenus} />
+      ) : (
+        <></>
+      )}
       {props.children}
       <Footer />
     </div>

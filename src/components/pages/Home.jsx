@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
 //Components
 import DefaultLayout from "../utils/DefaultLayout";
 import Slider from "../utils/Slider";
@@ -14,7 +14,7 @@ const icons = require.context("../../assets/icons/", true);
 //Leectura de datos fetch ------------------------------------------------------------------
 let urlData = "../data.json";
 
-// Custom for Carrouselll---------
+//#region Custom for Carrouselll
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -68,7 +68,9 @@ const CustomLeftArrow = ({ onClick }) => {
     </button>
   );
 };
-//----------------------------------
+//#endregion
+
+//#region News
 const BtnNews = () => {
   return (
     <div className="Btn-News type1 text-light text-end pe-2 fs-responsive-xs fw-bold position-relative  d-flex justify-content-between align-items-center">
@@ -93,7 +95,7 @@ const MainNew = (props) => {
       <h5 className="text-main py-3 mb-0 fs-responsive-l">{props.title}</h5>
       <p className="text-main fs-responsive-s ">{props.description}</p>
       <br />
-      <i class="fa-regular fa-clock"></i>
+      <i className="fa-regular fa-clock"></i>
       <span>{" " + props.date}</span>
       <BtnNews />
     </div>
@@ -114,7 +116,7 @@ const New = (props) => {
         <h6 className="fs-responsive-m">{props.title}</h6>
         <p className="fs-responsive-s">{props.description}</p>
         <br />
-        <i class="fa-regular fa-clock"></i>
+        <i className="fa-regular fa-clock"></i>
         <span>{" " + props.date}</span>
         <BtnNews />
       </div>
@@ -158,7 +160,9 @@ const NewsCAR = ({ newsCARInfo }) => {
     </div>
   );
 };
+// #endregion
 
+//#region Counter trees
 const DigitCounterTree = (props) => {
   return (
     <span className="bg-white text-main fs-responsive-xl rounded-3 px-2 mx-1 ">
@@ -192,6 +196,7 @@ const CounterTrees = (props) => {
     </div>
   );
 };
+//#endregion
 
 const MicroSitio = (props) => {
   return (
@@ -249,9 +254,10 @@ const BoletinNewsCar = (props) => {
   );
 };
 
+//#region SpecialsCar
 const SpecialsCar = (props) => {
-  let texts = props.data.map((item) => (
-    <p>
+  let texts = props.data.map((item, index) => (
+    <p key={index}>
       <b>{item[0]}</b>
       <br />
       {item[1]}
@@ -266,7 +272,7 @@ const SpecialsCar = (props) => {
       <div className="position-absolute top-75  d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 z-index">
         {texts[props.index]}
         <button className="border rounded-2 bg-green-f text-light me-5 ">
-          <i class="fa-solid fa-eye"></i> <b>Ver especial</b>
+          <i className="fa-solid fa-eye"></i> <b>Ver especial</b>
         </button>
       </div>
     </div>
@@ -322,7 +328,9 @@ const LeftArrowSpecialsCAR = ({ onClick, changeIndex }) => {
     </button>
   );
 };
+//#endregion
 
+//#region InteresLink
 const InteresLink = (props) => {
   return (
     <div className="col-3 d-flex align-items-center">
@@ -345,6 +353,7 @@ const InteresLinks = (props) => {
     </div>
   );
 };
+//#endregion
 
 class HomePage extends Component {
   // Cargar datos de la bd al home
@@ -362,30 +371,34 @@ class HomePage extends Component {
 
   componentDidMount() {
     //get Imagenes del slider principal
+
     getData(
       "http://sgccontratos.car.gov.co:8082/api/slider/true?state=true"
     ).then((datajson) => {
       this.setState(() => {
-        let sliderImages = datajson.map((item, index) => {
-          if (item.sliderType.name === "main" && item.active_title === true) {
-            try {
-              return (
-                <img
-                  key={index}
-                  className="w-100"
-                  src={item.imageURL}
-                  alt="Slider"
-                />
-              );
-            } catch (e) {
-              return <p>{e.message}</p>;
+        let sliderImages = [];
+        if (datajson) {
+          sliderImages = datajson.map((item, index) => {
+            if (item.sliderType.name === "main" && item.active_title === true) {
+              try {
+                return (
+                  <img
+                    key={index}
+                    className="w-100"
+                    src={item.imageURL}
+                    alt="Slider"
+                  />
+                );
+              } catch (e) {
+                return <p>{e.message}</p>;
+              }
+            } else {
+              return null;
             }
-          } else {
-            return null;
-          }
-        });
-        sliderImages = sliderImages.filter(Boolean);
-        console.log(sliderImages);
+          });
+          sliderImages = sliderImages.filter(Boolean);
+          console.log(sliderImages);
+        }
         return {
           sliderImages: sliderImages,
         };

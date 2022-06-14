@@ -2,6 +2,8 @@
 const images = require.context("../../assets/img/", true);
 const logos = require.context("../../assets/logos/", true);
 
+let year = new Date();
+year = year.getFullYear();
 export default function Footer() {
   return (
     <footer className="text-light fs-6">
@@ -119,7 +121,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="bg-dark-blue py-2 mt-3 text-center">
-          COPYRIGHT © 2020 CAR. Políticas de Privacidad y Condiciones de Uso.
+          COPYRIGHT © {year} CAR. Políticas de Privacidad y Condiciones de Uso.
         </div>
       </div>
     </footer>

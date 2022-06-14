@@ -4,11 +4,11 @@ import Dropdown from "./Dropdown";
 let Idiomas = [
   {
     name: "Espanol",
-    link: "http://rae.es",
+    destination_uri: "http://rae.es",
   },
   {
     name: "Ingles",
-    link: "http://rae.es",
+    destination_uri: "http://rae.es",
   },
 ];
 
