@@ -6,15 +6,6 @@ import { Menu } from "./MenuActions";
 import { BaseUrl } from "../../config.js";
 
 export const DefaultLayout = (props) => {
-  const [subMenus, setSubMenus] = useState([]);
-
-  let menuActions = new Menu(BaseUrl + "/api/submenu");
-  useEffect(() => {
-    menuActions.getAll().then((data) => {
-      setSubMenus(data);
-    });
-  }, []);
-
   return (
     <div
       className={
@@ -23,13 +14,7 @@ export const DefaultLayout = (props) => {
       }
     >
       <Header />
-      {props.noMenu ? (
-        <></>
-      ) : subMenus ? (
-        <StickyMenu items={subMenus} />
-      ) : (
-        <></>
-      )}
+      {props.noMenu ? <></> : <StickyMenu />}
       {props.children}
       <Footer />
     </div>

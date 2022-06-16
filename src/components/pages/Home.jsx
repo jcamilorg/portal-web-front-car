@@ -7,12 +7,27 @@ import TitleCar from "../utils/TitleCar";
 // Functions
 import getData from "../utils/getData";
 import "react-multi-carousel/lib/styles.css";
+import { useSliderApi, useCounterTreeApi } from "../utils/getDataFromApi";
 
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
 const icons = require.context("../../assets/icons/", true);
 //Leectura de datos fetch ------------------------------------------------------------------
 let urlData = "../data.json";
+
+const MainBanner = () => {
+  const sliders = useSliderApi("main");
+
+  return (
+    <Slider
+      data={sliders.map((item, index) => (
+        <img key={index} className="w-100" src={item.imageURL} alt="Slider" />
+      ))}
+      id="slider-banner-informate"
+      classItems="w-100"
+    />
+  );
+};
 
 //#region Custom for Carrouselll
 const responsive = {
@@ -171,8 +186,10 @@ const DigitCounterTree = (props) => {
   );
 };
 
-const CounterTrees = (props) => {
-  let arrayNumberTrees = Array.from(String(props.numberTrees));
+const CounterTrees = () => {
+  const counterTree = useCounterTreeApi();
+
+  let arrayNumberTrees = Array.from(String(counterTree));
   let arrarrayDigits = arrayNumberTrees.map((item, index) => (
     <DigitCounterTree key={index} number={item} />
   ));
@@ -358,8 +375,6 @@ const InteresLinks = (props) => {
 class HomePage extends Component {
   // Cargar datos de la bd al home
   state = {
-    sliderImages: [],
-    menuItems: [],
     sliderServices: [],
     newsCARInfo: [],
     microSitios: [],
@@ -370,41 +385,6 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
-    //get Imagenes del slider principal
-
-    getData(
-      "http://sgccontratos.car.gov.co:8082/api/slider/true?state=true"
-    ).then((datajson) => {
-      this.setState(() => {
-        let sliderImages = [];
-        if (datajson) {
-          sliderImages = datajson.map((item, index) => {
-            if (item.sliderType.name === "main" && item.active_title === true) {
-              try {
-                return (
-                  <img
-                    key={index}
-                    className="w-100"
-                    src={item.imageURL}
-                    alt="Slider"
-                  />
-                );
-              } catch (e) {
-                return <p>{e.message}</p>;
-              }
-            } else {
-              return null;
-            }
-          });
-          sliderImages = sliderImages.filter(Boolean);
-          console.log(sliderImages);
-        }
-        return {
-          sliderImages: sliderImages,
-        };
-      });
-    });
-
     getData(urlData).then((datajson) => {
       this.setState(() => {
         let sliderServices = datajson.sliderServicesImg.map((item, index) => (
@@ -512,12 +492,7 @@ class HomePage extends Component {
   render() {
     return (
       <DefaultLayout>
-        <Slider
-          data={this.state.sliderImages}
-          id="slider-banner-informate"
-          classItems="w-100"
-        />
-
+        <MainBanner />
         <div className="row justify-content-center ">
           <section className="row col-11 col-lg-9 my-4 px-0">
             <Carousel
@@ -531,7 +506,7 @@ class HomePage extends Component {
             </Carousel>
             <NewsCAR newsCARInfo={this.state.newsCARInfo} />
           </section>
-          <CounterTrees numberTrees="09425" />
+          <CounterTrees />
           <section className="row col-11 col-lg-9 my-4 px-0">
             <div className=" col-8">
               <MicrositiosGroup>{this.state.microSitios}</MicrositiosGroup>
