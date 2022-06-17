@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
 import StickyMenu from "./StickyMenu";
-import { Menu } from "./MenuActions";
-import { BaseUrl } from "../../config.js";
 
 export const DefaultLayout = (props) => {
   return (
