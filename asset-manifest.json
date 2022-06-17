@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portal-web-front-car/static/css/main.76d2d06e.css",
-    "main.js": "/portal-web-front-car/static/js/main.6958298a.js",
+    "main.js": "/portal-web-front-car/static/js/main.a242aa81.js",
     "static/media/bannerAsiTrabajamos.png": "/portal-web-front-car/static/media/bannerAsiTrabajamos.e65e5897d32591d92118.png",
     "static/media/imgLetfAncestral.png": "/portal-web-front-car/static/media/imgLetfAncestral.1f8dfaa9678bfc7f689a.png",
     "static/media/bannerGranJero.png": "/portal-web-front-car/static/media/bannerGranJero.10dee597d9be7fb8f9bb.png",
@@ -56,10 +56,10 @@
     "static/media/footer_facebook.svg": "/portal-web-front-car/static/media/footer_facebook.2c3b486e20a2a2123efe.svg",
     "index.html": "/portal-web-front-car/index.html",
     "main.76d2d06e.css.map": "/portal-web-front-car/static/css/main.76d2d06e.css.map",
-    "main.6958298a.js.map": "/portal-web-front-car/static/js/main.6958298a.js.map"
+    "main.a242aa81.js.map": "/portal-web-front-car/static/js/main.a242aa81.js.map"
   },
   "entrypoints": [
     "static/css/main.76d2d06e.css",
-    "static/js/main.6958298a.js"
+    "static/js/main.a242aa81.js"
   ]
 }
