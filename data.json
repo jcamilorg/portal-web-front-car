@@ -1,0 +1,193 @@
+{
+  "infoStickyMenu": {
+    "inicio": "/",
+    "nosotros": [
+      { "name": "Reseña historica", "link": "/acerca-de-la-car" },
+      { "name": "Misión y Visión", "link": "/" },
+      { "name": "Valores y Principios", "link": "/" },
+      { "name": "Objetivos y funciones", "link": "/" },
+      { "name": "Sistema integrado de gestion publica", "link": "/" },
+      { "name": "Jurisdicción CAR", "link": "/" },
+      { "name": "Organigrama", "link": "/" },
+      { "name": "Recurso humano", "link": "/" },
+      { "name": "Consejo directivo", "link": "/" },
+      { "name": "Directorio Corporativo", "link": "/" },
+      { "name": "Cómo llegar", "link": "/" }
+    ],
+    "servicioAlCiudadano": [
+      { "name": "PQR", "link": "/" },
+      { "name": "Preguntas frecuentes", "link": "/" },
+      { "name": "Glosario de Términos Ambientales", "link": "/" },
+      { "name": "Carta de trato digno al usuario", "link": "/" },
+      { "name": "Pagos en Línea", "link": "/" },
+      { "name": "Centro de Documentación", "link": "/" },
+      { "name": "Protocolo de Atención al Ciudadano", "link": "/" },
+      { "name": "Caracterización de usuarios", "link": "/" },
+      { "name": "Portafolio de servicios CAR", "link": "/" }
+    ],
+    "salaDePrensa": [
+      {
+        "name": "Multimedia",
+        "link": "/",
+        "content": [
+          { "name": "El GranJero", "link": "/gran-jero" },
+          { "name": "Ancestral", "link": "/ancestral" }
+        ]
+      },
+      {
+        "name": "Así trabajamos nuestro territorio",
+        "link": "/asi-trabajamos-nuestro-territorio"
+      },
+      { "name": "Nuestras Historias", "link": "/" },
+      { "name": "Comunicados de Prensa", "link": "/" },
+      { "name": "Manual de Imagen Corporativa", "link": "/" }
+    ],
+    "planesYProgramas": [
+      { "name": "Planes", "link": "/" },
+      { "name": "Programas", "link": "/" }
+    ],
+    "temasAmbientales": [{ "name": "Por definir", "link": "/" }],
+    "transparencia": [{ "name": "Por definir", "link": "/" }]
+  },
+
+  "sliderServicesImg": [
+    {
+      "ImgSrc": "./enlacesRapidos/pqrs.svg",
+      "link": "https://www.car.gov.co/vercontenido/4015",
+      "bold": "Radicar petición, queja,",
+      "normal": "Reclamo o sugerencia"
+    },
+    {
+      "ImgSrc": "./enlacesRapidos/participacion.svg",
+      "link": "https://www.car.gov.co/vercontenido/2274",
+      "bold": "Participación",
+      "normal": "ciudadana"
+    },
+    {
+      "ImgSrc": "./enlacesRapidos/pagos.svg",
+      "link": "https://parques.car.gov.co/",
+      "bold": "Pagos",
+      "normal": "en línea"
+    },
+    {
+      "ImgSrc": "./enlacesRapidos/rendicion.svg",
+      "link": "https://www.car.gov.co/rio_bogota",
+      "bold": "Rendición",
+      "normal": "de cuentas"
+    },
+    {
+      "ImgSrc": "./enlacesRapidos/tramites.svg",
+      "link": "https://bicicar.car.gov.co/",
+      "bold": "Seguimiento",
+      "normal": "a trámites"
+    }
+  ],
+
+  "sliderImages": [
+    "./banner1.jpg",
+    "./banner2.jpg",
+    "./banner3.jpg",
+    "./banner4.jpg"
+  ],
+
+  "newsCARInfo": {
+    "mainNew": {
+      "ImgSrc": "./Main_new.png",
+      "title": "La CAR realizará foro, ¿Qué hacer para enfrentar el cambio climático?",
+      "description": "El evento contará con cinco ponencias internacionales y un conversatorio para hablar de las acciones que permitan mitigar los impactos.",
+      "date": "26 abril, 2022"
+    },
+
+    "news": [
+      {
+        "ImgSrc": "./new1.png",
+        "title": "CAR Cundinamarca lideró jornada de reforestación en honor a quienes han fallecido por Covid-19",
+        "description": "Con una siembra de árboles nativos, la entidad y voluntarios ambientales honraron la memoria de personas en el parque Puente Sopó",
+        "date": "26 abril, 2022"
+      },
+      {
+        "ImgSrc": "./new2.png",
+        "title": "La CAR Cundinamarca invita a su primer festival recreativo en el parque Embalse El Hato",
+        "description": "Habrá jornada de siembra, talleres de pesca, actividades culturales y concurso de cometas.",
+        "date": "26 abril, 2022"
+      },
+      {
+        "ImgSrc": "./new3.png",
+        "title": "Con capacitaciones para conocer el manejo adecuado del caracol gigante africano, la CAR hace frente a esta especie invasora",
+        "description": "La entidad ha capacitado a más de 300 personas y efectúa jornadas de control físico-químico.",
+        "date": "26 abril, 2022"
+      }
+    ]
+  },
+
+  "microSitios": [
+    {
+      "name": "Parques",
+      "imgSrc": "./micrositios/parques.png",
+      "link": "https://parques.car.gov.co/"
+    },
+    {
+      "name": "Laboratorio e innovación ambiental",
+      "imgSrc": "./micrositios/dlia.png",
+      "link": "https://www.car.gov.co/laboratorio/inicio"
+    },
+    {
+      "name": "biblioteca CAR",
+      "imgSrc": "./micrositios/bibliotecaCar.png",
+      "link": "https://car.gov.co/"
+    },
+    {
+      "name": "Negocios Verdes",
+      "imgSrc": "./micrositios/negociosVerdes.png",
+      "link": "/"
+    },
+    {
+      "name": "Banco de proyectos",
+      "imgSrc": "./micrositios/bancoDeProyectos.png",
+      "link": "/"
+    },
+    { "name": "Niños", "imgSrc": "./micrositios/ninios.png", "link": "/" }
+  ],
+
+  "specialsCar": [
+    {
+      "title": ["Cumplimos 60 años ", "por la vida en el territorio"],
+      "imgSrc": "./specialsCAR/special1.png",
+      "link": "/"
+    },
+    {
+      "title": ["Recuperemos ", "el valor del agua"],
+      "imgSrc": "./specialsCAR/special2.png",
+      "link": "/"
+    },
+    {
+      "title": ["Recuperemos ", "el valor del Río Bogotá"],
+      "imgSrc": "./specialsCAR/special3.png",
+      "link": "/"
+    },
+    {
+      "title": ["Cambio ", "Climático"],
+      "imgSrc": "./specialsCAR/special4.png",
+      "link": "/"
+    }
+  ],
+
+  "interestLinks": [
+    {
+      "imgSrc": "./EnlacesDeInteres/siac.png",
+      "link": "http://www.siac.gov.co/"
+    },
+    {
+      "imgSrc": "./EnlacesDeInteres/secop.png",
+      "link": "https://colombiacompra.gov.co/secop-ii"
+    },
+    {
+      "imgSrc": "./EnlacesDeInteres/banco2.png",
+      "link": "https://banco2.com/"
+    },
+    {
+      "imgSrc": "./EnlacesDeInteres/theGlobalGoals.png",
+      "link": "https://www.globalgoals.org/"
+    }
+  ]
+}
