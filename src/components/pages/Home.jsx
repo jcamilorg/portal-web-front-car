@@ -384,36 +384,21 @@ const SpecialsCar = (props) => {
   ));
 
   const changeIndexUp = () => {
-    this.setState(() => {
-      let actualSpecialCar = this.state.actualSpecialCar;
-      if (
-        this.state.actualSpecialCar <
-        this.state.specialCarTitles.length - 1
-      ) {
-        actualSpecialCar++;
-      } else {
-        actualSpecialCar = 0;
-      }
-
-      return {
-        actualSpecialCar: actualSpecialCar,
-      };
-    });
+    if (index < data.length - 1) {
+      let newIndex = index + 1;
+      setIndex(newIndex);
+    } else {
+      setIndex(0);
+    }
   };
 
   const changeIndexDown = () => {
-    this.setState(() => {
-      let actualSpecialCar = this.state.actualSpecialCar;
-      if (this.state.actualSpecialCar > 0) {
-        actualSpecialCar--;
-      } else {
-        actualSpecialCar = this.state.specialCarTitles.length - 1;
-      }
-
-      return {
-        actualSpecialCar: actualSpecialCar,
-      };
-    });
+    if (index > 0) {
+      let newIndex = index - 1;
+      setIndex(newIndex);
+    } else {
+      setIndex(data.length - 1);
+    }
   };
 
   const inner = data.map((item) => (
@@ -434,8 +419,12 @@ const SpecialsCar = (props) => {
           responsive={responsive}
           className="text-center py-4"
           infinite={true}
-          customRightArrow={<CustomRightArrow />}
-          customLeftArrow={<CustomLeftArrow />}
+          customRightArrow={
+            <RightArrowSpecialsCAR changeIndex={changeIndexUp} />
+          }
+          customLeftArrow={
+            <LeftArrowSpecialsCAR changeIndex={changeIndexDown} />
+          }
         >
           {inner}
         </Carousel>
