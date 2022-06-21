@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 //Components
 import DefaultLayout from "../utils/DefaultLayout";
 import Slider from "../utils/Slider";
@@ -26,6 +26,42 @@ const MainBanner = () => {
       id="slider-banner-informate"
       classItems="w-100"
     />
+  );
+};
+
+const SliderServices = () => {
+  const data = useSliderApi("servicios");
+  console.log("services", data);
+
+  let services = data.map((item) => (
+    <div key={item.id} className="">
+      <a
+        href={item.destinationURL}
+        style={{ textDecoration: "none" }}
+        className="text-main "
+      >
+        <div className="footer-link ">
+          <img height="120px" src={item.imageURL} alt="..." />
+        </div>
+        <p className="pt-3">
+          <b>{item.name}</b>
+          <br />
+          <span>{item.description}</span>
+        </p>
+      </a>
+    </div>
+  ));
+
+  return (
+    <Carousel
+      responsive={responsive}
+      className="text-center py-4"
+      infinite={true}
+      customRightArrow={<CustomRightArrow />}
+      customLeftArrow={<CustomLeftArrow />}
+    >
+      {services}
+    </Carousel>
   );
 };
 
@@ -221,7 +257,7 @@ const MicroSitio = (props) => {
       <a className="text-decoration-none" href={props.link}>
         <img
           className="img-fluid rounded-top"
-          src={images(props.imgSrc)}
+          src={props.imgSrc}
           alt={props.name}
         />
         <div
@@ -236,14 +272,27 @@ const MicroSitio = (props) => {
   );
 };
 
-const MicrositiosGroup = (props) => {
+const MicrositiosGroup = () => {
+  const data = useSliderApi("micrositios");
+  const microSitios = data.map((item, index) => {
+    return (
+      <MicroSitio
+        key={item.id}
+        name={item.name}
+        imgSrc={item.imageURL}
+        link={item.destinationURL}
+        styles={{ top: "-18px" }}
+      ></MicroSitio>
+    );
+  });
+
   return (
     <div className="ms-0 me-0 pe-0 row ">
       <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l">
         <b>Micrositios</b> Car
       </h4>
       <div className="" />
-      {props.children}
+      {microSitios}
     </div>
   );
 };
@@ -272,44 +321,6 @@ const BoletinNewsCar = (props) => {
 };
 
 //#region SpecialsCar
-const SpecialsCar = (props) => {
-  let texts = props.data.map((item, index) => (
-    <p key={index}>
-      <b>{item[0]}</b>
-      <br />
-      {item[1]}
-    </p>
-  ));
-
-  return (
-    <div className="row justify-content-center pt-4 mb-4 position-relative">
-      <TitleCar title={"Especiales CAR"} type2 />
-
-      <div className="col-12">{props.children}</div>
-      <div className="position-absolute top-75  d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 z-index">
-        {texts[props.index]}
-        <button className="border rounded-2 bg-green-f text-light me-5 ">
-          <i className="fa-solid fa-eye"></i> <b>Ver especial</b>
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const SpecialCar = (props) => {
-  return (
-    <>
-      <div className="px-1">
-        <img
-          className="img-fluid position-relative"
-          src={images(props.imgSrc)}
-          alt="Especial"
-        />
-      </div>
-    </>
-  );
-};
-
 const RightArrowSpecialsCAR = ({ onClick, changeIndex }) => {
   function handleClick() {
     onClick();
@@ -345,6 +356,100 @@ const LeftArrowSpecialsCAR = ({ onClick, changeIndex }) => {
     </button>
   );
 };
+
+const SpecialCar = (props) => {
+  return (
+    <>
+      <div className="px-1">
+        <img
+          className="img-fluid position-relative"
+          src={props.imgSrc}
+          alt="Especial"
+        />
+      </div>
+    </>
+  );
+};
+
+const SpecialsCar = (props) => {
+  const [index, setIndex] = useState(1);
+  const data = useSliderApi("especialesCar");
+
+  let texts = data.map((item, index) => (
+    <p key={index}>
+      <b>{item.name}</b>
+      <br />
+      {item.description}
+    </p>
+  ));
+
+  const changeIndexUp = () => {
+    this.setState(() => {
+      let actualSpecialCar = this.state.actualSpecialCar;
+      if (
+        this.state.actualSpecialCar <
+        this.state.specialCarTitles.length - 1
+      ) {
+        actualSpecialCar++;
+      } else {
+        actualSpecialCar = 0;
+      }
+
+      return {
+        actualSpecialCar: actualSpecialCar,
+      };
+    });
+  };
+
+  const changeIndexDown = () => {
+    this.setState(() => {
+      let actualSpecialCar = this.state.actualSpecialCar;
+      if (this.state.actualSpecialCar > 0) {
+        actualSpecialCar--;
+      } else {
+        actualSpecialCar = this.state.specialCarTitles.length - 1;
+      }
+
+      return {
+        actualSpecialCar: actualSpecialCar,
+      };
+    });
+  };
+
+  const inner = data.map((item) => (
+    <SpecialCar
+      key={item.id}
+      title={item.name}
+      imgSrc={item.imageURL}
+      link={item.destinationURL}
+    />
+  ));
+
+  return (
+    <div className="row justify-content-center pt-4 mb-4 position-relative">
+      <TitleCar title={"Especiales CAR"} type2 />
+
+      <div className="col-12">
+        <Carousel
+          responsive={responsive}
+          className="text-center py-4"
+          infinite={true}
+          customRightArrow={<CustomRightArrow />}
+          customLeftArrow={<CustomLeftArrow />}
+        >
+          {inner}
+        </Carousel>
+      </div>
+      <div className="position-absolute top-75  d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 z-index">
+        {texts[index]}
+        <button className="border rounded-2 bg-green-f text-light me-5 ">
+          <i className="fa-solid fa-eye"></i> <b>Ver especial</b>
+        </button>
+      </div>
+    </div>
+  );
+};
+
 //#endregion
 
 //#region InteresLink
@@ -375,7 +480,6 @@ const InteresLinks = (props) => {
 class HomePage extends Component {
   // Cargar datos de la bd al home
   state = {
-    sliderServices: [],
     newsCARInfo: [],
     microSitios: [],
     specialCarTitles: [],
@@ -456,54 +560,13 @@ class HomePage extends Component {
     });
   }
 
-  changeIndexUp = () => {
-    this.setState(() => {
-      let actualSpecialCar = this.state.actualSpecialCar;
-      if (
-        this.state.actualSpecialCar <
-        this.state.specialCarTitles.length - 1
-      ) {
-        actualSpecialCar++;
-      } else {
-        actualSpecialCar = 0;
-      }
-
-      return {
-        actualSpecialCar: actualSpecialCar,
-      };
-    });
-  };
-
-  changeIndexDown = () => {
-    this.setState(() => {
-      let actualSpecialCar = this.state.actualSpecialCar;
-      if (this.state.actualSpecialCar > 0) {
-        actualSpecialCar--;
-      } else {
-        actualSpecialCar = this.state.specialCarTitles.length - 1;
-      }
-
-      return {
-        actualSpecialCar: actualSpecialCar,
-      };
-    });
-  };
-
   render() {
     return (
       <DefaultLayout>
         <MainBanner />
         <div className="row justify-content-center ">
           <section className="row col-11 col-lg-9 my-4 px-0">
-            <Carousel
-              responsive={responsive}
-              className="text-center py-4"
-              infinite={true}
-              customRightArrow={<CustomRightArrow />}
-              customLeftArrow={<CustomLeftArrow />}
-            >
-              {this.state.sliderServices}
-            </Carousel>
+            <SliderServices />
             <NewsCAR newsCARInfo={this.state.newsCARInfo} />
           </section>
           <CounterTrees />
@@ -515,26 +578,8 @@ class HomePage extends Component {
               <BoletinNewsCar imgSrc="./micrositios/newsCar.png" />
             </div>
             <div className="col-12">
-              <SpecialsCar
-                data={this.state.specialCarTitles}
-                index={this.state.actualSpecialCar}
-              >
-                <Carousel
-                  responsive={responsive}
-                  className=" pt-4 pb-5 my-1 position-relative"
-                  infinite={true}
-                  autoPlay={false}
-                  shouldResetAutoplay={false}
-                  customRightArrow={
-                    <RightArrowSpecialsCAR changeIndex={this.changeIndexUp} />
-                  }
-                  customLeftArrow={
-                    <LeftArrowSpecialsCAR changeIndex={this.changeIndexDown} />
-                  }
-                >
-                  {this.state.specialsCar}
-                </Carousel>
-              </SpecialsCar>
+              <SpecialsCar />
+
               <InteresLinks>{this.state.interestLinks}</InteresLinks>
             </div>
           </section>
