@@ -1,19 +1,20 @@
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 //Components
 import DefaultLayout from "../utils/DefaultLayout";
 import Slider from "../utils/Slider";
 import Carousel from "react-multi-carousel";
 import TitleCar from "../utils/TitleCar";
 // Functions
-import getData from "../utils/getData";
 import "react-multi-carousel/lib/styles.css";
-import { useSliderApi, useCounterTreeApi } from "../utils/getDataFromApi";
+import {
+  useSliderApi,
+  useCounterTreeApi,
+  useNewsApi,
+} from "../utils/getDataFromApi";
 
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
 const icons = require.context("../../assets/icons/", true);
-//Leectura de datos fetch ------------------------------------------------------------------
-let urlData = "../data.json";
 
 const MainBanner = () => {
   const sliders = useSliderApi("main");
@@ -31,7 +32,6 @@ const MainBanner = () => {
 
 const SliderServices = () => {
   const data = useSliderApi("servicios");
-  console.log("services", data);
 
   let services = data.map((item) => (
     <div key={item.id} className="">
@@ -56,7 +56,9 @@ const SliderServices = () => {
     <Carousel
       responsive={responsive}
       className="text-center py-4"
-      infinite={true}
+      infinite={false}
+      autoPlay={false}
+      shouldResetAutoplay={false}
       customRightArrow={<CustomRightArrow />}
       customLeftArrow={<CustomLeftArrow />}
     >
@@ -74,7 +76,7 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 4,
+    items: 5,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -138,11 +140,7 @@ const BtnNews = () => {
 const MainNew = (props) => {
   return (
     <div className="px-3 pb-3 pt-4">
-      <img
-        className="img-fluid rounded-2"
-        src={images(props.ImgSrc)}
-        alt="Noticias"
-      />
+      <img className="img-fluid rounded-2" src={props.ImgSrc} alt="Noticias" />
       <h5 className="text-main py-3 mb-0 fs-responsive-l">{props.title}</h5>
       <p className="text-main fs-responsive-s ">{props.description}</p>
       <br />
@@ -159,7 +157,7 @@ const New = (props) => {
       <div className="col-4 px-1">
         <img
           className="img-fluid rounded-2"
-          src={images(props.ImgSrc)}
+          src={props.ImgSrc}
           alt="Noticias"
         />
       </div>
@@ -175,34 +173,34 @@ const New = (props) => {
   );
 };
 
-const NewsCAR = ({ newsCARInfo }) => {
-  let mainNew = [];
-  let news = [];
-  if (newsCARInfo.news) {
-    news = newsCARInfo.news.map((item, index) => {
-      if (item.main) {
-        mainNew = (
-          <MainNew
-            title={item.title}
-            description={item.description}
-            ImgSrc={item.ImgSrc}
-            date={item.date}
-          />
-        );
-        return null;
-      } else {
-        return (
-          <New
-            key={index}
-            title={item.title}
-            description={item.description}
-            ImgSrc={item.ImgSrc}
-            date={item.date}
-          />
-        );
-      }
-    });
-  }
+const NewsCAR = () => {
+  const data = useNewsApi();
+  const news2 = data.map((item, index) => {
+    if (index === 0) {
+      return (
+        <MainNew
+          key={item.id}
+          title={item.name}
+          description={item.description}
+          ImgSrc={item.imageUrl}
+          date={item.date}
+        />
+      );
+    } else {
+      return (
+        <New
+          key={item.id}
+          title={item.name}
+          description={item.description}
+          ImgSrc={item.imageUrl}
+          date={item.date}
+        />
+      );
+    }
+  });
+  let mainNew = news2.slice(0, 1);
+  let news = news2.slice(1);
+
   return (
     <div className="row justify-content-center pb-0">
       <TitleCar title={"Noticias CAR"} />
@@ -251,6 +249,7 @@ const CounterTrees = () => {
 };
 //#endregion
 
+//#region micrositios
 const MicroSitio = (props) => {
   return (
     <div className="col-4 mx-0 px-1 py-2">
@@ -296,6 +295,7 @@ const MicrositiosGroup = () => {
     </div>
   );
 };
+//#endregion
 
 const BoletinNewsCar = (props) => {
   return (
@@ -321,6 +321,26 @@ const BoletinNewsCar = (props) => {
 };
 
 //#region SpecialsCar
+const responsiveSpecialsCar = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
 const RightArrowSpecialsCAR = ({ onClick, changeIndex }) => {
   function handleClick() {
     onClick();
@@ -371,7 +391,7 @@ const SpecialCar = (props) => {
   );
 };
 
-const SpecialsCar = (props) => {
+const SpecialsCar = () => {
   const [index, setIndex] = useState(1);
   const data = useSliderApi("especialesCar");
 
@@ -416,9 +436,11 @@ const SpecialsCar = (props) => {
 
       <div className="col-12">
         <Carousel
-          responsive={responsive}
+          responsive={responsiveSpecialsCar}
           className="text-center py-4"
           infinite={true}
+          autoPlay={false}
+          shouldResetAutoplay={false}
           customRightArrow={
             <RightArrowSpecialsCAR changeIndex={changeIndexUp} />
           }
@@ -446,141 +468,63 @@ const InteresLink = (props) => {
   return (
     <div className="col-3 d-flex align-items-center">
       <a href={props.link}>
-        <img
-          className="img-fluid "
-          src={images(props.imgSrc)}
-          alt="Link de interes"
-        />
+        <img className="img-fluid " src={props.imgSrc} alt="Link de interes" />
       </a>
     </div>
   );
 };
 
-const InteresLinks = (props) => {
+const InteresLinks = () => {
+  const data = useSliderApi("enlacesInteres");
+
+  const links = data.map((item) => (
+    <InteresLink
+      key={item.id}
+      imgSrc={item.imageURL}
+      link={item.destinationURL}
+    />
+  ));
+
   return (
     <div className="row justify-content-center pt-4">
       <TitleCar title={"Enlaces de interés CAR"} />
-      <div className="row col-10 py-3">{props.children}</div>
+      <div className="row col-10 py-3">{links}</div>
     </div>
   );
 };
 //#endregion
 
-class HomePage extends Component {
-  // Cargar datos de la bd al home
-  state = {
-    newsCARInfo: [],
-    microSitios: [],
-    specialCarTitles: [],
-    specialsCar: [],
-    actualSpecialCar: 1,
-    interestLinks: [],
-  };
-
-  componentDidMount() {
-    getData(urlData).then((datajson) => {
-      this.setState(() => {
-        let sliderServices = datajson.sliderServicesImg.map((item, index) => (
-          <div key={index} className="">
-            <a
-              href={item.link}
-              style={{ textDecoration: "none" }}
-              className="text-main footer-link "
-            >
-              <img height="120px" src={icons(item.ImgSrc)} alt="..." />
-              <p className="pt-3">
-                <b>{item.bold}</b>
-                <br />
-                <span>{item.normal}</span>
-              </p>
-            </a>
+const HomePage = () => {
+  return (
+    <DefaultLayout>
+      <MainBanner />
+      <div className="row justify-content-center ">
+        <section className="row col-11 col-lg-9 my-4 px-0">
+          <SliderServices />
+          <NewsCAR />
+        </section>
+        <CounterTrees />
+        <section className="row col-11 col-lg-9 my-4 px-0">
+          <div className=" col-8">
+            <MicrositiosGroup />
           </div>
-        ));
+          <div className="col-4">
+            <BoletinNewsCar imgSrc="./micrositios/newsCar.png" />
+          </div>
+          <div className="col-12">
+            <SpecialsCar />
 
-        let news = datajson.newsCARInfo.news.map((item, index) => (
-          <New
-            key={index}
-            title={item.title}
-            description={item.description}
-            ImgSrc={item.ImgSrc}
-            date={item.date}
-          />
-        ));
-        let microSitios = datajson.microSitios.map((item, index) => {
-          return (
-            <MicroSitio
-              key={index}
-              name={item.name}
-              imgSrc={item.imgSrc}
-              link={item.link}
-              styles={{ top: "-18px" }}
-            ></MicroSitio>
-          );
-        });
-        let specialCarTitles = [];
-        let specialsCar = datajson.specialsCar.map((item, index) => {
-          specialCarTitles.push([item.title[0], item.title[1]]);
-
-          return (
-            <SpecialCar
-              title={item.title}
-              imgSrc={item.imgSrc}
-              link={item.link}
-            />
-          );
-        });
-
-        let interestLinks = datajson.interestLinks.map((item, index) => (
-          <InteresLink imgSrc={item.imgSrc} link={item.link} />
-        ));
-
-        console.log(datajson.newsCARInfo);
-
-        return {
-          sliderServices: sliderServices,
-          newsCAR: news,
-          newsCARInfo: datajson.newsCARInfo,
-          microSitios: microSitios,
-          specialCarTitles: specialCarTitles,
-          specialsCar: specialsCar,
-          interestLinks: interestLinks,
-        };
-      });
-    });
-  }
-
-  render() {
-    return (
-      <DefaultLayout>
-        <MainBanner />
-        <div className="row justify-content-center ">
-          <section className="row col-11 col-lg-9 my-4 px-0">
-            <SliderServices />
-            <NewsCAR newsCARInfo={this.state.newsCARInfo} />
-          </section>
-          <CounterTrees />
-          <section className="row col-11 col-lg-9 my-4 px-0">
-            <div className=" col-8">
-              <MicrositiosGroup>{this.state.microSitios}</MicrositiosGroup>
-            </div>
-            <div className="col-4">
-              <BoletinNewsCar imgSrc="./micrositios/newsCar.png" />
-            </div>
-            <div className="col-12">
-              <SpecialsCar />
-
-              <InteresLinks>{this.state.interestLinks}</InteresLinks>
-            </div>
-          </section>
-          <img
-            className="img-fluid"
-            src={images("./grayTrees.png")}
-            alt="grayTrees"
-          />
-        </div>
-      </DefaultLayout>
-    );
-  }
-}
+            <InteresLinks />
+          </div>
+        </section>
+        <img
+          className="img-fluid"
+          src={images("./grayTrees.png")}
+          alt="grayTrees"
+        />
+      </div>
+    </DefaultLayout>
+  );
+};
 
 export default HomePage;

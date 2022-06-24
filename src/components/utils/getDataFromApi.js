@@ -6,7 +6,6 @@ export function useSliderApi(sliderType) {
   const [sliders, setSliders] = useState([]);
 
   const url = BaseUrl + "/api/slider/true?state=true";
-  console.log("hookSliderApi", url);
   useEffect(() => {
     async function fetchSliders() {
       const res = await axios.get(url);
@@ -15,7 +14,6 @@ export function useSliderApi(sliderType) {
         (item) =>
           item.sliderType.name === sliderType && item.active_title === true
       );
-      console.log("slidersData", slidersData);
       setSliders(slidersData);
     }
 
@@ -61,4 +59,31 @@ export function useCounterTreeApi() {
   }, []);
 
   return counter;
+}
+
+const newType = {
+  GeneralNew: 4,
+};
+
+const NormalNumberOfNews = 4;
+
+export function useNewsApi(
+  numberOfNews = NormalNumberOfNews,
+  NewType = newType.GeneralNew
+) {
+  const [news, setNews] = useState([]);
+
+  const url =
+    BaseUrl + `/api/news?numItem=${numberOfNews}&idNewType=${NewType}`;
+  useEffect(() => {
+    async function fetchSliders() {
+      const res = await axios.get(url);
+      const data = res.data;
+      setNews(data);
+    }
+
+    fetchSliders();
+  }, []);
+
+  return news;
 }
