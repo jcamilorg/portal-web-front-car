@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 //Components
-import DefaultLayout from "../utils/DefaultLayout";
+import DefaultLayout from "../layouts/DefaultLayout";
 import Slider from "../utils/Slider";
 import Carousel from "react-multi-carousel";
 import TitleCar from "../utils/TitleCar";
@@ -351,7 +351,7 @@ const RightArrowSpecialsCAR = ({ onClick, changeIndex }) => {
     <button
       onClick={handleClick}
       aria-label="Go to next slide"
-      style={{ right: "38%", top: "73%", zIndex: "3000" }}
+      style={{ right: "38%", top: "73%", zIndex: "1" }}
       className="position-absolute bg-transparent border-0"
     >
       <img src={icons("./btn-slider-derecha.png")} alt="<" />
@@ -369,7 +369,7 @@ const LeftArrowSpecialsCAR = ({ onClick, changeIndex }) => {
     <button
       onClick={handleClick}
       aria-label="Go to next slide"
-      style={{ left: "56%", top: "73%", zIndex: "3000" }}
+      style={{ left: "56%", top: "73%", zIndex: "1" }}
       className="position-absolute bg-transparent border-0"
     >
       <img src={icons("./btn-slider-izquierda.png")} alt="<" />
@@ -451,7 +451,7 @@ const SpecialsCar = () => {
           {inner}
         </Carousel>
       </div>
-      <div className="position-absolute top-75  d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 z-index">
+      <div className="position-absolute top-75  d-flex flex-column rounded-3 bg-white px-4 w-25 shadow border py-2 ">
         {texts[index]}
         <button className="border rounded-2 bg-green-f text-light me-5 ">
           <i className="fa-solid fa-eye"></i> <b>Ver especial</b>

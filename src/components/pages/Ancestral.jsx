@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DefaultLayout from "../utils/DefaultLayout";
+import DefaultLayout from "../layouts/DefaultLayout";
 
 import Iframe from "../utils/Iframe";
 //Import functions

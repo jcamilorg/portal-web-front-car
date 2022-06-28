@@ -33,7 +33,7 @@ const StickyMenu = () => {
   });
 
   return (
-    <div className="bg-acua d-flex flex-wrap justify-content-center sticky-top fs-responsive-s">
+    <div className="bg-acua d-flex flex-wrap justify-content-center sticky-top fs-responsive-s ">
       {menuItems}
     </div>
   );
