@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //Import de componentes
-import DefaultLayout from "../layouts/DefaultLayout";
+import DefaultLayout from "../layouts/Default";
 import TitleCar from "../utils/TitleCar";
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);

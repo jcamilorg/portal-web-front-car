@@ -15,12 +15,16 @@ const StickyMenu = () => {
           key={index}
           name={item.name}
           items={item.menuItems}
-          className="bg-acua text-light px-4 py-2 menu-item fw-bolder"
+          className="bg-acua text-light px-3 py-2 menu-item fw-bolder"
         />
       );
     } else {
       return (
-        <div className="bg-acua px-4 py-2 menu-item" key={index}>
+        <div
+          className="bg-acua px-3 py-2 menu-item text-center"
+          key={index}
+          style={styles.itemNormal}
+        >
           <Link
             to={item.destination_uri}
             className="text-decoration-none text-light fw-bolder"
@@ -33,10 +37,17 @@ const StickyMenu = () => {
   });
 
   return (
-    <div className="bg-acua d-flex flex-wrap justify-content-center sticky-top fs-responsive-s ">
+    <div
+      className="bg-acua d-flex align-items-center justify-content-center sticky-top fs-responsive-s "
+      style={styles.menu}
+    >
       {menuItems}
     </div>
   );
 };
 
 export default StickyMenu;
+
+const styles = {
+  menu: { paddingRight: "10%", paddingLeft: "10%" },
+};

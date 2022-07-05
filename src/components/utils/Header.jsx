@@ -1,5 +1,7 @@
 import React from "react";
 import Dropdown from "./Dropdown";
+import HrCAR from "./HrCAR";
+import LinkGeneral from "./LinkGeneral";
 
 const images = require.context("../../assets/img/", true);
 
@@ -17,6 +19,7 @@ let Idiomas = [
 export default function Header({
   handleIncreaseFontSize,
   handleDecreaseFontSize,
+  handleInvertColors,
 }) {
   return (
     <>
@@ -35,7 +38,7 @@ export default function Header({
           <div className="d-flex align-items-center ">
             <div className="vertical-line my-2 mx-2"></div>
             <Dropdown
-              className="bg-transparent text-light"
+              className="bg-transparent text-light f-antipasto fw-bold"
               name="Selecionar idioma"
               items={Idiomas}
             />
@@ -52,7 +55,11 @@ export default function Header({
               </b>
             </span>
             <div className="vertical-line my-2 mx-2"></div>
-            <i className="fa-solid fa-circle-half-stroke"></i>
+            <i
+              role="button"
+              onClick={handleInvertColors}
+              className="fa-solid fa-circle-half-stroke"
+            ></i>
             <div className="vertical-line my-2 mx-2"></div>
             <i className="fa-solid fa-right-from-bracket"></i>
           </div>
@@ -63,11 +70,13 @@ export default function Header({
           style={styles.paddingX}
         >
           <div className="row col-1 col-lg-3">
-            <img
-              className="col-10 img-fluid "
-              src={require("../../assets/logos/logo_car.png")}
-              alt="..."
-            />
+            <LinkGeneral href="/">
+              <img
+                className="col-10 img-fluid "
+                src={require("../../assets/logos/logo_car.png")}
+                alt="..."
+              />
+            </LinkGeneral>
           </div>
           <div className="col-2 ">
             <input
@@ -78,10 +87,7 @@ export default function Header({
           </div>
         </div>
 
-        <div className="d-flex justify-content-between my-1">
-          <hr className="hr-car hr-type-one bg-green-f" />
-          <hr className="hr-car hr-type-two bg-green" />
-        </div>
+        <HrCAR style={styles.paddingHr} type2 />
       </header>
     </>
   );
@@ -89,4 +95,5 @@ export default function Header({
 
 const styles = {
   paddingX: { paddingRight: "10%", paddingLeft: "10%" },
+  paddingHr: { paddingBottom: "2px" },
 };

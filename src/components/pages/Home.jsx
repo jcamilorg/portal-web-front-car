@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 //Components
-import DefaultLayout from "../layouts/DefaultLayout";
+import DefaultLayout from "../layouts/Default";
 import Slider from "../utils/Slider";
 import Carousel from "react-multi-carousel";
 import TitleCar from "../utils/TitleCar";
@@ -11,6 +11,7 @@ import {
   useCounterTreeApi,
   useNewsApi,
 } from "../utils/getDataFromApi";
+import ButtonCAR from "../utils/ButtonCAR";
 
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
@@ -124,18 +125,6 @@ const CustomLeftArrow = ({ onClick }) => {
 //#endregion
 
 //#region News
-const BtnNews = () => {
-  return (
-    <div className="Btn-News type1 text-light text-end pe-2 fs-responsive-xs fw-bold position-relative  d-flex justify-content-between align-items-center">
-      <div className="Btn-News type2">
-        <div className="Btn-News type3"></div>
-      </div>
-      <div>
-        leer mas <i className="fa-solid fa-circle-plus"></i>
-      </div>
-    </div>
-  );
-};
 
 const MainNew = (props) => {
   return (
@@ -144,9 +133,18 @@ const MainNew = (props) => {
       <h5 className="text-main py-3 mb-0 fs-responsive-l">{props.title}</h5>
       <p className="text-main fs-responsive-s ">{props.description}</p>
       <br />
-      <i className="fa-regular fa-clock"></i>
-      <span>{" " + props.date}</span>
-      <BtnNews />
+
+      <div className="row justify-content-between">
+        <div className="col-5">
+          <i className="fa-regular fa-clock" />
+          <span>{" " + props.date}</span>
+        </div>
+        <div className="col-6">
+          <ButtonCAR>
+            leer mas <i className="fa-solid fa-circle-plus" />
+          </ButtonCAR>
+        </div>
+      </div>
     </div>
   );
 };
@@ -165,9 +163,18 @@ const New = (props) => {
         <h6 className="fs-responsive-m">{props.title}</h6>
         <p className="fs-responsive-s">{props.description}</p>
         <br />
-        <i className="fa-regular fa-clock"></i>
-        <span>{" " + props.date}</span>
-        <BtnNews />
+        <div className="row justify-content-between">
+          <div className="col-5">
+            <i className="fa-regular fa-clock" />
+
+            <span>{" " + props.date}</span>
+          </div>
+          <div className="col-6">
+            <ButtonCAR>
+              leer mas <i className="fa-solid fa-circle-plus" />
+            </ButtonCAR>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -203,7 +210,9 @@ const NewsCAR = () => {
 
   return (
     <div className="row justify-content-center pb-0">
-      <TitleCar title={"Noticias CAR"} />
+      <TitleCar>
+        <b>Noticias</b> CAR
+      </TitleCar>
       <div className="col-8 col-lg-5">{mainNew}</div>
       <div className="col-12 col-lg-7">{news}</div>
     </div>
@@ -214,7 +223,7 @@ const NewsCAR = () => {
 //#region Counter trees
 const DigitCounterTree = (props) => {
   return (
-    <span className="bg-white text-main fs-responsive-xl rounded-3 px-2 mx-1 ">
+    <span className="bg-white text-main fs-responsive-xl rounded-3 px-2 mx-1  ">
       <b>{props.number}</b>
     </span>
   );
@@ -231,18 +240,18 @@ const CounterTrees = () => {
   return (
     <div className="row justify-content-center bg-counter-trees">
       <div className="col-8 d-flex justify-content-center py-3 align-items-center">
-        <b className="text-white fs-responsive-l">
+        <span className="text-white fs-responsive-l f-antipasto fw-bold">
           Ya son
           <br />
           más de:
-        </b>
+        </span>
         <span className="text-white fs-responsive-l  px-3">
           {arrarrayDigits}
         </span>
-        <b className="text-white fs-responsive-l">
+        <span className="text-white fs-responsive-l f-antipasto fw-bold">
           árboles <br />
           sembrados
-        </b>
+        </span>
       </div>
     </div>
   );
@@ -287,8 +296,8 @@ const MicrositiosGroup = () => {
 
   return (
     <div className="ms-0 me-0 pe-0 row ">
-      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l">
-        <b>Micrositios</b> Car
+      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l f-antipasto">
+        <b>Micrositios</b> CAR
       </h4>
       <div className="" />
       {microSitios}
@@ -300,7 +309,7 @@ const MicrositiosGroup = () => {
 const BoletinNewsCar = (props) => {
   return (
     <div className="ms-0 me-0 pe-0 row ">
-      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l">
+      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l f-antipasto">
         <b>Boletín</b> NewsCAR
       </h4>
       <div className="col-12 " />
@@ -396,7 +405,7 @@ const SpecialsCar = () => {
   const data = useSliderApi("especialesCar");
 
   let texts = data.map((item, index) => (
-    <p key={index}>
+    <p key={index} className=" f-antipasto text-acua fs-responsive-m">
       <b>{item.name}</b>
       <br />
       {item.description}
@@ -517,11 +526,6 @@ const HomePage = () => {
             <InteresLinks />
           </div>
         </section>
-        <img
-          className="img-fluid"
-          src={images("./grayTrees.png")}
-          alt="grayTrees"
-        />
       </div>
     </DefaultLayout>
   );

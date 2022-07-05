@@ -4,6 +4,41 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: "antipasto";
+  src: url("./assets/fonts/antipasto/Antipasto_regular.otf");
+}
+
+@font-face {
+  font-family: "antipasto-bold";
+  src: url("./assets/fonts/antipasto/Antipasto_extrabold.otf");
+}
+
+@font-face {
+  font-family: "antipasto-light";
+  src: url("./assets/fonts/antipasto/Antipasto_extralight.otf");
+}
+
+.f-antipasto{
+  font-family: antipasto;
+}
+
+.f-antipasto-bold{
+  font-family: antipasto-bold;
+}
+
+.f-antipasto-light{
+  font-family: antipasto-light;
+}
+
+.f-antipasto b{
+  font-family: antipasto-bold;
+}
+
+.negative {
+  filter: invert(1) ;
+}
+
 /* Styles General*/
 .bg-acua {
   background-color: #017185;
@@ -39,6 +74,10 @@
 }
 
 .text-acua {
+  color: #017185;
+}
+
+.text-green {
   color: #14A296;
 }
 
@@ -65,8 +104,6 @@
   height: 40px;
 }
 
-
-
 .fs-responsive-m{
   font-size: calc(0.5em + 0.7vw) 
 }
@@ -80,7 +117,7 @@
 }
 
 .fs-responsive-l{
-  font-size: calc(1em + 0.5vw) 
+  font-size: calc(1.1em + 0.5vw) 
 }
 
 .fs-responsive-xl{
@@ -103,21 +140,6 @@
   z-index: 1000;
 }
 
-.hr-car {
-  opacity: 100;
-  margin: 0;
-  padding-top: 3px;
-  border-radius: 3px;
-}
-
-.hr-type-one {
-  width: 70%;
-}
-
-.hr-type-two {
-  width: 29.5%;
-}
-
 .border-dashed {
   border-style: dashed !important;
 }
@@ -130,6 +152,7 @@
   background-image: url("/src/assets/img/FondoBannerContadorDeArboles.svg");
   background-size: cover;
 }
+
 /*Styles header*/
 .input-header {
   width: 130px;
@@ -142,8 +165,6 @@
   font-family: "Font Awesome 5 Free"; 
   font-weight: 600; 
 }
-
-
 
 /*Styles for menu*/
 
@@ -211,15 +232,3 @@
   animation-fill-mode: forwards;
 }
 
-@keyframes animation-link {
-  0%{}
-  100%{width: 54%;
-  }
-
-}
-
-.type1:hover .type2 {  
-  animation-name: animation-link;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-}

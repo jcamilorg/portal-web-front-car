@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
 import StickyMenu from "../utils/StickyMenu";
+const images = require.context("../../assets/img/", true);
 
 const handleIncreaseFontSize = () => {
   const fsXSmall = document.querySelectorAll(".fs-responsive-xs");
@@ -57,21 +58,39 @@ const handleDecreaseFontSize = () => {
   });
 };
 
+const handleInvertColors = () => {
+  const root = document.querySelectorAll("html")[0];
+  const classList = root.classList;
+  if (!classList.contains("negative")) {
+    root.classList.add("negative");
+  } else {
+    root.classList.remove("negative");
+  }
+};
+
 const LeftMenu = () => {
   return (
     <div style={styles.leftMenu}>
-      <div style={styles.btnLeftMenu}>
+      <div
+        style={styles.btnLeftMenu}
+        onClick={handleInvertColors}
+        role="button"
+      >
         <i className="fa-solid fa-circle-half-stroke"></i>
       </div>
-      <div style={styles.btnLeftMenu}>
-        <b role="button" onClick={handleIncreaseFontSize}>
-          A+
-        </b>
+      <div
+        style={styles.btnLeftMenu}
+        role="button"
+        onClick={handleIncreaseFontSize}
+      >
+        <b>A+</b>
       </div>
-      <div style={styles.btnLeftMenu}>
-        <b role="button" onClick={handleDecreaseFontSize}>
-          A-
-        </b>
+      <div
+        style={styles.btnLeftMenu}
+        role="button"
+        onClick={handleDecreaseFontSize}
+      >
+        <b>A-</b>
       </div>
     </div>
   );
@@ -88,10 +107,16 @@ export const DefaultLayout = (props) => {
       <Header
         handleIncreaseFontSize={handleIncreaseFontSize}
         handleDecreaseFontSize={handleDecreaseFontSize}
+        handleInvertColors={handleInvertColors}
       />
       <LeftMenu />
       {props.noMenu ? <></> : <StickyMenu />}
       {props.children}
+      <img
+        className="img-fluid"
+        src={images("./grayTrees.png")}
+        alt="grayTrees"
+      />
       <Footer />
     </div>
   );
@@ -101,8 +126,8 @@ export default DefaultLayout;
 
 const styles = {
   leftMenu: {
-    color: "#fff",
     position: "fixed",
+    color: "#fff",
     backgroundColor: "#00A19C",
     right: "5px",
     top: "50vh",

@@ -1,28 +1,19 @@
 import React from "react";
+import HrCAR from "./HrCAR";
 
-const TitleCar = (props) => {
-  let classHr1 = "hr-car hr-type-one bg-acua ";
-  let classHr2 = "hr-car hr-type-two bg-green-f ms-1 ";
-  let bgClass = "bg-acua";
-  if (props.type2) {
-    classHr1 = "hr-car hr-type-one bg-green-f ";
-    classHr2 = "hr-car hr-type-two bg-acua ms-1 ";
-    bgClass = "bg-green-f";
-  }
+const TitleCar = ({ title, children, type2 }) => {
+  let bgClass = type2 ? "bg-green-f" : "bg-acua";
 
   return (
     <>
-      <div className="col-12 d-flex justify-content-center ">
+      <div className="col-12 d-flex justify-content-center">
         <h5
-          className={`${bgClass} border-warning text-white rounded-top-car d-inline-block mt-3 px-5 mb-0 fs-responsive-l`}
+          className={`${bgClass} border-warning text-white rounded-top-car d-inline-block mt-3 px-5 mb-0 fs-responsive-l f-antipasto`}
         >
-          {props.title}
+          {title || children}
         </h5>
       </div>
-      <div className="col-12 d-flex px-0 mx-0">
-        <hr className={classHr1} />
-        <hr className={classHr2} />
-      </div>
+      <HrCAR type2={type2} />
     </>
   );
 };
