@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 //Pages
 import HomePage from "./components/pages/Home";
 import GranJeroPage from "./components/pages/GranJero";
-import AncestralPage from "./components/pages/Ancestral";
 import AcercaDeLaCar from "./components/pages/AcercaDeLaCAR";
 import AsiTrabajamosNuestroTerrritorio from "./components/pages/AsiTrabajamosNuestroTerrritorio";
 import NotFoundPage from "./components/pages/NotFound";
@@ -51,7 +50,6 @@ function App() {
           <Route path="news-car" element={<NewsCAR />} />
         </Route>
         <Route path="/gran-jero" element={<GranJeroPage />} />
-        <Route path="/ancestral" element={<AncestralPage />} />
         <Route path="/acerca-de-la-car" element={<AcercaDeLaCar />} />
         <Route
           path="/asi-trabajamos-nuestro-territorio"

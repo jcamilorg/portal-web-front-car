@@ -1,48 +1,86 @@
 import React from "react";
-import TitleCar from "../../../utils/TitleCar";
-import Acordion from "../../../utils/Acordion";
+import { useAncestralVideos } from "../../../utils/getDataFromApi";
+import Iframe from "../../../utils/Iframe";
+import SerieTemplate from "./SerieTemplate";
 
-const LastChapter = ({ title }) => (
+const LastChapter = ({ title, link, description }) => (
   <div className="row">
     <h3 className="text-acua">
       <b>{title}</b>
     </h3>
     <div className="col-7">
-      <div className="border" style={{ height: "250px", width: "95%" }}>
-        <img className="img-flui border" alt="principal" />
-      </div>
+      <Iframe link={link}></Iframe>
     </div>
     <div className="col-5">
       <h5 className="text-acua">
-        <b>Sinopsis</b>
+        <b className="fs-responsive-m">Sinopsis</b>
       </h5>
-      <div>
-        Con un típico cocido cundiboyacense a base de productos cultivados en
-        huertos caseros damos fin a esta aventura que llamamos Ancestral, una
-        expedición que nos llevó por los aromas, saberes y sabores tradicionales
-        de nuestro territorio CAR.
-      </div>
+      <div>{description}</div>
     </div>
   </div>
 );
 
-export default function Ancestral() {
+const Chapter = ({ title, description, link }) => {
+  return (
+    <div className="col-4">
+      <Iframe link={link}></Iframe>
+      <h6 className="fs-responsive-m pt-2">{title}</h6>
+      <p className="fs-responsive-s">{description}</p>
+    </div>
+  );
+};
+
+const createCollapsiblesBodys = (data) => {
+  let items = data.map((item, index) => {
+    return (
+      <Chapter
+        key={index}
+        title={item.snippet.title}
+        description={item.snippet.description}
+        link={
+          "https://www.youtube.com/embed/" + item.snippet.resourceId.videoId
+        }
+      />
+    );
+  });
+  return items;
+};
+
+const createLastChapter = (data) => {
+  let lastChapterItem = [];
+  if (data) {
+    lastChapterItem = [
+      <LastChapter
+        title={data.snippet.title}
+        link={
+          "https://www.youtube.com/embed/" + data.snippet.resourceId.videoId
+        }
+        description={data.snippet.description}
+      />,
+    ];
+  }
+  return lastChapterItem;
+};
+
+const Ancestral = () => {
   return (
     <>
-      <TitleCar>
-        <b>Ancestral: memoria de la tierra y el fogón</b>
-      </TitleCar>
-      <div className="container px-5 py-5 fs-responsive-m text-main">
-        <p>
-          Relata casos de éxito en procesos de producción más limpia de
-          productores y emprendimientos vinculados a la estrategia de
-          <b> Negocios Verdes de la Corporación.</b>
-        </p>
-        <LastChapter title="Capítulo 15" />
-        <div className="py-4">
-          <Acordion></Acordion>
-        </div>
-      </div>
+      <SerieTemplate
+        title="Ancestral: memoria de la tierra y el fogón"
+        description={
+          <>
+            Relata casos de éxito en procesos de producción más limpia de
+            productores y emprendimientos vinculados a la estrategia de
+            <b> Negocios Verdes de la Corporación.</b>
+          </>
+        }
+        functionToBringData={useAncestralVideos}
+        itemsPerTemp={10}
+        functionToCreateItems={createCollapsiblesBodys}
+        functionToCreateLastChapter={createLastChapter}
+      />
     </>
   );
-}
+};
+
+export default Ancestral;

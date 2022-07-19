@@ -1,3 +1,4 @@
+import Image from "./Image";
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
 const logos = require.context("../../assets/logos/", true);
@@ -48,18 +49,15 @@ export default function Footer() {
               </p>
             </div>
             <div className="row col-12 col-lg-4 border-start ps-5">
-              <div className="row col-9 col-lg-9">
-                <img
-                  className="img-fluid "
-                  src={require("../../assets/logos/logo_car.png")}
-                  alt="..."
-                />
-              </div>
+              <Image
+                classNameDiv="col-9"
+                src={logos("./logo_car_letra_blanca.svg")}
+                alt="Logo CAR"
+              />
               <div className="col-6 py-3">
-                <img
-                  className="img-fluid"
+                <Image
                   src={images("./footer/footerSGS.svg")}
-                  alt="colombia"
+                  alt="Estandares SGS"
                 />
               </div>
               <div className="row col-12">
@@ -113,15 +111,15 @@ export default function Footer() {
         <div className="row bg-acua-dark justify-content-center">
           <div className="row col-9 justify-content-between align-items-center">
             <div className="col-2 py-2">
-              <img
-                className="w-25 border-end pe-1"
+              <Image
+                classNameDiv="w-25 border-end pe-1 d-inline-block"
                 src={images("./footer/footerCo.svg")}
                 alt="Co"
               />
-              <img
-                className="w-75"
+              <Image
+                classNameDiv="w-75 d-inline-block"
                 src={images("./footer/footerGov.svg")}
-                alt="Co"
+                alt="Colombia"
               />
             </div>
             <div className="col-3 py-2 text-end">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BaseUrl } from "../../config";
+let youTubeApiKey = "AIzaSyDaDNHM9CvIqd9Z-jPSKyH586XEU75Yyr4";
 
 export function useSliderApi(sliderType) {
   const [sliders, setSliders] = useState([]);
@@ -86,4 +87,63 @@ export function useNewsApi(
   }, []);
 
   return news;
+}
+
+export function useAncestralVideos(maxResults = 5) {
+  const [temporadas, setTemporadas] = useState([[]]);
+
+  useEffect(() => {
+    async function fetchVideos(maxResults = 5, pageToken = null) {
+      let ancestralVideosUrl;
+      pageToken
+        ? (ancestralVideosUrl = `https://www.googleapis.com/youtube/v3/playlistItems/?part=snippet&channelId=UCDR_Bqz6vCW535ydrXcp4oA&playlistId=PL4Hz7tdqWVVjP3MWnNzsLdwhZCj7MwBPZ&maxResults=${maxResults}&pageToken=${pageToken}&key=${youTubeApiKey}`)
+        : (ancestralVideosUrl = `https://www.googleapis.com/youtube/v3/playlistItems/?part=snippet&channelId=UCDR_Bqz6vCW535ydrXcp4oA&playlistId=PL4Hz7tdqWVVjP3MWnNzsLdwhZCj7MwBPZ&maxResults=${maxResults}&key=${youTubeApiKey}`);
+      const res = await axios.get(ancestralVideosUrl);
+      return [
+        res.data.items.reverse(),
+        res.data.nextPageToken,
+        Math.ceil(
+          res.data.pageInfo.totalResults / res.data.pageInfo.resultsPerPage
+        ),
+      ];
+    }
+
+    async function main() {
+      const temporadasArray = [];
+      let token;
+      let [items, tokenNew, numeroIteraciones] = await fetchVideos(maxResults);
+      token = tokenNew;
+      temporadasArray.push(items);
+
+      for (var i = 1; i < numeroIteraciones; i++) {
+        const [items, tokenNew2] = await fetchVideos(maxResults, token);
+        token = tokenNew2;
+        temporadasArray.unshift(items);
+      }
+      setTemporadas(temporadasArray);
+    }
+
+    main();
+  }, []);
+
+  return temporadas;
+}
+
+export function useMisionRescateVideos() {
+  const [temporadas, setTemporadas] = useState([[]]);
+
+  useEffect(() => {
+    async function fetchVideos() {
+      const TempArray = [];
+      console.log("hola mundo");
+      let misionVideosUrl = "/infoSeries.json";
+      const res = await axios.get(misionVideosUrl);
+      TempArray.push(res.data[0].items.reverse());
+      setTemporadas(TempArray);
+    }
+
+    fetchVideos();
+  }, []);
+
+  return temporadas;
 }

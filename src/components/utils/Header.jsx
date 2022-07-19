@@ -2,6 +2,7 @@ import React from "react";
 import Dropdown from "./Dropdown";
 import HrCAR from "./HrCAR";
 import LinkGeneral from "./LinkGeneral";
+import Image from "./Image";
 
 const images = require.context("../../assets/img/", true);
 
@@ -29,11 +30,7 @@ export default function Header({
           style={styles.paddingX}
         >
           <div className="col-1 ">
-            <img
-              className="img-fluid"
-              src={images("./footer/footerGov.svg")}
-              alt="colombia"
-            />
+            <Image src={images("./footer/footerGov.svg")} alt="Colombia" />
           </div>
           <div className="d-flex align-items-center ">
             <div className="vertical-line my-2 mx-2"></div>
@@ -71,10 +68,10 @@ export default function Header({
         >
           <div className="row col-1 col-lg-3">
             <LinkGeneral href="/">
-              <img
-                className="col-10 img-fluid "
+              <Image
+                classNameDiv="col-10"
                 src={require("../../assets/logos/logo_car.png")}
-                alt="..."
+                alt="Logo CAR"
               />
             </LinkGeneral>
           </div>

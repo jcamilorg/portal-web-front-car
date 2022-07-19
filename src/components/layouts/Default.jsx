@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../utils/Header";
 import Footer from "../utils/Footer";
 import StickyMenu from "../utils/StickyMenu";
+import GoTopButton from "../utils/GoTopButton";
 const images = require.context("../../assets/img/", true);
 
 const handleIncreaseFontSize = () => {
@@ -117,6 +118,7 @@ export const DefaultLayout = (props) => {
         src={images("./grayTrees.png")}
         alt="grayTrees"
       />
+      <GoTopButton />
       <Footer />
     </div>
   );

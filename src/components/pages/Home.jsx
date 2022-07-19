@@ -4,6 +4,7 @@ import DefaultLayout from "../layouts/Default";
 import Slider from "../utils/Slider";
 import Carousel from "react-multi-carousel";
 import TitleCar from "../utils/TitleCar";
+import Image from "../utils/Image";
 // Functions
 import "react-multi-carousel/lib/styles.css";
 import {
@@ -23,7 +24,13 @@ const MainBanner = () => {
   return (
     <Slider
       data={sliders.map((item, index) => (
-        <img key={index} className="w-100" src={item.imageURL} alt="Slider" />
+        <Image
+          key={index}
+          src={item.imageURL}
+          alt={`Banner #${index + 1} de la pagina web`}
+          classNameDiv="p-0"
+          classNameImg="w-100"
+        ></Image>
       ))}
       id="slider-banner-informate"
       classItems="w-100"
@@ -129,7 +136,12 @@ const CustomLeftArrow = ({ onClick }) => {
 const MainNew = (props) => {
   return (
     <div className="px-3 pb-3 pt-4">
-      <img className="img-fluid rounded-2" src={props.ImgSrc} alt="Noticias" />
+      <Image
+        classNameImg="rounded-2"
+        src={props.ImgSrc}
+        alt="Noticia más reciente"
+      />
+
       <h5 className="text-main py-3 mb-0 fs-responsive-l">{props.title}</h5>
       <p className="text-main fs-responsive-s ">{props.description}</p>
       <br />
@@ -152,13 +164,13 @@ const MainNew = (props) => {
 const New = (props) => {
   return (
     <div className="row border-end-0 border-start-0 border-top-0 border pt-4 pb-3">
-      <div className="col-4 px-1">
-        <img
-          className="img-fluid rounded-2"
-          src={props.ImgSrc}
-          alt="Noticias"
-        />
-      </div>
+      <Image
+        classNameDiv="col-4 px-1"
+        classNameImg="rounded-2"
+        src={props.ImgSrc}
+        alt="Noticia de la pagina web"
+      />
+
       <div className="col-8">
         <h6 className="fs-responsive-m">{props.title}</h6>
         <p className="fs-responsive-s">{props.description}</p>
@@ -268,6 +280,7 @@ const MicroSitio = (props) => {
           src={props.imgSrc}
           alt={props.name}
         />
+
         <div
           id="text-micrositios"
           className="text-micrositios ps-2 fs-responsive-xs position-relative top-n20px bg-black-op text-white"
@@ -279,6 +292,62 @@ const MicroSitio = (props) => {
     </div>
   );
 };
+
+//#region Custom for Carrouselll Micrositos
+const responsiveCarrouselMicrositios = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+const CustomRightArrowCarrouselMicrositos = ({ onClick }) => {
+  function handleClick() {
+    onClick();
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      aria-label="Go to next slide"
+      style={{ right: "5%", bottom: "90%", zIndex: "1" }}
+      className="position-absolute bg-transparent border-0"
+    >
+      <img src={icons("./btn-slider-derecha.png")} alt="<" />
+    </button>
+  );
+};
+
+const CustomLeftArrowCarrouselMicrositos = ({ onClick }) => {
+  function handleClick() {
+    onClick();
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      aria-label="Go to next slide"
+      style={{ right: "12%", bottom: "90%", zIndex: "1" }}
+      className="position-absolute bg-transparent border-0"
+    >
+      <img src={icons("./btn-slider-izquierda.png")} alt="<" />
+    </button>
+  );
+};
+//#endregion
 
 const MicrositiosGroup = () => {
   const data = useSliderApi("micrositios");
@@ -294,16 +363,47 @@ const MicrositiosGroup = () => {
     );
   });
 
+  let micrositiosContainer = [];
+
+  let i = 0;
+  let currentContainer = 0;
+  micrositiosContainer[0] = [];
+  for (let micrositio of microSitios) {
+    if (i % 6 === 0 && i !== 0) {
+      currentContainer++;
+      micrositiosContainer[currentContainer] = [];
+    }
+    micrositiosContainer[currentContainer].push(micrositio);
+    i++;
+  }
+
+  let micrositiosContainers = micrositiosContainer.map((item, index) => (
+    <div key={index} className="mx-2 my-0 row ">
+      {item}
+    </div>
+  ));
+
   return (
-    <div className="ms-0 me-0 pe-0 row ">
-      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l f-antipasto">
+    <div className="ms-0 me-0 pe-0 row position-relative">
+      <h4 className="position-absolute text-main col-12 rounded-car py-2 mt-4 fs-responsive-l f-antipasto">
         <b>Micrositios</b> CAR
       </h4>
-      <div className="" />
-      {microSitios}
+
+      <Carousel
+        responsive={responsiveCarrouselMicrositios}
+        className="px-0 pt-5 mt-4"
+        infinite={true}
+        autoPlay={false}
+        shouldResetAutoplay={false}
+        customRightArrow={<CustomRightArrowCarrouselMicrositos />}
+        customLeftArrow={<CustomLeftArrowCarrouselMicrositos />}
+      >
+        {micrositiosContainers}
+      </Carousel>
     </div>
   );
 };
+
 //#endregion
 
 const BoletinNewsCar = (props) => {
@@ -313,11 +413,7 @@ const BoletinNewsCar = (props) => {
         <b>Boletín</b> NewsCAR
       </h4>
       <div className="col-12 " />
-      <img
-        className="img-fluid px-0 mx-0 pt-2"
-        src={images(props.imgSrc)}
-        alt="newsCar"
-      />
+      <Image classNameImg="pt-2" src={images(props.imgSrc)} alt="newsCar" />
       <button className="btn border border-success my-2 text-main">
         <b>Ver la edición más reciente</b>
       </button>
@@ -390,10 +486,10 @@ const SpecialCar = (props) => {
   return (
     <>
       <div className="px-1">
-        <img
-          className="img-fluid position-relative"
+        <Image
+          classNameDiv="position-relative"
           src={props.imgSrc}
-          alt="Especial"
+          alt="Especial CAR"
         />
       </div>
     </>
@@ -477,7 +573,7 @@ const InteresLink = (props) => {
   return (
     <div className="col-3 d-flex align-items-center">
       <a href={props.link}>
-        <img className="img-fluid " src={props.imgSrc} alt="Link de interes" />
+        <Image src={props.imgSrc} alt="Link de interes" />
       </a>
     </div>
   );
