@@ -19,6 +19,7 @@ export default function Iframe(props) {
     >
       <span>{props.alt}</span>
       <IframeSyled
+        style={props.style}
         src={props.link}
         title={"video " + props.title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

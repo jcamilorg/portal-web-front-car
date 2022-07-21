@@ -147,3 +147,73 @@ export function useMisionRescateVideos() {
 
   return temporadas;
 }
+
+export function useGranJeroVideos() {
+  const [temporadas, setTemporadas] = useState([[]]);
+
+  const playlistIds = [
+    "PLJw1v_Axtnlc0X9-663wKpTBR6CxK0bRW",
+    "PLJw1v_Axtnlco5s6sjYgvRoU4g7KmzYLT",
+    "PLJw1v_AxtnlfuT6cghnKsVUHypHzXAH-x",
+  ];
+
+  useEffect(() => {
+    async function fetchVideos() {
+      const temporadasArray = [];
+
+      for (let idTemporada of playlistIds) {
+        let url = `https://www.googleapis.com/youtube/v3/playlistItems/?part=snippet&channelId=UC8oglW3vOZU0ypk84ktFZ3Q&playlistId=${idTemporada}&maxResults=${50}&key=${youTubeApiKey}`;
+        const res = await axios.get(url);
+        temporadasArray.unshift(res.data.items.reverse());
+      }
+      temporadasArray[0] = temporadasArray[0].slice(0, 6);
+      temporadasArray[1] = temporadasArray[1].slice(0, 6);
+      temporadasArray[2] = temporadasArray[2].slice(0, 6);
+
+      setTemporadas(temporadasArray);
+      console.log(temporadas);
+    }
+
+    fetchVideos();
+  }, []);
+
+  return temporadas;
+}
+
+export function useHistoriasVidaVideos() {
+  const [temporadas, setTemporadas] = useState([[]]);
+
+  useEffect(() => {
+    async function fetchVideos() {
+      const TempArray = [];
+      console.log("hola mundo");
+      let historiasUrl = "/infoSeries.json";
+      const res = await axios.get(historiasUrl);
+      TempArray.push(res.data[1].items.reverse());
+      setTemporadas(TempArray);
+    }
+
+    fetchVideos();
+  }, []);
+
+  return temporadas;
+}
+
+export function useATonoConLaCar() {
+  const [temporadas, setTemporadas] = useState([[]]);
+
+  const playlistId = "PL4Hz7tdqWVVh6B4XarQ6V000BDDLa9HFK";
+
+  useEffect(() => {
+    async function fetch() {
+      let temporadasArray = [];
+      let url = `https://www.googleapis.com/youtube/v3/playlistItems/?part=snippet&channelId=UCDR_Bqz6vCW535ydrXcp4oA&playlistId=${playlistId}&maxResults=${50}&key=${youTubeApiKey}`;
+      const res = await axios.get(url);
+      let data = res.data.items;
+      temporadasArray.push(data.slice(0, 5));
+      setTemporadas(temporadasArray);
+    }
+    fetch();
+  }, []);
+  return temporadas;
+}

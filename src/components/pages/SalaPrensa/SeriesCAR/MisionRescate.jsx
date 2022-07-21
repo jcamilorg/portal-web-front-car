@@ -59,9 +59,6 @@ const createLastChapter = (data) => {
 };
 
 const MisionRescate = () => {
-  let videos = useMisionRescateVideos();
-  console.log("Mision videos", videos);
-
   return (
     <>
       <SerieTemplate

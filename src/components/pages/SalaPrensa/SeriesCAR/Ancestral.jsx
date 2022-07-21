@@ -5,13 +5,13 @@ import SerieTemplate from "./SerieTemplate";
 
 const LastChapter = ({ title, link, description }) => (
   <div className="row">
-    <h3 className="text-acua">
-      <b>{title}</b>
-    </h3>
     <div className="col-7">
+      <h4 className="text-acua">
+        <b>{title}</b>
+      </h4>
       <Iframe link={link}></Iframe>
     </div>
-    <div className="col-5">
+    <div className="col-5 pt-5">
       <h5 className="text-acua">
         <b className="fs-responsive-m">Sinopsis</b>
       </h5>

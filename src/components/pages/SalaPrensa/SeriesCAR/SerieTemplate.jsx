@@ -3,8 +3,6 @@ import TitleCar from "../../../utils/TitleCar";
 import Collapsible from "react-collapsible";
 import styled from "styled-components";
 
-import Iframe from "../../../utils/Iframe";
-
 const Accordion = styled.div`
   padding: 2rem 0;
 
@@ -30,23 +28,6 @@ const Accordion = styled.div`
     transform: rotate(90deg);
   }
 `;
-
-const LastChapter = ({ title, link, description }) => (
-  <div className="row">
-    <h3 className="text-acua">
-      <b>{title}</b>
-    </h3>
-    <div className="col-7">
-      <Iframe link={link}></Iframe>
-    </div>
-    <div className="col-5">
-      <h5 className="text-acua">
-        <b className="fs-responsive-m">Sinopsis</b>
-      </h5>
-      <div>{description}</div>
-    </div>
-  </div>
-);
 
 const CollapsibleHeader = ({ title }) => {
   return (
