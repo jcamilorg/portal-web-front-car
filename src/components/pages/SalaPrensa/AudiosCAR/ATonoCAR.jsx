@@ -33,7 +33,7 @@ export default function ATonoCAR() {
     <AudioTemplate
       title="A tono con la CAR"
       description={description}
-      href="http://sgccontratos.car.gov.co:8082/getImg/%7Bname%7D/%7Bmimetype%7D?name=Audios_CAR_WedJun29182448COT2022.png&mimetype=image/png"
+      href="https://www.youtube.com/playlist?list=PL4Hz7tdqWVVh6B4XarQ6V000BDDLa9HFK"
       imgSrc={slider[0] ? slider[0].imageURL : ""}
     >
       {audioPlayers}

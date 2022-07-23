@@ -1,10 +1,24 @@
 import React from "react";
-import { useSliderApi } from "../../../utils/getDataFromApi";
+import AudioPlayer from "../../../utils/AudioPlayer";
+import { useCendocPodcast, useSliderApi } from "../../../utils/getDataFromApi";
 import AudioTemplate from "./AudioTemplate";
 
 export default function CendocPodcast() {
   const sliders = useSliderApi("audios car items");
-  console.log(sliders);
+  const audios = useCendocPodcast();
+
+  let regex = /(\d+)/g;
+  const audioPlayers = audios[0].map((item, index) => {
+    return (
+      <AudioPlayer
+        key={index}
+        number={item.title.match(regex) ? item.title.match(regex)[0] : null}
+        title={item.title}
+        src={item.link}
+      ></AudioPlayer>
+    );
+  });
+
   const slider = sliders.filter((slider) => slider.name === "CENDOC Podcast");
 
   const description =
@@ -14,8 +28,10 @@ export default function CendocPodcast() {
     <AudioTemplate
       title="Conociendo nuestro Territorio"
       description={description}
-      href="http://sgccontratos.car.gov.co:8082/getImg/%7Bname%7D/%7Bmimetype%7D?name=Audios_CAR_WedJun29182448COT2022.png&mimetype=image/png"
+      href="https://www.spreaker.com/show/conociendo-nuestro-territorio"
       imgSrc={slider[0] ? slider[0].imageURL : ""}
-    ></AudioTemplate>
+    >
+      {audioPlayers}
+    </AudioTemplate>
   );
 }

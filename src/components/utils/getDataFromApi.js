@@ -186,7 +186,6 @@ export function useHistoriasVidaVideos() {
   useEffect(() => {
     async function fetchVideos() {
       const TempArray = [];
-      console.log("hola mundo");
       let historiasUrl = "/infoSeries.json";
       const res = await axios.get(historiasUrl);
       TempArray.push(res.data[1].items.reverse());
@@ -210,6 +209,40 @@ export function useATonoConLaCar() {
       let url = `https://www.googleapis.com/youtube/v3/playlistItems/?part=snippet&channelId=UCDR_Bqz6vCW535ydrXcp4oA&playlistId=${playlistId}&maxResults=${50}&key=${youTubeApiKey}`;
       const res = await axios.get(url);
       let data = res.data.items;
+      temporadasArray.push(data.slice(0, 5));
+      setTemporadas(temporadasArray);
+    }
+    fetch();
+  }, []);
+  return temporadas;
+}
+
+export function useCendocPodcast() {
+  const [temporadas, setTemporadas] = useState([[]]);
+
+  useEffect(() => {
+    async function fetch() {
+      let temporadasArray = [];
+      let url = "/infoSeries.json";
+      const res = await axios.get(url);
+      let data = res.data[2].items;
+      temporadasArray.push(data.slice(0, 5));
+      setTemporadas(temporadasArray);
+    }
+    fetch();
+  }, []);
+  return temporadas;
+}
+
+export function useATonoConLaCarPodcast() {
+  const [temporadas, setTemporadas] = useState([[]]);
+
+  useEffect(() => {
+    async function fetch() {
+      let temporadasArray = [];
+      let url = "/infoSeries.json";
+      const res = await axios.get(url);
+      let data = res.data[3].items;
       temporadasArray.push(data.slice(0, 5));
       setTemporadas(temporadasArray);
     }
