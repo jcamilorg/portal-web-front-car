@@ -250,3 +250,42 @@ export function useATonoConLaCarPodcast() {
   }, []);
   return temporadas;
 }
+
+export async function getPagineNewsApi(pageNumber = "0", items = 5) {
+  let news = [];
+  let all = {};
+  let pageable = {};
+
+  const url =
+    BaseUrl +
+    `/api/news?page=${pageNumber}&size=${items}&stateNew=true&stateNewType=true&idNewType=4`;
+
+  let res = await axios.get(url);
+  news = res.data.content;
+  all = res.data;
+  pageable = res.data.pageable;
+  return [news, all, pageable];
+}
+
+export async function getSearchNewsApi(keyword = "", date = "") {
+  let news = [];
+  let all = {};
+  let pageable = {};
+
+  let url = "";
+  if (date) {
+    url =
+      BaseUrl +
+      `/api/news?stateNew=true&stateNewType=true&keyword=${keyword}&date=${date}`;
+  } else {
+    url =
+      BaseUrl + `/api/news?stateNew=true&stateNewType=true&keyword=${keyword}`;
+  }
+
+  let res = await axios.get(url);
+  console.log(res);
+  news = res.data;
+  console.log(res);
+  let totalPages = news.length / 5;
+  return [news, totalPages];
+}

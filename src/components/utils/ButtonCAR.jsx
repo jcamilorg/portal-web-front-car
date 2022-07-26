@@ -79,16 +79,28 @@ const Circle = styled.div`
   left: 0;
 `;
 
-const ButtonCAR = ({ children, href, className }) => {
-  return (
-    <LinkGeneral href={href}>
-      <Btn className={`fs-responsive-xs ${className}`}>
-        <Circle className="Circle" />
-        <CircleSmall className="CircleSmall" />
-        <BtnText className="BtnText">{children}</BtnText>
-      </Btn>
-    </LinkGeneral>
-  );
+const ButtonCAR = ({ children, href, className, onClick }) => {
+  if (onClick) {
+    return (
+      <div onClick={onClick} role="button">
+        <Btn className={`fs-responsive-xs ${className}`}>
+          <Circle className="Circle" />
+          <CircleSmall className="CircleSmall" />
+          <BtnText className="BtnText">{children}</BtnText>
+        </Btn>
+      </div>
+    );
+  } else {
+    return (
+      <LinkGeneral href={href}>
+        <Btn className={`fs-responsive-xs ${className}`}>
+          <Circle className="Circle" />
+          <CircleSmall className="CircleSmall" />
+          <BtnText className="BtnText">{children}</BtnText>
+        </Btn>
+      </LinkGeneral>
+    );
+  }
 };
 
 export default ButtonCAR;

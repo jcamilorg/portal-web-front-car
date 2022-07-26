@@ -5,6 +5,8 @@ import Slider from "../utils/Slider";
 import Carousel from "react-multi-carousel";
 import TitleCar from "../utils/TitleCar";
 import Image from "../utils/Image";
+import New from "../utils/New";
+import MainNew from "../utils/MainNew";
 // Functions
 import "react-multi-carousel/lib/styles.css";
 import {
@@ -12,7 +14,6 @@ import {
   useCounterTreeApi,
   useNewsApi,
 } from "../utils/getDataFromApi";
-import ButtonCAR from "../utils/ButtonCAR";
 
 // Importacion de las imagenes
 const images = require.context("../../assets/img/", true);
@@ -132,66 +133,6 @@ const CustomLeftArrow = ({ onClick }) => {
 //#endregion
 
 //#region News
-
-const MainNew = (props) => {
-  return (
-    <div className="px-3 pb-3 pt-4">
-      <Image
-        classNameImg="rounded-2"
-        src={props.ImgSrc}
-        alt="Noticia más reciente"
-      />
-
-      <h5 className="text-main py-3 mb-0 fs-responsive-l">{props.title}</h5>
-      <p className="text-main fs-responsive-s ">{props.description}</p>
-      <br />
-
-      <div className="row justify-content-between">
-        <div className="col-5">
-          <i className="fa-regular fa-clock" />
-          <span>{" " + props.date}</span>
-        </div>
-        <div className="col-6">
-          <ButtonCAR>
-            leer mas <i className="fa-solid fa-circle-plus" />
-          </ButtonCAR>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const New = (props) => {
-  return (
-    <div className="row border-end-0 border-start-0 border-top-0 border pt-4 pb-3">
-      <Image
-        classNameDiv="col-4 px-1"
-        classNameImg="rounded-2"
-        src={props.ImgSrc}
-        alt="Noticia de la pagina web"
-      />
-
-      <div className="col-8">
-        <h6 className="fs-responsive-m">{props.title}</h6>
-        <p className="fs-responsive-s">{props.description}</p>
-        <br />
-        <div className="row justify-content-between">
-          <div className="col-5">
-            <i className="fa-regular fa-clock" />
-
-            <span>{" " + props.date}</span>
-          </div>
-          <div className="col-6">
-            <ButtonCAR>
-              leer mas <i className="fa-solid fa-circle-plus" />
-            </ButtonCAR>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const NewsCAR = () => {
   const data = useNewsApi();
   const news2 = data.map((item, index) => {
