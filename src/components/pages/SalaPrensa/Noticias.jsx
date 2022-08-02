@@ -138,7 +138,7 @@ export default function Noticias({ children }) {
     });
   }, []);
 
-  const noticiasItems = news.map((newsItem, index) => {
+  let noticiasItems = news.map((newsItem, index) => {
     if (index === 0) {
       return (
         <div className="border-end-0 border-start-0 border-top-0 border">
@@ -164,6 +164,12 @@ export default function Noticias({ children }) {
     }
   });
 
+  if (noticiasItems.length <= 0) {
+    noticiasItems = [
+      <h3 className="text-center pt-5 mt-5">No se encontro ninguna noticia</h3>,
+    ];
+  }
+
   const handlePageChange = (event) => {
     getPagineNewsApi(event.selected, 3).then((res) => {
       setNews(res[0]);
@@ -185,6 +191,7 @@ export default function Noticias({ children }) {
 
     getSearchNewsApi(word, dateFormat).then((res) => {
       setNews(res[0]);
+      setTotalPages(res[1]);
     });
   };
 

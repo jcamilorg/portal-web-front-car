@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Btn = styled.div`
   border-radius: 20px;
-  background-color: #015a52;
+  background-color: #006e95;
   color: #fff;
   font-weight: bold;
   padding-right: 10px;

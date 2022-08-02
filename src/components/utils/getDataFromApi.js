@@ -269,8 +269,6 @@ export async function getPagineNewsApi(pageNumber = "0", items = 5) {
 
 export async function getSearchNewsApi(keyword = "", date = "") {
   let news = [];
-  let all = {};
-  let pageable = {};
 
   let url = "";
   if (date) {
@@ -286,6 +284,21 @@ export async function getSearchNewsApi(keyword = "", date = "") {
   console.log(res);
   news = res.data;
   console.log(res);
-  let totalPages = news.length / 5;
+  let totalPages = parseInt(news.length / 5) + 1;
   return [news, totalPages];
+}
+
+export function useNewsCARApi() {
+  const [newsCar, setNewsCar] = useState([]);
+
+  useEffect(() => {
+    async function fetch() {
+      let url = "/testNewsCAR.json";
+      const res = await axios.get(url);
+      setNewsCar(res.data);
+    }
+
+    fetch();
+  }, []);
+  return newsCar;
 }

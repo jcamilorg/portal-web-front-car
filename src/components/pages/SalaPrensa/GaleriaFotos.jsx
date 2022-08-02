@@ -4,7 +4,8 @@ import TitleCar from "../../utils/TitleCar";
 import Image from "../../utils/Image";
 import styled from "styled-components";
 import Popup from "reactjs-popup";
-import Slider from "../../utils/Slider";
+import Carousel from "react-multi-carousel";
+const icons = require.context("../../../assets/icons/", true);
 
 const ContainerImage = styled.div`
   position: relative;
@@ -56,8 +57,6 @@ const ContainerGallery = styled.div`
 
 const GaleryItem = () => (
   <div>
-    <TitleCar>Jornada educativa</TitleCar>
-    <i className="text-main fs-responsive-xs">16-06-2022</i>
     <Image
       classNameImg="rounded"
       src="https://img.freepik.com/foto-gratis/amor-romance-perforado-corazon-papel_53876-87.jpg?w=2000"
@@ -66,10 +65,78 @@ const GaleryItem = () => (
   </div>
 );
 
+//#region Custom for Carrouselll
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+const CustomRightArrow = ({ onClick }) => {
+  function handleClick() {
+    onClick();
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      aria-label="Go to next slide"
+      style={{ right: "calc(1% + 1px)" }}
+      className="position-absolute bg-transparent border-0"
+    >
+      <img src={icons("./btn-slider-derecha.png")} alt="<" />
+    </button>
+  );
+};
+
+const CustomLeftArrow = ({ onClick }) => {
+  function handleClick() {
+    onClick();
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      aria-label="Go to next slide"
+      style={{ left: "calc(1% + 1px)" }}
+      className="position-absolute bg-transparent border-0"
+    >
+      <img src={icons("./btn-slider-izquierda.png")} alt="<" />
+    </button>
+  );
+};
+//#endregion
+
 const Galery = () => {
   return (
     <ContainerGallery>
-      <Slider data={[<GaleryItem />, <GaleryItem />]}></Slider>
+      <TitleCar>Jornada educativa</TitleCar>
+      <i className="text-main fs-responsive-xs">16-06-2022</i>
+      <Carousel
+        responsive={responsive}
+        className="text-center py-4"
+        infinite={false}
+        autoPlay={false}
+        shouldResetAutoplay={false}
+        customRightArrow={<CustomRightArrow />}
+        customLeftArrow={<CustomLeftArrow />}
+      >
+        {[<GaleryItem />, <GaleryItem />]}
+      </Carousel>
     </ContainerGallery>
   );
 };
