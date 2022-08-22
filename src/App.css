@@ -41,7 +41,7 @@
 
 /* Styles General*/
 .bg-acua {
-  background-color: #017185;
+  background-color: #017185 !important;
 }
 
 .bg-acua-dark {
@@ -57,7 +57,7 @@
 }
 
 .bg-green-f {
-  background-color: #89d335;
+  background-color: #89d335 !important;
 }
 
 .bg-black-op{

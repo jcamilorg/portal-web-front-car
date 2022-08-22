@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./Layout";
+import Layout from "../../layouts/LayoutBannerBreadcrumb";
 import TitleCar from "../../utils/TitleCar";
 import styled from "styled-components";
 import Collapsible from "react-collapsible";
 import ButtonCAR from "../../utils/ButtonCAR";
 import Image from "../../utils/Image";
-import { useNewsCARApi } from "../../utils/getDataFromApi";
+import { useNewsCARApi, getSearchNewsCARApi } from "../../utils/getDataFromApi";
+import LinkGeneral from "../../utils/LinkGeneral";
 
 const images = require.context("../../../assets/img/", true);
 
@@ -109,7 +110,7 @@ const ContainerRecentNewsCAR = styled.div`
     margin: 10px 0 5px 0;
   }
   .size {
-    font-size: 10px;
+    font-size: 8px;
   }
 `;
 
@@ -124,42 +125,50 @@ const SearchBox = ({ handleSearch }) => (
       <h5 className="f-antipasto-bold tematica-title">Fecha de publicación</h5>
 
       <input
+        id="yearMonth"
         type="text"
         className="px-2 py-0 my-0"
         placeholder="mes / año"
         onClick={(e) => (e.target.type = "month")}
       />
 
-      <ButtonCAR className="filtrar">Buscar</ButtonCAR>
+      <ButtonCAR className="filtrar" onClick={handleSearch}>
+        Buscar
+      </ButtonCAR>
     </div>
   </ContainerSearchBox>
 );
 
-const RecentNewsCar = ({ edicion, date }) => (
+const RecentNewsCar = ({ edicion, date, weight, href }) => (
   <ContainerRecentNewsCAR className="col-4">
-    <Image src={images("./newsCarPortada.png")}></Image>
-    <i className="fa-solid fa-file-pdf fs-1"></i>
-    <hr />
-    <div className="news-car">NewsCAR</div>
-    <div className="edition">Edición {edicion}</div>
-    <div className="date">{date}</div>
+    <LinkGeneral href={href}>
+      <Image src={images("./newsCarPortada.png")}></Image>
+      <i className="fa-solid fa-file-pdf fs-1"></i>
+      <hr />
+      <div className="news-car">NewsCAR</div>
+      <div className="edition">Edición {edicion}</div>
+      <div className="date">{date}</div>
+      <div className="size text-acua">{weight}</div>
+    </LinkGeneral>
   </ContainerRecentNewsCAR>
 );
 
-const NewsCARItem = ({ edicion, date }) => (
+const NewsCARItem = ({ edicion, date, weight, href }) => (
   <ContainerRecentNewsCAR className="col-3 py-2">
     <hr />
-    <div className="row ">
-      <div className="col-2 d-flex flex-column justify-content-center">
-        <i className="fa-solid fa-file-pdf fs-2"></i>
-        <div className="size"> 8kb</div>
+    <LinkGeneral href={href}>
+      <div className="row ">
+        <div className="col-2 d-flex flex-column justify-content-center">
+          <i className="fa-solid fa-file-pdf fs-2"></i>
+          <div className="size text-main"> {weight}</div>
+        </div>
+        <div className="col-10">
+          <div className="news-car">NewsCAR</div>
+          <div className="edition">Edición {edicion}</div>
+          <div className="date">{date}</div>
+        </div>
       </div>
-      <div className="col-10">
-        <div className="news-car">NewsCAR</div>
-        <div className="edition">Edición {edicion}</div>
-        <div className="date">{date}</div>
-      </div>
-    </div>
+    </LinkGeneral>
   </ContainerRecentNewsCAR>
 );
 
@@ -169,6 +178,18 @@ const CollapsibleHeader = ({ title }) => (
     <b className="fs-responsive-m">{title}</b>
   </>
 );
+
+function getWeight(number) {
+  let weight = "";
+  if (number > 1000000) {
+    weight = (number / 1000000).toFixed(2) + "Mb";
+  } else if (number > 1000) {
+    weight = (number / 1000).toFixed(2) + "Kb";
+  } else {
+    weight = number + "b";
+  }
+  return weight;
+}
 
 function organizeData(data) {
   let newsCarData = {};
@@ -212,7 +233,14 @@ function createCollapsible(data) {
     for (let year of Object.keys(data).sort().reverse()) {
       for (let month of Object.keys(data[year]).sort().reverse()) {
         for (let item of data[year][month]) {
-          items.push(<NewsCARItem date={item.date} edicion={item.edicion} />);
+          items.push(
+            <NewsCARItem
+              date={item.date}
+              edicion={item.editionNumber}
+              weight={getWeight(item.pdfWeight)}
+              href={item.pdfUrl}
+            />
+          );
         }
         months.push(
           <div className="px-3">
@@ -246,7 +274,13 @@ function createRecentNewsCAR(data) {
   try {
     let recentItems = data.slice(0, 3);
     recentItems = recentItems.map((item, index) => (
-      <RecentNewsCar key={index} edicion={item.edicion} date={item.date} />
+      <RecentNewsCar
+        key={index}
+        edicion={item.editionNumber}
+        date={item.date}
+        weight={getWeight(item.pdfWeight)}
+        href={item.pdfUrl}
+      />
     ));
     return recentItems;
   } catch (e) {
@@ -254,15 +288,16 @@ function createRecentNewsCAR(data) {
   }
 }
 
-export default function NewsCAR({ children }) {
+export default function NewsCAR() {
+  const [newsCAR_state, setNewsCar_state] = useState("");
   const newsCAR = useNewsCARApi();
 
-  const [newsCarData, setNewsCarData] = useState({});
-
-  useEffect(() => {
-    const organizedData = organizeData(newsCAR);
-    setNewsCarData(organizedData);
-  }, []);
+  const handleSearch = () => {
+    let $yearMonth = document.querySelector("#yearMonth");
+    getSearchNewsCARApi($yearMonth.value).then((data) => {
+      setNewsCar_state(data);
+    });
+  };
 
   return (
     <Layout
@@ -275,16 +310,20 @@ export default function NewsCAR({ children }) {
       </TitleCar>
       <div className="row justify-content-center">
         <div className="col-4">
-          <SearchBox />
+          <SearchBox handleSearch={handleSearch} />
         </div>
-        <div className="row col-8">{createRecentNewsCAR(newsCAR)}</div>
+        <div className="row col-8">
+          {createRecentNewsCAR(newsCAR_state || newsCAR)}
+        </div>
         <TitleCar>
           <b>Todas la ediciones</b>
         </TitleCar>
         <div className="text-center text-main py-2">
           Descarga aquí en formato pdf
         </div>
-        <Accordion>{createCollapsible(organizeData(newsCAR))}</Accordion>
+        <Accordion>
+          {createCollapsible(organizeData(newsCAR_state || newsCAR))}
+        </Accordion>
       </div>
     </Layout>
   );

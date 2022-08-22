@@ -1,6 +1,6 @@
 import React from "react";
-import Breadcrumb from "../../utils/Breadcrumb";
-import Banner from "../../utils/Banner";
+import Breadcrumb from "../utils/Breadcrumb";
+import Banner from "../utils/Banner";
 
 const Container = ({ children }) => {
   return <div style={styles.container}>{children}</div>;

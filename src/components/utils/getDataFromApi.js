@@ -293,12 +293,33 @@ export function useNewsCARApi() {
 
   useEffect(() => {
     async function fetch() {
-      let url = "/testNewsCAR.json";
+      const url =
+        BaseUrl + `/api/newscar?stateNewsCarType=true&stateNewsCar=true`;
       const res = await axios.get(url);
       setNewsCar(res.data);
     }
 
     fetch();
   }, []);
+  return newsCar;
+}
+
+export async function getSearchNewsCARApi(date) {
+  let newsCar = [];
+
+  let url = BaseUrl + `/api/newscar?stateNewsCarType=true&stateNewsCar=true`;
+
+  if (date) {
+    date = date.split("-");
+    let year = date[0];
+    let month = date[1];
+
+    url =
+      BaseUrl +
+      `/api/newscar?year=${year}&month=${month}&stateNewsCarType=true&stateNewsCar=true`;
+  }
+
+  let res = await axios.get(url);
+  newsCar = res.data;
   return newsCar;
 }

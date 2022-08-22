@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Layout from "../Layout";
+import Layout from "../../../layouts/LayoutBannerBreadcrumb";
 import TitleCar from "../../../utils/TitleCar";
 import LinkGeneral from "../../../utils/LinkGeneral";
 import ButtonCAR from "../../../utils/ButtonCAR";

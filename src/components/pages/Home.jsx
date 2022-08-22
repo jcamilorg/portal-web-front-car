@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Calendar from "react-calendar";
+import styled from "styled-components";
 //Components
 import DefaultLayout from "../layouts/Default";
 import Slider from "../utils/Slider";
@@ -16,7 +18,6 @@ import {
 } from "../utils/getDataFromApi";
 
 // Importacion de las imagenes
-const images = require.context("../../assets/img/", true);
 const icons = require.context("../../assets/icons/", true);
 
 const MainBanner = () => {
@@ -350,12 +351,11 @@ const MicrositiosGroup = () => {
 const BoletinNewsCar = (props) => {
   return (
     <div className="ms-0 me-0 pe-0 row ">
-      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l f-antipasto">
+      <h4 className="text-main col-12 rounded-car py-2  fs-responsive-l f-antipasto">
         <b>Boletín</b> NewsCAR
       </h4>
       <div className="col-12 " />
-      <Image classNameImg="pt-2" src={images(props.imgSrc)} alt="newsCar" />
-      <button className="btn border border-success my-2 text-main">
+      <button className="btn border border-success text-main">
         <b>Ver la edición más reciente</b>
       </button>
       <button className="btn my-2 text-main bg-acua text-light">
@@ -365,6 +365,109 @@ const BoletinNewsCar = (props) => {
     </div>
   );
 };
+//#region Calendar
+
+const CalendarStyle = styled.div`
+  .react-calendar {
+    border-radius: 10px;
+    font-size: 10px;
+    width: 100%;
+    padding: 3px;
+  }
+  .react-calendar__navigation {
+    height: auto;
+    margin: 10px;
+    padding: 5px 10px;
+    background-color: #017185;
+    border-radius: 10px;
+  }
+  .react-calendar__navigation__label__labelText {
+    color: #fff;
+    font-weight: bold;
+  }
+  .react-calendar__navigation__label__labelText:hover {
+    color: #333;
+  }
+
+  .react-calendar__navigation__arrow {
+    color: #89d335;
+    font-weight: bolder;
+  }
+  .react-calendar__navigation__arrow :hover {
+    color: #333;
+  }
+  .react-calendar__navigation button {
+    min-width: 10px;
+  }
+
+  .react-calendar__month-view__weekdays__weekday {
+    text-decoration: underline !important;
+  }
+
+  .react-calendar__tile {
+    background-color: #eee;
+    border: 1px solid #fff;
+    font-size: 8px;
+    padding: 0;
+    line-height: 1.7em;
+  }
+`;
+
+const CalendarCAR = () => {
+  const [value, setValue] = useState(new Date());
+
+  function isSameDay(date1, date2) {
+    if (date1.toDateString() === date2.toDateString()) {
+      return true;
+    }
+    return false;
+  }
+  const today = new Date();
+  const date2 = new Date(today);
+  const date3 = new Date(today);
+  date2.setDate(date2.getDate() + 2);
+  date3.setDate(date3.getDate() + 8);
+
+  const datesToAddClassTo = [today, date2, date3, new Date("2022/08/24")];
+
+  function tileClassName({ date, view }) {
+    console.log("fecha", datesToAddClassTo[2]);
+    // Add class to tiles in month view only
+    if (view === "month") {
+      // Check if a date React-Calendar wants to check is on the list of dates to add class to
+      if (datesToAddClassTo.find((dDate) => isSameDay(dDate, date))) {
+        return "bg-green-f";
+      }
+    }
+  }
+
+  return (
+    <>
+      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l f-antipasto">
+        <b>Calendario</b> de eventos
+      </h4>
+      <div className="row shadow-sm  py-3 mb-3">
+        <div className="col-6">
+          <CalendarStyle>
+            <Calendar
+              tileClassName={tileClassName}
+              showNeighboringMonth={false}
+              prev2Label={null}
+              next2Label={null}
+            />
+          </CalendarStyle>
+        </div>
+        <div className="col-6">
+          <h6 className="border border-1 rounded-3 p-2">Evento 1</h6>
+          <h6 className="border border-1 rounded-3 p-2">Evento 2</h6>
+          <h6 className="border border-1 rounded-3 p-2">Evento 3</h6>
+        </div>
+      </div>
+    </>
+  );
+};
+
+//#endregion
 
 //#region SpecialsCar
 const responsiveSpecialsCar = {
@@ -555,6 +658,7 @@ const HomePage = () => {
             <MicrositiosGroup />
           </div>
           <div className="col-4">
+            <CalendarCAR />
             <BoletinNewsCar imgSrc="./micrositios/newsCar.png" />
           </div>
           <div className="col-12">

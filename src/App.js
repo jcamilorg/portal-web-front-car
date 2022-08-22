@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 //Pages
 import HomePage from "./components/pages/Home";
 import NotFoundPage from "./components/pages/NotFound";
+// Sala de prensa importaciones
 import {
   Noticias,
   SalaPrensa,
@@ -18,6 +19,15 @@ import {
   GaleriaFotos,
   NewsCAR,
 } from "./components/pages/SalaPrensa/index";
+// Nosotros importaciones
+import {
+  Nosotros,
+  ResenaHistorica,
+  AcercaDeNosotros,
+  ObjetivosYFunciones,
+  JurisdiccionCAR,
+  Organigrama,
+} from "./components/pages/Nosotros/index";
 
 function App() {
   return (
@@ -46,6 +56,17 @@ function App() {
           <Route path="galeria-de-fotos" element={<GaleriaFotos />} />
           <Route path="news-car" element={<NewsCAR />} />
         </Route>
+        <Route path="/nosotros" element={<Nosotros />}>
+          <Route path="resena-historica" element={<ResenaHistorica />} />
+          <Route path="acerca-de-nosotros" element={<AcercaDeNosotros />} />
+          <Route
+            path="Objetivos-y-funciones"
+            element={<ObjetivosYFunciones />}
+          />
+          <Route path="jurisdiccion-car" element={<JurisdiccionCAR />} />
+          <Route path="organigrama" element={<Organigrama />} />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>

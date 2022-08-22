@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "./Layout";
+import Layout from "../../layouts/LayoutBannerBreadcrumb";
 import TitleCar from "../../utils/TitleCar";
 import Image from "../../utils/Image";
 import styled from "styled-components";

@@ -16,6 +16,13 @@ const Hr2 = styled.hr`
   width: 29.5%;
 `;
 
+const HrGreen = styled.hr`
+  opacity: 100;
+  padding-top: 3px;
+  border-radius: 3px;
+  background-color: #89d335;
+`;
+
 const HrCAR = ({ type2, className, style }) => {
   const content = type2 ? (
     <>
@@ -37,3 +44,5 @@ const HrCAR = ({ type2, className, style }) => {
 };
 
 export default HrCAR;
+
+export { HrGreen };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getPagineNewsApi, getSearchNewsApi } from "../../utils/getDataFromApi";
 import ReactPaginate from "react-paginate";
-import Layout from "./Layout";
+import Layout from "../../layouts/LayoutBannerBreadcrumb";
 import New from "../../utils/New";
 import MainNew from "../../utils/MainNew";
 import HrCAR from "../../utils/HrCAR";
