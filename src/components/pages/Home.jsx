@@ -16,6 +16,7 @@ import {
   useCounterTreeApi,
   useNewsApi,
 } from "../utils/getDataFromApi";
+import Iframe from "../utils/Iframe";
 
 // Importacion de las imagenes
 const icons = require.context("../../assets/icons/", true);
