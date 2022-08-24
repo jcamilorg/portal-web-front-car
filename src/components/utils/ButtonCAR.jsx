@@ -103,4 +103,26 @@ const ButtonCAR = ({ children, href, className, onClick }) => {
   }
 };
 
+const ButtonPdf = ({ title, children }) => (
+  <div role="button" className="d-flex">
+    <div>
+      <i
+        class="fa-solid fa-file-pdf text-main"
+        style={{
+          fontSize: "60px",
+          paddingRight: "20px",
+          paddingLeft: "20px",
+        }}
+      ></i>
+      <div style={{ fontSize: "10px", textAlign: "center" }}>0kb</div>
+    </div>
+    <div className="d-flex flex-column justify-content-center">
+      <h5 className="text-acua fw-bold">{title}</h5>
+      <div className="text-main fs-responsive-s">{children}</div>
+    </div>
+  </div>
+);
+
 export default ButtonCAR;
+
+export { ButtonPdf };

@@ -51,10 +51,13 @@ const TextContainer = styled.div`
 `;
 
 const ModalContainer = styled.div`
+  display: block;
   border-radius: 10px;
   box-shadow: 0px 0px 5px #555;
-  padding: 20px;
+  padding: 60px 40px;
   background-color: #fff;
+  max-height: 700px;
+  overflow: scroll;
 `;
 
 const Modal = ({ open, onClose, children }) => (
@@ -69,27 +72,76 @@ const Modal = ({ open, onClose, children }) => (
   </Popup>
 );
 
-const CardPopUp = ({ title, description, iconSrc, children }) => {
-  const [open, setOpen] = useState(false);
-  const closeModal = () => setOpen(false);
+const ContentCardPopUP = ({ title, description, iconSrc, pdf }) => {
   return (
     <>
-      <Card role="button" onClick={() => setOpen((o) => !o)}>
-        <ImageContainer>
-          <Circle>
-            {iconSrc ? <Image src={icons(iconSrc)}></Image> : null}
-          </Circle>
-        </ImageContainer>
+      <ImageContainer>
+        <Circle>{iconSrc ? <Image src={icons(iconSrc)}></Image> : null}</Circle>
+      </ImageContainer>
+      {pdf ? (
+        <TextContainer>
+          <div className="d-flex align-items-center">
+            <div>
+              <i
+                class="fa-solid fa-file-pdf "
+                style={{
+                  fontSize: "40px",
+                  borderRight: "solid #017185",
+                  paddingRight: "10px",
+                  marginRight: "10px",
+                }}
+              ></i>
+              <div style={{ fontSize: "10px", textAlign: "left" }}>0kb</div>
+            </div>
+
+            <div>
+              <Title>{title}</Title>
+              <div>{description}</div>
+            </div>
+          </div>
+        </TextContainer>
+      ) : (
         <TextContainer>
           <Title>{title}</Title>
           <div>{description}</div>
         </TextContainer>
-      </Card>
-      <Modal open={open} onClose={closeModal}>
-        {children}
-      </Modal>
+      )}
     </>
   );
+};
+
+const CardPopUp = ({ title, description, iconSrc, children, pdf, href }) => {
+  const [open, setOpen] = useState(false);
+  const closeModal = () => setOpen(false);
+
+  if (href) {
+    return (
+      <LinkGeneral href={href}>
+        <Card>
+          <ContentCardPopUP
+            title={title}
+            description={description}
+            iconSrc={iconSrc}
+            pdf={pdf}
+          />
+        </Card>
+      </LinkGeneral>
+    );
+  } else {
+    return (
+      <Card role="button" onClick={() => setOpen((o) => !o)}>
+        <ContentCardPopUP
+          title={title}
+          description={description}
+          iconSrc={iconSrc}
+          pdf={pdf}
+        />
+        <Modal open={open} onClose={closeModal}>
+          {children}
+        </Modal>
+      </Card>
+    );
+  }
 };
 
 export default CardPopUp;
