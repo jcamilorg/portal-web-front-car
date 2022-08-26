@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../layouts/LayoutBannerBreadcrumb";
 import TitleCar from "../../utils/TitleCar";
+import Image from "../../utils/Image";
 import styled from "styled-components";
 import { ButtonPdf } from "../../utils/ButtonCAR";
+import Popup from "reactjs-popup";
+const perfiles = require.context(
+  "../../../assets/PerfilesdirectoresCAR/",
+  true
+);
 
 const ItemContainer = styled.div`
   color: #fff;
@@ -35,9 +41,56 @@ const OrganigramaGrid4 = styled.div`
   grid-template-columns: repeat(4, 25%);
   margin: 50px 0;
 `;
-const Item = ({ children, bgColor }) => (
-  <ItemContainer style={{ backgroundColor: bgColor }}>{children}</ItemContainer>
+
+const ModalContainer = styled.div`
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #555;
+  padding: 60px 40px;
+  background-color: #fff;
+  max-height: 700px;
+  max-width: 1000px;
+  overflow: scroll;
+`;
+
+const Modal = ({ open, onClose, children }) => (
+  <Popup
+    open={open}
+    onClose={onClose}
+    modal
+    closeOnDocumentClick
+    overlayStyle={{ background: "rgba(0,0,0,0.5)" }}
+  >
+    <ModalContainer>{children}</ModalContainer>
+  </Popup>
 );
+
+const Item = ({ children, bgColor, modal }) => {
+  const [open, setOpen] = useState(false);
+  const closeModal = () => setOpen(false);
+  return (
+    <>
+      <ItemContainer
+        role="button"
+        style={{ backgroundColor: bgColor }}
+        onClick={() => setOpen((o) => !o)}
+      >
+        {children}
+      </ItemContainer>
+      <Modal open={open} onClose={closeModal}>
+        {modal}
+      </Modal>
+    </>
+  );
+};
+
+const ModalItem = ({ src }) => {
+  return (
+    <div>
+      <Image src={perfiles(src)} />
+    </div>
+  );
+};
 
 export default function Organigrama({ children }) {
   return (
@@ -60,7 +113,16 @@ export default function Organigrama({ children }) {
         <Item bgColor="#89d335">Consejo Directivo</Item>
         <div />
         <Item bgColor="#015473">FIAB</Item>
-        <Item bgColor="#89d335">Dirección General</Item>
+        <Item
+          bgColor="#89d335"
+          modal={
+            <ModalItem
+              src={"./1 Director/1 Luis Fernando Sanabria perfil.png"}
+            />
+          }
+        >
+          Dirección General
+        </Item>
         <div />
         <div className="d-flex flex-column justify-content-around">
           <Item bgColor="#015473">

@@ -27,6 +27,12 @@ import {
   ObjetivosYFunciones,
   JurisdiccionCAR,
   Organigrama,
+  RecursoHumano,
+  EquipoDirectivo,
+  ConsejoDirectivo,
+  DirectorioCorporativo,
+  ComoLlegar,
+  Sigespu,
 } from "./components/pages/Nosotros/index";
 
 function App() {
@@ -65,6 +71,16 @@ function App() {
           />
           <Route path="jurisdiccion-car" element={<JurisdiccionCAR />} />
           <Route path="organigrama" element={<Organigrama />} />
+          <Route path="recurso-humano" element={<RecursoHumano />}>
+            <Route path="equipo-directivo" element={<EquipoDirectivo />} />
+          </Route>
+          <Route path="consejo-directivo" element={<ConsejoDirectivo />} />
+          <Route
+            path="directorio-corporativo"
+            element={<DirectorioCorporativo />}
+          />
+          <Route path="como-llegar" element={<ComoLlegar />} />
+          <Route path="siguespu" element={<Sigespu />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />

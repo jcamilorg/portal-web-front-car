@@ -15,6 +15,8 @@ const Card = styled.div`
   align-items: center;
   font-weight: bold;
   position: relative;
+  height: 100%;
+  padding: 15px;
 
   img {
     height: 75px;
@@ -22,7 +24,7 @@ const Card = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 30px;
+  font-size: 26px;
   color: #017185;
   font-weight: bold;
 `;
