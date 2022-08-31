@@ -75,12 +75,6 @@ const TableItems = styled.div`
     border: 1px solid #ccc;
     margin: 0 10px;
   }
-  .card-city {
-    border-left: 3px solid #89d335;
-    padding-left: 10px;
-    margin: 8px 10px;
-    font-weight: bold;
-  }
 `;
 
 const DireccionAreaInfo = () => (
@@ -109,18 +103,58 @@ const DireccionAreaInfo = () => (
 
     <div className="item text-main">Oficina de Talento Humano</div>
     <div className="item text-main text-center">Ext: 1500</div>
+
+    <div className="item text-main">Oficina Asesora de Planeación</div>
+    <div className="item text-main text-center">Ext: 1600</div>
+
+    <div className="item text-main">Oficina Asesora de Comunicaciones</div>
+    <div className="item text-main text-center">Ext: 1700</div>
+
+    <div className="item text-main">
+      Fondo para las Inversiones Ambientales en la Cuenca del Río Bogotá - FIAB
+    </div>
+    <div className="item text-main text-center">Ext: 1800</div>
+
+    <div className="item text-main">Dirección de Recursos Naturales</div>
+    <div className="item text-main text-center">Ext: 1900</div>
+
+    <div className="item text-main">
+      Dirección de Gestión del Ordenamiento Ambiental y Territorial
+    </div>
+    <div className="item text-main text-center">Ext: 2100</div>
+
+    <div className="item text-main">
+      Dirección de Evaluación, Seguimiento y Control Ambiental
+    </div>
+    <div className="item text-main text-center">Ext: 2200</div>
+
+    <div className="item text-main">Dirección Jurídica</div>
+    <div className="item text-main text-center">Ext: 2300</div>
+
+    <div className="item text-main">Dirección de Infraestructura Ambiental</div>
+    <div className="item text-main text-center">Ext: 2400</div>
+
+    <div className="item text-main">
+      Dirección de Cultura Ambiental y Servicio al Ciudadano
+    </div>
+    <div className="item text-main text-center">Ext: 2500</div>
+
+    <div className="item text-main">Dirección Administrativa y Financiera</div>
+    <div className="item text-main text-center">Ext: 2600</div>
   </div>
 );
 
 const CardInfo = ({ title, cities }) => (
   <div className="card-info">
-    <div className="header text-acua fs-responsive-s">{title}</div>
-    {cities ? (
-      <>
-        <div className="card-city">Municipios de su jurisdicción:</div>
-        <div className="card-city fw-normal">{cities}</div>
-      </>
-    ) : null}
+    <div className="header">
+      <div className="text-acua fs-responsive-s">{title}</div>
+      {cities ? (
+        <>
+          <div>Municipios de su jurisdicción:</div>
+          <div className="fw-normal">{cities}</div>
+        </>
+      ) : null}
+    </div>
   </div>
 );
 
@@ -206,9 +240,105 @@ export default function DirectorioCorporativo() {
           <RowInfo
             title="Dirección Regional Bogotá - La Calera"
             cities="Bogotá y La Calera."
-            ext="4200"
-            location="Carrera 20 #37 - 34 Barrio Teusaquillo"
-            mail="cendoc@car.gov.co"
+            ext="2700"
+            location="Carrera 10 #16 – 82 Piso 4, Edificio Manuel Mejía, Bogotá"
+            mail="sau@car.gov.co"
+            schedule={
+              <>
+                Lunes a viernes: <br />
+                7:30 a.m. a 4:30 p.m.
+              </>
+            }
+          />
+          <RowInfo
+            title="Dirección Regional Almeidas y Guatavita"
+            cities="Chocontá, Guatavita, Machetá, Manta, Sesquilé, Suesca, Tibirita y Villapinzón."
+            number={
+              <>
+                856 1189 <br /> 856 1297
+                <br />
+                <b>En bogotá:</b>
+                <br />
+                580 1111
+              </>
+            }
+            ext="2800"
+            location="Carrera 5 #5 - 73 Piso 4 Chocontá, Cundinamarca"
+            mail="sau@car.gov.co"
+            schedule={
+              <>
+                Lunes a viernes: <br />
+                8:00 a.m. a 5:00 p.m.
+              </>
+            }
+          />
+          <RowInfo
+            title="Dirección Regional Alto Magdalena"
+            cities="Agua de Dios, Nilo, Jerusalén, Tocaima, Ricaurte, Girardot, Guataquí y Nariño."
+            number={
+              <>
+                835 2042
+                <br />
+                835 2043
+                <br />
+                <b>En bogotá:</b>
+                <br />
+                580 1111
+              </>
+            }
+            ext="2900"
+            location="Calle 21 #8 – 23 Barrio Granada Girardot, Cundinamarca"
+            mail="sau@car.gov.co"
+            schedule={
+              <>
+                Lunes a viernes: <br />
+                8:00 a.m. a 12:00 p.m.
+                <br />
+                1:00 p.m. a 5:00 p.m.
+              </>
+            }
+          />
+          <RowInfo
+            title="Dirección Regional Bajo Magdalena"
+            cities="Caparrapí, Guaduas y Puerto Salgar."
+            number={
+              <>
+                841 7246
+                <br /> 841 6821
+                <br /> 841 6077
+                <br />
+                <b>En bogotá:</b>
+                <br />
+                580 1111
+              </>
+            }
+            ext="3000"
+            location="Calle 4 #5 -68 Guaduas, Cundinamarca"
+            mail="sau@car.gov.co"
+            schedule={
+              <>
+                Lunes a viernes: <br />
+                8:00 a.m. a 12:30 m
+                <br />
+                1:30 p.m. a 5:00 p.m.
+              </>
+            }
+          />
+          <RowInfo
+            title="Dirección Regional Chiquinquirá"
+            cities="Buenavista, Caldas, Chiquinquirá, Ráquira, Saboyá y San Miguel de Sema"
+            number={
+              <>
+                726 2425
+                <br />
+                <b>En bogotá:</b>
+                <br />
+                580 1111
+              </>
+            }
+            ext="3100"
+            location="Carrera 6 #9 – 40 Chiquinquirá, Boyacá"
+            mail="sau@car.gov.co"
             schedule={
               <>
                 Lunes a viernes: <br />
