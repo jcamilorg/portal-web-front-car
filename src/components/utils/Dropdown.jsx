@@ -1,81 +1,61 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import PropTypes from "prop-types";
+import Popup from "reactjs-popup";
+import LinkGeneral from "./LinkGeneral";
+import styled from "styled-components";
+
+const DropdownItem = styled.div`
+  padding: 0.2rem 1rem;
+  color: #000;
+  &:hover {
+    background-color: #89d335;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px #012b38;
+  }
+`;
+
+const DropdownContainer = styled.div`
+  background-color: #fff;
+  padding: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px #999;
+`;
 
 /*Dropdown generico se debe estar usando bootstrap recibe como parametro un arreglo de objetos con name y link*/
 /*con className se puede anadir estilos al boton */
 export default function Dropdown(props) {
-  const [show, setCount] = useState("d-none");
-
-  function showSubSubitem() {
-    setCount("d-block");
-  }
-  function hideSubSubitem() {
-    setCount("d-none");
-  }
-
   const dropown_items = props.items.map((item, index) => {
-    if (item.content) {
-      const dropdownChilds = item.content.map((item, index) => {
-        return (
-          <Link
-            key={index}
-            className="dropdown-item subSubItem pe-5"
-            to={item.destination_uri}
-          >
-            <span>{item.name} </span>
-          </Link>
-        );
-      });
-
-      return (
-        <li
-          onMouseOver={showSubSubitem}
-          onMouseOut={hideSubSubitem}
-          key={index}
-          className="position-relative"
-        >
-          <Link className="dropdown-item menu-2" to={item.link}>
-            <span>{item.name} </span>{" "}
-            <i className="fa-solid fa-caret-right"></i>
-          </Link>
-          <div
-            className={"bg-white rounded border position-absolute  " + show}
-            style={{ top: index * 100 + "%", left: "100%" }}
-          >
-            {dropdownChilds}
-          </div>
-        </li>
-      );
-    } else {
-      return (
-        <li key={index}>
-          <Link className="dropdown-item" to={item.destination_uri}>
-            <span>{item.name}</span>
-          </Link>
-        </li>
-      );
-    }
+    return (
+      <LinkGeneral
+        className="item-dropdown text-decoration-none"
+        href={item.destination_uri}
+        key={index}
+      >
+        <DropdownItem>{item.name}</DropdownItem>
+      </LinkGeneral>
+    );
   });
 
-  console.log("nombre menu", props.name.split(" "));
-
   return (
-    <div className="dropdown" style={styles.dropdown}>
-      <button
-        className={"border-0 dropdown-toggle " + props.className}
-        type="button"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        style={props.name.split(" ").length > 1 ? styles.dropdownButton : null}
-      >
-        {props.name}
-      </button>
-      <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        {dropown_items}
-      </ul>
-    </div>
+    <Popup
+      trigger={
+        <div role="button" className={"border-0 " + props.className}>
+          {" "}
+          {props.name}{" "}
+        </div>
+      }
+      position="bottom left"
+      on="click"
+      closeOnDocumentClick
+      mouseLeaveDelay={300}
+      mouseEnterDelay={0}
+      contentStyle={{ padding: "0px", border: "none" }}
+      arrow={false}
+    >
+      <DropdownContainer>{dropown_items}</DropdownContainer>
+    </Popup>
   );
 }
 
@@ -83,8 +63,4 @@ Dropdown.propTypes = {
   className: PropTypes.string,
   name: PropTypes.string,
   items: PropTypes.array,
-};
-
-const styles = {
-  dropdownButton: { whiteSpace: "normal" },
 };

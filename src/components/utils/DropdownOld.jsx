@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 /*Dropdown generico se debe estar usando bootstrap recibe como parametro un arreglo de objetos con name y link*/
 /*con className se puede anadir estilos al boton */
@@ -20,7 +21,7 @@ export default function Dropdown(props) {
           <Link
             key={index}
             className="dropdown-item subSubItem pe-5"
-            to={item.link}
+            to={item.destination_uri}
           >
             <span>{item.name} </span>
           </Link>
@@ -49,7 +50,7 @@ export default function Dropdown(props) {
     } else {
       return (
         <li key={index}>
-          <Link className="dropdown-item" to={item.link}>
+          <Link className="dropdown-item" to={item.destination_uri}>
             <span>{item.name}</span>
           </Link>
         </li>
@@ -57,14 +58,17 @@ export default function Dropdown(props) {
     }
   });
 
+  console.log("nombre menu", props.name.split(" "));
+
   return (
-    <div className="dropdown">
+    <div className="dropdown" style={styles.dropdown}>
       <button
         className={"border-0 dropdown-toggle " + props.className}
         type="button"
         id="dropdownMenuButton1"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        style={props.name.split(" ").length > 1 ? styles.dropdownButton : null}
       >
         {props.name}
       </button>
@@ -74,3 +78,13 @@ export default function Dropdown(props) {
     </div>
   );
 }
+
+Dropdown.propTypes = {
+  className: PropTypes.string,
+  name: PropTypes.string,
+  items: PropTypes.array,
+};
+
+const styles = {
+  dropdownButton: { whiteSpace: "normal" },
+};

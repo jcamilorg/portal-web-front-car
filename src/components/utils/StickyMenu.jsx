@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 //Components
-import Dropdown from "./Dropdown";
+import Dropdown from "./DropdownOld";
 //functions
 import { useMenuApi } from "./getDataFromApi";
 
@@ -49,5 +49,5 @@ const StickyMenu = () => {
 export default StickyMenu;
 
 const styles = {
-  menu: { paddingRight: "10%", paddingLeft: "10%" },
+  menu: { paddingRight: "10%", paddingLeft: "10%", zIndex: "990" },
 };
