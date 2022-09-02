@@ -33,6 +33,7 @@ import {
   DirectorioCorporativo,
   ComoLlegar,
   Sigespu,
+  CaracterizacionProcesos,
 } from "./components/pages/Nosotros/index";
 
 function App() {
@@ -80,7 +81,12 @@ function App() {
             element={<DirectorioCorporativo />}
           />
           <Route path="como-llegar" element={<ComoLlegar />} />
-          <Route path="siguespu" element={<Sigespu />} />
+          <Route path="sigespu" element={<Sigespu />}>
+            <Route
+              path="caracterizacion-procesos"
+              element={<CaracterizacionProcesos />}
+            />
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />

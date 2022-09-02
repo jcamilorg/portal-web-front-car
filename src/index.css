@@ -12,7 +12,3 @@ code {
     monospace;
 }
 
-/*ajuste*/
-.popup-content{
-  z-index: 2000 !important;
-}

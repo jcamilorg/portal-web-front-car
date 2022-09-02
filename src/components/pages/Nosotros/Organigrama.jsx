@@ -128,6 +128,7 @@ export default function Organigrama({ children }) {
           <Item bgColor="#015473">
             Dirección de Control Disciplinario Interno
           </Item>
+
           <Item bgColor="#015473">Oficina de Control Interno</Item>
           <Item bgColor="#015473">Oficina Asesora de Comunicaciones</Item>
         </div>

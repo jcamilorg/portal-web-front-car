@@ -9,7 +9,8 @@ import EquipoDirectivo from "./RecursoHumano/EquipoDirectivo";
 import ConsejoDirectivo from "./ConsejoDirectivo";
 import DirectorioCorporativo from "./DirectorioCorporativo";
 import ComoLlegar from "./ComoLlegar";
-import Sigespu from "./Sigespu";
+import Sigespu from "./Sigespu/Sigespu";
+import CaracterizacionProcesos from "./Sigespu/CaracterizacionProcesos";
 
 export {
   Nosotros,
@@ -24,4 +25,5 @@ export {
   DirectorioCorporativo,
   ComoLlegar,
   Sigespu,
+  CaracterizacionProcesos,
 };
