@@ -10,11 +10,41 @@ const SigespuMain = () => (
       Recurso <b>humano</b>
     </TitleCar>
     <div className="row py-5">
-      <CardPopUp
-        title="Caracterización de procesos"
-        description="Conócelos aquí"
-        href="/nosotros/sigespu/caracterizacion-procesos"
-      ></CardPopUp>
+      <div className="col-6 py-5">
+        <CardPopUp
+          title="SIGESPU"
+          description="Conócelo aquí"
+          href="/nosotros/sigespu/caracterizacion-procesos"
+        ></CardPopUp>
+      </div>
+      <div className="col-6 py-5">
+        <CardPopUp
+          title="Modelo de operaciones y procesos"
+          description="Conócelo aquí"
+          href="/nosotros/sigespu/caracterizacion-procesos"
+        ></CardPopUp>
+      </div>
+      <div className="col-4 py-5">
+        <CardPopUp
+          title="Manual de Gestión"
+          description="Conócelo aquí"
+          href="/nosotros/sigespu/caracterizacion-procesos"
+        ></CardPopUp>
+      </div>
+      <div className="col-4 py-5">
+        <CardPopUp
+          title="Manual de Gestión Política de Gestión integral SIGESPU"
+          description="Conócelo aquí"
+          href="/nosotros/sigespu/caracterizacion-procesos"
+        ></CardPopUp>
+      </div>
+      <div className="col-4 py-5">
+        <CardPopUp
+          title="Caracterización de procesos"
+          description="Conócelos aquí"
+          href="/nosotros/sigespu/caracterizacion-procesos"
+        ></CardPopUp>
+      </div>
     </div>
   </>
 );

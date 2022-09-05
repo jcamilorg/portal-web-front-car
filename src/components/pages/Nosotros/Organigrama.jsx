@@ -5,6 +5,7 @@ import Image from "../../utils/Image";
 import styled from "styled-components";
 import { ButtonPdf } from "../../utils/ButtonCAR";
 import Popup from "reactjs-popup";
+import { HrGreen } from "../../utils/HrCAR";
 const perfiles = require.context(
   "../../../assets/PerfilesdirectoresCAR/",
   true
@@ -49,7 +50,7 @@ const ModalContainer = styled.div`
   padding: 60px 40px;
   background-color: #fff;
   max-height: 700px;
-  max-width: 1000px;
+  max-width: 600px;
   overflow: scroll;
 `;
 
@@ -87,7 +88,33 @@ const Item = ({ children, bgColor, modal }) => {
 const ModalItem = ({ src }) => {
   return (
     <div>
-      <Image src={perfiles(src)} />
+      <div className="row">
+        <div className="TitleModal d-flex align-items-center ">
+          <div className="col-3 px-0">
+            <Image src={perfiles("./1 Director/1.png")} />
+          </div>
+          <div className="col-9">
+            <h4 className="ps-3 mb-0 text-acua fw-bold">Dirección General</h4>
+            <HrGreen className="my-1" />
+            <h6 className="ps-3">
+              <b>Luis Fernando Sanabría Martínez</b>
+              <br />
+              Director General CAR Cundinamarca
+            </h6>
+          </div>
+        </div>
+
+        <div className="col-12 fs-responsive-m py-4">
+          El Director General es el representante legal de la Corporación y su
+          primera autoridad ejecutiva. Será designado por el Consejo Directivo
+          para el período correspondiente y en los términos establecidos por la
+          ley. Tiene como propósito dirigir, coordinar, controlar las
+          actividades de la entidad y ejercer su representación legal.
+        </div>
+        <div className="col-6 ">
+          <ButtonPdf>Funciones del director general</ButtonPdf>
+        </div>
+      </div>
     </div>
   );
 };
@@ -113,14 +140,7 @@ export default function Organigrama({ children }) {
         <Item bgColor="#89d335">Consejo Directivo</Item>
         <div />
         <Item bgColor="#015473">FIAB</Item>
-        <Item
-          bgColor="#89d335"
-          modal={
-            <ModalItem
-              src={"./1 Director/1 Luis Fernando Sanabria perfil.png"}
-            />
-          }
-        >
+        <Item bgColor="#89d335" modal={<ModalItem />}>
           Dirección General
         </Item>
         <div />
