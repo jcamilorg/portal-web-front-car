@@ -1,7 +1,6 @@
 import React from "react";
 import TitleCar from "../../../utils/TitleCar";
 import styled from "styled-components";
-import AccordionCAR from "../../../utils/AccordionCAR";
 import { ButtonPdf } from "../../../utils/ButtonCAR";
 
 const Grid = styled.div`

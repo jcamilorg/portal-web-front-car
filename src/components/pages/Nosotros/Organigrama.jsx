@@ -52,6 +52,9 @@ const ModalContainer = styled.div`
   max-height: 700px;
   max-width: 600px;
   overflow: scroll;
+
+  .TitleModal {
+  }
 `;
 
 const Modal = ({ open, onClose, children }) => (
