@@ -84,16 +84,26 @@ const ContentCardPopUP = ({ title, description, iconSrc, pdf }) => {
         <TextContainer>
           <div className="d-flex align-items-center">
             <div>
-              <i
-                class="fa-solid fa-file-pdf "
+              <img
                 style={{
-                  fontSize: "40px",
+                  width: "40px",
+                  height: "38px",
                   borderRight: "solid #017185",
                   paddingRight: "10px",
                   marginRight: "10px",
                 }}
-              ></i>
-              <div style={{ fontSize: "10px", textAlign: "left" }}>0kb</div>
+                src={icons("./IconoPdf.svg")}
+                alt="imagenPdf"
+              ></img>
+              <div
+                style={{
+                  fontSize: "10px",
+                  paddingRight: "10px",
+                  marginRight: "10px",
+                }}
+              >
+                0kb
+              </div>
             </div>
 
             <div>

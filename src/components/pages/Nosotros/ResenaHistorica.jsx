@@ -5,9 +5,12 @@ import TitleCar from "../../utils/TitleCar";
 import { HrGreen } from "../../utils/HrCAR";
 import styled from "styled-components";
 
+const icons = require.context("../../../assets/icons/", true);
+
 const BtnCircleContainer = styled.div`
   display: inline-block;
   width: 180px;
+
   .dotted {
     border: dotted;
     border-radius: 50%;
@@ -25,7 +28,6 @@ const BtnCircleContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #9b9;
       text-align: center;
       padding: 20px;
       div {
@@ -49,20 +51,32 @@ const BtnCircleContainer = styled.div`
   }
 `;
 
-const BtnCircle = () => (
+const BtnCircle = ({ img, pdf, children }) => (
   <BtnCircleContainer>
     <div className="dotted">
-      <div className="circle">
-        <div>
-          <b>ley 99</b> de <b>1993</b> SINA
-        </div>
+      <div
+        className="circle"
+        style={{
+          backgroundImage: `url(/publicAssets/img/Historica/img${img}.png)`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <div>{children}</div>
       </div>
     </div>
 
-    <div className="pdf">
-      <i class="fa-solid fa-file-pdf"></i>
-      <span>318kb</span>
-    </div>
+    {pdf ? (
+      <div className="pdf">
+        <img
+          style={{ width: "40px" }}
+          className="mx-3"
+          src={icons("./IconoPdf.svg")}
+          alt="imagenPdf"
+        ></img>
+        <span>318kb</span>
+      </div>
+    ) : null}
   </BtnCircleContainer>
 );
 
@@ -108,16 +122,24 @@ export default function ResenaHistorica({ children }) {
       <HrGreen />
       <div className="row px-5 mx-5">
         <div className="col-12 col-md-6 col-xl-3">
-          <BtnCircle></BtnCircle>
+          <BtnCircle img="1" pdf>
+            <b>ley 99</b> de <b>1993</b> SINA
+          </BtnCircle>
         </div>
         <div className="col-12 col-md-6 col-xl-3">
-          <BtnCircle></BtnCircle>
+          <BtnCircle img="2" pdf>
+            <b>La Constitución de 1991</b>
+          </BtnCircle>
         </div>
         <div className="col-12 col-md-6 col-xl-3">
-          <BtnCircle></BtnCircle>
+          <BtnCircle img="3" pdf>
+            <b>Ley 3a. de 1961</b>
+          </BtnCircle>
         </div>
         <div className="col-12 col-md-6 col-xl-3">
-          <BtnCircle></BtnCircle>
+          <BtnCircle img="4">
+            <b>60 años de historia</b>
+          </BtnCircle>
         </div>
       </div>
     </Layout>

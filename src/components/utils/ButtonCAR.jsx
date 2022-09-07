@@ -2,6 +2,8 @@ import React from "react";
 import LinkGeneral from "./LinkGeneral";
 import styled from "styled-components";
 
+// Importacion de iconos
+const icons = require.context("../../assets/icons/", true);
 const Btn = styled.div`
   border-radius: 20px;
   background-color: #006e95;
@@ -106,14 +108,12 @@ const ButtonCAR = ({ children, href, className, onClick }) => {
 const ButtonPdf = ({ title, children }) => (
   <div role="button" className="d-flex">
     <div>
-      <i
-        class="fa-solid fa-file-pdf text-main"
-        style={{
-          fontSize: "60px",
-          paddingRight: "20px",
-          paddingLeft: "20px",
-        }}
-      ></i>
+      <img
+        style={{ width: "40px" }}
+        className="mx-3"
+        src={icons("./IconoPdf.svg")}
+        alt="imagenPdf"
+      ></img>
       <div style={{ fontSize: "10px", textAlign: "center" }}>0kb</div>
     </div>
     <div className="d-flex flex-column justify-content-center">
