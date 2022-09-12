@@ -163,7 +163,7 @@ export default function AcercaDeNosotros({ children }) {
           <CardPopUp
             title="Misión"
             description="Conócela aquí"
-            iconSrc="./bullseye.png"
+            iconSrc="./bullseye.svg"
           >
             <Mision />
           </CardPopUp>
@@ -172,7 +172,7 @@ export default function AcercaDeNosotros({ children }) {
           <CardPopUp
             title="Visión"
             description="Conócela aquí"
-            iconSrc="./telescope.png"
+            iconSrc="./telescope.svg"
           >
             <Vision />
           </CardPopUp>
@@ -196,7 +196,7 @@ export default function AcercaDeNosotros({ children }) {
           <CardPopUp
             title="Decálogo de valores"
             description="Conócelo aquí"
-            iconSrc="./hands.png"
+            iconSrc="./hands.svg"
           >
             <Decalogo />
           </CardPopUp>
@@ -205,7 +205,7 @@ export default function AcercaDeNosotros({ children }) {
           <CardPopUp
             title="Principios"
             description="Conócelos aquí"
-            iconSrc="./ligthbullheart.png"
+            iconSrc="./ligthbullheart.svg"
           >
             <Principios />
           </CardPopUp>

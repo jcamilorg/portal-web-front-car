@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import styled from "styled-components";
+import {
+  TwitterTimelineEmbed,
+  TwitterShareButton,
+  TwitterFollowButton,
+  TwitterHashtagButton,
+  TwitterMentionButton,
+  TwitterTweetEmbed,
+  TwitterMomentShare,
+  TwitterDMButton,
+  TwitterVideoEmbed,
+  TwitterOnAirButton,
+} from "react-twitter-embed";
 //Components
 import DefaultLayout from "../layouts/Default";
 import Slider from "../utils/Slider";
@@ -19,6 +31,7 @@ import {
 
 // Importacion de las imagenes
 const icons = require.context("../../assets/icons/", true);
+const img = require.context("../../assets/img/", true);
 
 const MainBanner = () => {
   const sliders = useSliderApi("main");
@@ -348,6 +361,21 @@ const MicrositiosGroup = () => {
 
 //#endregion
 
+const SocialMedia = () => (
+  <>
+    <h4 className=" text-main col-12 rounded-car py-2 mt-4 fs-responsive-l f-antipasto">
+      <b>Redes</b> Sociales
+    </h4>
+    <div>
+      <TwitterTimelineEmbed
+        sourceType="profile"
+        screenName="CAR_Cundi"
+        options={{ height: 700 }}
+      />
+    </div>
+  </>
+);
+
 const BoletinNewsCar = (props) => {
   return (
     <div className="ms-0 me-0 pe-0 row ">
@@ -362,9 +390,11 @@ const BoletinNewsCar = (props) => {
         <img width="40px" src={icons("./sucribirse.png")} alt="..." />{" "}
         <b>Suscribase al newsCAR</b>
       </button>
+      <Image src={img(props.imgSrc)} classNameImg="rounded-3"></Image>
     </div>
   );
 };
+
 //#region Calendar
 
 const CalendarStyle = styled.div`
@@ -413,6 +443,22 @@ const CalendarStyle = styled.div`
   }
 `;
 
+const DateTileStyle = styled.div`
+  background-color: #eee;
+  margin: 0 0 5px 0;
+  border-left: solid 4px #89d335;
+  height: 33%;
+  padding: 0 5px;
+`;
+
+const DateTile = ({ children, day }) => (
+  <DateTileStyle className="py-1 fs-responsive-xs">
+    <div>
+      <b>{day}</b>
+    </div>
+    {children}
+  </DateTileStyle>
+);
 const CalendarCAR = () => {
   const [value, setValue] = useState(new Date());
 
@@ -443,10 +489,10 @@ const CalendarCAR = () => {
 
   return (
     <>
-      <h4 className="text-main col-12 rounded-car py-2 mt-4 fs-responsive-l f-antipasto">
+      <h4 className="text-main col-12 rounded-car py-2 fs-responsive-l f-antipasto">
         <b>Calendario</b> de eventos
       </h4>
-      <div className="row shadow-sm  py-3 mb-3">
+      <div className="row shadow-sm  py-3 mb-3 align-items-center">
         <div className="col-6">
           <CalendarStyle>
             <Calendar
@@ -458,9 +504,15 @@ const CalendarCAR = () => {
           </CalendarStyle>
         </div>
         <div className="col-6">
-          <h6 className="border border-1 rounded-3 p-2">Evento 1</h6>
-          <h6 className="border border-1 rounded-3 p-2">Evento 2</h6>
-          <h6 className="border border-1 rounded-3 p-2">Evento 3</h6>
+          <DateTile className="p-2" day="Julio 3">
+            Día Internacional Libre de Bolsas de Plástico
+          </DateTile>
+          <DateTile className="p-2" day="Julio 11">
+            Día Mundial de la Población
+          </DateTile>
+          <DateTile className="p-2" day="Julio 30">
+            Día Nacional de la Vida Silvestre
+          </DateTile>
         </div>
       </div>
     </>
@@ -615,7 +667,7 @@ const SpecialsCar = () => {
 //#region InteresLink
 const InteresLink = (props) => {
   return (
-    <div className="col-3 d-flex align-items-center">
+    <div className=" d-flex align-items-center" style={{ width: "20%" }}>
       <a href={props.link}>
         <Image src={props.imgSrc} alt="Link de interes" />
       </a>
@@ -654,12 +706,17 @@ const HomePage = () => {
         </section>
         <CounterTrees />
         <section className="row col-11 col-lg-9 my-4 px-0">
-          <div className=" col-8">
+          <div className="row col-8">
             <MicrositiosGroup />
+            <div className="col-7">
+              <CalendarCAR />
+            </div>
+            <div className="col-5">
+              <BoletinNewsCar imgSrc="./micrositios/newsCar.png" />
+            </div>
           </div>
           <div className="col-4">
-            <CalendarCAR />
-            <BoletinNewsCar imgSrc="./micrositios/newsCar.png" />
+            <SocialMedia />
           </div>
           <div className="col-12">
             <SpecialsCar />
