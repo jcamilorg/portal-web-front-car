@@ -61,7 +61,10 @@ export default function Dropdown(props) {
   console.log("nombre menu", props.name.split(" "));
 
   return (
-    <div className="dropdown" style={styles.dropdown}>
+    <div
+      className={"dropdown " + props.classNameDropdown}
+      style={styles.dropdown}
+    >
       <button
         className={"border-0 dropdown-toggle " + props.className}
         type="button"

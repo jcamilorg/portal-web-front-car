@@ -15,13 +15,14 @@ const StickyMenu = () => {
           key={index}
           name={item.name}
           items={item.menuItems}
-          className="bg-acua text-light px-3 py-2 menu-item fw-bolder"
+          className="bg-acua text-light px-3 py-2 menu-item fw-bolder h-100"
+          classNameDropdown="d-flex flex-column justify-content-center text-center"
         />
       );
     } else {
       return (
         <div
-          className="bg-acua px-3 py-2 menu-item text-center"
+          className="bg-acua px-3 py-2 menu-item d-flex text-center align-items-center justify-content-center "
           key={index}
           style={styles.itemNormal}
         >
@@ -37,12 +38,28 @@ const StickyMenu = () => {
   });
 
   return (
-    <div
-      className="bg-acua d-flex align-items-center justify-content-center sticky-top fs-responsive-s "
+    <nav
+      className="navbar navbar-expand-lg navbar-light py-0 bg-acua  justify-content-center sticky-top fs-responsive-s "
       style={styles.menu}
     >
-      {menuItems}
-    </div>
+      <div className="container-fluid">
+        <button
+          className="navbar-toggler my-2"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">{menuItems}</div>
+        </div>
+      </div>
+    </nav>
   );
 };
 

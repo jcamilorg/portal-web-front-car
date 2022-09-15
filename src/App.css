@@ -169,7 +169,7 @@
 /*Styles for menu*/
 
 .menu-item:hover {
-  background-color: #89d335;
+  background-color: #89d335 !important;
   text-shadow: 1px 1px 3px #012b38;
 }
 

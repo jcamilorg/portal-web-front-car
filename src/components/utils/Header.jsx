@@ -66,7 +66,7 @@ export default function Header({
           className="row  py-3 justify-content-between align-items-center"
           style={styles.paddingX}
         >
-          <div className="row col-1 col-lg-3">
+          <div className="row col-5 col-md-4 col-lg-3">
             <LinkGeneral href="/">
               <Image
                 classNameDiv="col-10"
@@ -75,7 +75,7 @@ export default function Header({
               />
             </LinkGeneral>
           </div>
-          <div className="col-2 ">
+          <div className="col-4 col-lg-2 ">
             <input
               className="input-header px-2 py-0 my-1 border rounded-3 w-100"
               type="text"

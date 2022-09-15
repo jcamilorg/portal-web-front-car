@@ -1,18 +1,7 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import styled from "styled-components";
-import {
-  TwitterTimelineEmbed,
-  TwitterShareButton,
-  TwitterFollowButton,
-  TwitterHashtagButton,
-  TwitterMentionButton,
-  TwitterTweetEmbed,
-  TwitterMomentShare,
-  TwitterDMButton,
-  TwitterVideoEmbed,
-  TwitterOnAirButton,
-} from "react-twitter-embed";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 //Components
 import DefaultLayout from "../layouts/Default";
 import Slider from "../utils/Slider";
@@ -460,7 +449,7 @@ const DateTile = ({ children, day }) => (
   </DateTileStyle>
 );
 const CalendarCAR = () => {
-  const [value, setValue] = useState(new Date());
+  //const [value, setValue] = useState(new Date());
 
   function isSameDay(date1, date2) {
     if (date1.toDateString() === date2.toDateString()) {
