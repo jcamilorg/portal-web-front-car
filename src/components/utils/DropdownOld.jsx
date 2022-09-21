@@ -58,23 +58,40 @@ export default function Dropdown(props) {
     }
   });
 
-  console.log("nombre menu", props.name.split(" "));
-
   return (
     <div
       className={"dropdown " + props.classNameDropdown}
       style={styles.dropdown}
     >
-      <button
-        className={"border-0 dropdown-toggle " + props.className}
-        type="button"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        style={props.name.split(" ").length > 1 ? styles.dropdownButton : null}
-      >
-        {props.name}
-      </button>
+      {props.trigger ? (
+        <>
+          <button
+            className={
+              "border-0 dropdown-toggle dropdown-toggle-split border" +
+              props.className
+            }
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {props.trigger}
+          </button>
+        </>
+      ) : (
+        <button
+          className={"border-0 dropdown-toggle " + props.className}
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style={
+            props.name.split(" ").length > 1 ? styles.dropdownButton : null
+          }
+        >
+          {props.name}
+        </button>
+      )}
       <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         {dropown_items}
       </ul>

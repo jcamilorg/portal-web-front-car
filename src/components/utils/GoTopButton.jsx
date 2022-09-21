@@ -68,6 +68,7 @@ const BtnGoToTop = styled.button`
     }
   }
 `;
+
 const GoTopButton = () => {
   window.onscroll = () => {
     if (document.documentElement.scrollTop > 500) {

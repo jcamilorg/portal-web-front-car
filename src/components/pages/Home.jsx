@@ -17,6 +17,7 @@ import {
   useCounterTreeApi,
   useNewsApi,
 } from "../utils/getDataFromApi";
+import GifCompanion from "../utils/GifCompanion";
 
 // Importacion de las imagenes
 const icons = require.context("../../assets/icons/", true);
