@@ -40,8 +40,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/sala-de-prensa" element={<SalaPrensa />}>
+        <Route path={"/"} element={<HomePage />} />
+        <Route path={"/sala-de-prensa"} element={<SalaPrensa />}>
           <Route path="noticias" element={<Noticias />} />
           <Route path="series-car" element={<SeriesCAR />}>
             <Route path="ancestral" element={<Ancestral />} />
@@ -49,7 +49,7 @@ function App() {
             <Route path="mision-rescate-car" element={<MisionRescate />} />
             <Route path="historias-de-vida" element={<HistoriasVidas />} />
           </Route>
-          <Route path="audios-car" element={<AudiosCAR />}>
+          <Route path={"audios-car"} element={<AudiosCAR />}>
             <Route path="a-tono-con-la-car" element={<ATonoCAR />} />
             <Route
               path="conocinedo-nuestro-territorio"
@@ -63,7 +63,7 @@ function App() {
           <Route path="galeria-de-fotos" element={<GaleriaFotos />} />
           <Route path="news-car" element={<NewsCAR />} />
         </Route>
-        <Route path="/nosotros" element={<Nosotros />}>
+        <Route path={"/nosotros"} element={<Nosotros />}>
           <Route path="resena-historica" element={<ResenaHistorica />} />
           <Route path="acerca-de-nosotros" element={<AcercaDeNosotros />} />
           <Route
