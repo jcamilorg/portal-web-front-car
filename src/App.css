@@ -173,14 +173,12 @@
   text-shadow: 1px 1px 3px #012b38;
 }
 
-
-.dropdown-item:hover{
-  background-color: #89d335;
-  color: #fff ;
+.dropdown-item:hover {
+  background-color: #89d335 !important;
+  color: #fff !important;
   font-weight: 600;
   text-shadow: 1px 1px 3px #012b38;
 }
-
 /*Styles HomePage */
 .Btn-News {
   border-radius: 20px;
