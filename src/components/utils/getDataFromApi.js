@@ -323,3 +323,44 @@ export async function getSearchNewsCARApi(date) {
   newsCar = res.data;
   return newsCar;
 }
+
+export function useDirectoryApi() {
+  const [directory, setDirectory] = useState([]);
+
+  useEffect(() => {
+    async function fetch() {
+      const url = BaseUrl + `/api/sede?stateSede=true`;
+      const res = await axios.get(url);
+      setDirectory(res.data);
+    }
+
+    fetch();
+  }, []);
+
+  return directory;
+}
+
+export function useGaleryApi() {
+  const [galery, setGalery] = useState([]);
+
+  useEffect(() => {
+    async function fetch() {
+      const url = BaseUrl + `/api/gallerytype?state=true`;
+      const res = await axios.get(url);
+      const galeryAll = await Promise.all(
+        res.data.map(async (gType) => {
+          const url =
+            BaseUrl + `/api/galleryimage?gallerytypeID=${gType.id}&state=true`;
+          const res = await axios.get(url);
+          gType.images = res.data;
+          return gType;
+        })
+      );
+      setGalery(galeryAll);
+    }
+
+    fetch();
+  }, []);
+
+  return galery;
+}

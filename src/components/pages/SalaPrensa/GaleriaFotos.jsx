@@ -5,6 +5,7 @@ import Image from "../../utils/Image";
 import styled from "styled-components";
 import Popup from "reactjs-popup";
 import Carousel from "react-multi-carousel";
+import { useGaleryApi } from "../../utils/getDataFromApi";
 const icons = require.context("../../../assets/icons/", true);
 
 const ContainerImage = styled.div`
@@ -45,6 +46,10 @@ const ContainerImage = styled.div`
     background-color: #017185;
     border-radius: 50%;
   }
+
+  img {
+    height: 250px;
+  }
 `;
 
 const ContainerGallery = styled.div`
@@ -55,13 +60,9 @@ const ContainerGallery = styled.div`
   z-index: 1000;
 `;
 
-const GaleryItem = () => (
+const GaleryItem = ({ src }) => (
   <div>
-    <Image
-      classNameImg="rounded"
-      src="https://img.freepik.com/foto-gratis/amor-romance-perforado-corazon-papel_53876-87.jpg?w=2000"
-      alt="imagen"
-    ></Image>
+    <Image classNameImg="rounded" src={src} alt="imagen"></Image>
   </div>
 );
 
@@ -121,11 +122,14 @@ const CustomLeftArrow = ({ onClick }) => {
 };
 //#endregion
 
-const Galery = () => {
+const Galery = ({ title, date, images }) => {
+  const imagesCarrousel = images.map((image) => (
+    <GaleryItem src={image.imageUrl} />
+  ));
   return (
     <ContainerGallery>
-      <TitleCar>Jornada educativa</TitleCar>
-      <i className="text-main fs-responsive-xs">16-06-2022</i>
+      <TitleCar>{title}</TitleCar>
+      <i className="text-main fs-responsive-xs">{date}</i>
       <Carousel
         responsive={responsive}
         className="text-center py-4"
@@ -135,13 +139,13 @@ const Galery = () => {
         customRightArrow={<CustomRightArrow />}
         customLeftArrow={<CustomLeftArrow />}
       >
-        {[<GaleryItem />, <GaleryItem />]}
+        {imagesCarrousel}
       </Carousel>
     </ContainerGallery>
   );
 };
 
-const Modal = ({ open, onClose }) => (
+const Modal = ({ open, onClose, title, date, images }) => (
   <Popup
     open={open}
     onClose={onClose}
@@ -149,11 +153,11 @@ const Modal = ({ open, onClose }) => (
     closeOnDocumentClick
     overlayStyle={{ background: "rgba(0,0,0,0.5)" }}
   >
-    <Galery />
+    <Galery title={title} date={date} images={images} />
   </Popup>
 );
 
-const ImagesContainer = ({ title, date }) => {
+const ImagesContainer = ({ title, date, images }) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
 
@@ -162,7 +166,7 @@ const ImagesContainer = ({ title, date }) => {
       <div className="col-4 my-3 " r>
         <ContainerImage role="button" onClick={() => setOpen((o) => !o)}>
           <Image
-            src="https://img.freepik.com/foto-gratis/amor-romance-perforado-corazon-papel_53876-87.jpg?w=2000"
+            src={images[0] ? images[0].imageUrl : icons("./no-image.png")}
             alt="imagen"
           ></Image>
           <div className="label">
@@ -178,12 +182,24 @@ const ImagesContainer = ({ title, date }) => {
           <i class="fa-solid fa-heart heart-icon"></i>
         </ContainerImage>
       </div>
-      <Modal open={open} onClose={closeModal} />
+      <Modal
+        open={open}
+        onClose={closeModal}
+        images={images}
+        date={date}
+        title={title}
+      />
     </>
   );
 };
 
 export default function GaleriaFotos({ children }) {
+  const galery = useGaleryApi();
+  console.log(galery);
+  const galeries = galery.map((item) => (
+    <ImagesContainer title={item.name} date={item.date} images={item.images} />
+  ));
+
   return (
     <Layout
       bannerSrc={
@@ -192,16 +208,7 @@ export default function GaleriaFotos({ children }) {
     >
       <TitleCar>Eventos CAR</TitleCar>
       <br />
-      <div className="row">
-        <ImagesContainer title="Jornada educativa" date="16-06-2022" />
-        <ImagesContainer title="Jornada educativa" date="16-06-2022" />
-        <ImagesContainer title="Jornada educativa" date="16-06-2022" />
-        <ImagesContainer title="Jornada educativa" date="16-06-2022" />
-        <ImagesContainer title="Jornada educativa" date="16-06-2022" />
-        <ImagesContainer title="Jornada educativa" date="16-06-2022" />
-        <ImagesContainer title="Jornada educativa" date="16-06-2022" />
-        <ImagesContainer title="Jornada educativa" date="16-06-2022" />
-      </div>
+      <div className="row">{galeries}</div>
     </Layout>
   );
 }

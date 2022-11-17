@@ -2,6 +2,8 @@ import React from "react";
 import Layout from "../../layouts/LayoutBannerBreadcrumb";
 import TitleCar from "../../utils/TitleCar";
 import styled from "styled-components";
+import { useDirectoryApi } from "../../utils/getDataFromApi";
+import parse from "html-react-parser";
 
 const TableDirectoriesContainerHeader = styled.div`
   display: grid;
@@ -22,6 +24,11 @@ const TableDirectoriesContainerBody = styled.div`
   display: grid;
   grid-template-columns: 50% 16.6% 16.6% 17%;
   padding: 5px 0;
+  grid-row-gap: 10px;
+
+  p {
+    margin: 0;
+  }
 
   .header {
     border-left: 3px solid #89d335;
@@ -50,7 +57,138 @@ const TableDirectoriesContainerBody = styled.div`
     display: grid;
     grid-template-columns: 66% 33%;
   }
+
+  .item-row {
+    border: 1px solid #ccc;
+    margin: 0 10px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .header-row {
+    border-left: 3px solid #89d335;
+    padding-left: 10px;
+    margin: 8px 10px;
+    font-weight: bold;
+  }
+  .card-info-row {
+    border: 1px solid #ccc;
+    margin: 0 10px;
+  }
 `;
+
+const DireccionAreaInfo2 = ({ sede }) => {
+  const extensions = sede.extensions.map((ext) => (
+    <>
+      <div className="item text-main">{ext.name}</div>
+      <div className="item text-main text-center">{parse(ext.extension)}</div>
+    </>
+  ));
+  return (
+    <>
+      <div className="box-container table-info border fs-responsive-xs">
+        <div className="header text-acua fs-responsive-s">
+          {parse(sede.name)}
+        </div>
+        <div className="header-number text-main text-center">
+          {parse(sede.phone)}
+        </div>
+        {extensions}
+      </div>
+      <div className="text-main box-container border fs-responsive-xs text-center">
+        {parse(sede.direction)}
+      </div>
+      <div className="text-main box-container border fs-responsive-xs text-center">
+        {parse(sede.email)}
+      </div>
+
+      <div className="text-main box-container border fs-responsive-xs ">
+        {parse(sede.schedule)}
+      </div>
+    </>
+  );
+};
+
+const RowInfo2 = ({ title, cities, number, location, mail, schedule }) => (
+  <>
+    <div className="d-flex">
+      <div className="card-info-row" style={{ width: "66%" }}>
+        <div className="header">
+          <div className="text-acua fs-responsive-s">{parse(title)}</div>
+          {cities ? (
+            <>
+              <div>Municipios de su jurisdicción:</div>
+              <div className="fw-normal">{parse(cities)}</div>
+            </>
+          ) : null}
+        </div>
+      </div>
+      <div className="item-row" style={{ width: "33%" }}>
+        {parse(number)}
+      </div>
+    </div>
+    <div className="item-row">{parse(location)}</div>
+    <div className="item-row">{parse(mail)}</div>
+    <div className="item-row">{parse(schedule)}</div>
+  </>
+);
+
+const TableDirectories2 = ({ directory }) => {
+  console.log(directory);
+  const items = directory.map((item) => {
+    let result =
+      item.extensions.length > 0 ? (
+        <DireccionAreaInfo2 sede={item} />
+      ) : (
+        <RowInfo2
+          title={item.name}
+          number={item.phone}
+          location={item.direction}
+          mail={item.email}
+          schedule={item.schedule}
+        />
+      );
+
+    return result;
+  });
+
+  return (
+    <>
+      <TableDirectoriesContainerHeader className="fs-responsive-xs">
+        <div className="header-title">Dirección o área</div>
+        <div className="header-title text-center">Teléfono</div>
+        <div className="header-title text-center">Dirección</div>
+        <div className="header-title text-center">Correo</div>
+        <div className="header-title text-center">Horario de atención</div>
+      </TableDirectoriesContainerHeader>
+      <TableDirectoriesContainerBody className="text-main fs-responsive-xs">
+        {items}
+      </TableDirectoriesContainerBody>
+    </>
+  );
+};
+
+export default function DirectorioCorporativo() {
+  const directory = useDirectoryApi();
+
+  return (
+    <Layout
+      bannerSrc={
+        "http://sgccontratos.car.gov.co:8082/getImg/%7Bname%7D/%7Bmimetype%7D?name=Directorio_Corporativo_FriAug26103457COT2022.png&mimetype=image/png"
+      }
+    >
+      <TitleCar>
+        <b>Directorio áreas y Direcciones Regionales CAR</b>
+      </TitleCar>
+      <div className="pt-5 px-4">
+        <TableDirectories2 directory={directory} />
+        <TableDirectories />
+      </div>
+    </Layout>
+  );
+}
+
+//#region region DEMO -------------------
 const TableItems = styled.div`
   display: grid;
   grid-template-columns: 33.3% 16.6% 16.6% 16.6% 17%;
@@ -183,6 +321,347 @@ const TableDirectories = () => (
         <br /> 8:00 a.m. a 5:00 p.m.
       </div>
     </TableDirectoriesContainerBody>
+    <TableItems className="text-main fs-responsive-xs">
+      <RowInfo
+        title="Dirección de Laboratorio e Innovación Ambiental"
+        ext="4300"
+        location="Centro Empresarial Santo Domingo (Avenida Troncal de Occidente
+            #18-76) Manzana C - Bodega 13 Mosquera, Cundinamarca"
+        mail="laboratorio@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Casa CAR - Centro de Documentación Ambiental"
+        ext="4200"
+        location="Carrera 20 #37 - 34 Barrio Teusaquillo"
+        mail="cendoc@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Bogotá - La Calera"
+        cities="Bogotá y La Calera."
+        ext="2700"
+        location="Carrera 10 #16 – 82 Piso 4, Edificio Manuel Mejía, Bogotá"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            7:30 a.m. a 4:30 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Almeidas y Guatavita"
+        cities="Chocontá, Guatavita, Machetá, Manta, Sesquilé, Suesca, Tibirita y Villapinzón."
+        number={
+          <>
+            856 1189 <br /> 856 1297
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="2800"
+        location="Carrera 5 #5 - 73 Piso 4 Chocontá, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Alto Magdalena"
+        cities="Agua de Dios, Nilo, Jerusalén, Tocaima, Ricaurte, Girardot, Guataquí y Nariño."
+        number={
+          <>
+            835 2042
+            <br />
+            835 2043
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="2900"
+        location="Calle 21 #8 – 23 Barrio Granada Girardot, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 12:00 p.m.
+            <br />
+            1:00 p.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Bajo Magdalena"
+        cities="Caparrapí, Guaduas y Puerto Salgar."
+        number={
+          <>
+            841 7246
+            <br /> 841 6821
+            <br /> 841 6077
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="3000"
+        location="Calle 4 #5 -68 Guaduas, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 12:30 m
+            <br />
+            1:30 p.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Chiquinquirá"
+        cities="Buenavista, Caldas, Chiquinquirá, Ráquira, Saboyá y San Miguel de Sema"
+        number={
+          <>
+            726 2425
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="3100"
+        location="Carrera 6 #9 – 40 Chiquinquirá, Boyacá"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Gualivá"
+        cities="Albán, La Peña, La Vega, Nimaima, Nocaima, Quebrada Negra, San Francisco, Sasaima, Supatá, Útica, Vergara y Villeta."
+        number={
+          <>
+            8444 660
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="3201, 3202 o 3203"
+        location="Calle8#10A–41 Barrio El Recreo Villeta, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 12:00 p.m.
+            <br />
+            1:00 p.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Magdalena Centro"
+        cities="Beltrán, Bituima, Changuaní, Guayabal de Síquima, Pulí, San Juan de Río Seco y Vianí."
+        ext="3300"
+        location="Carrera 5 #3 -02 Vianí, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Rionegro"
+        cities="El Peñón, La Palma, Pacho, Paime, San Cayetano, Topaipí, Villagómez y Yacopí."
+        number={
+          <>
+            854 2553
+            <br />
+            854 2554
+            <br />
+            854 1077
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="3400"
+        location="Calle10No.19–72 Barrio Antonio Nariño Pacho, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Sabana Centro"
+        cities="Cajicá, Chía, Cogua, Cota, Gachancipá, Nemocón, Sopó, Tabio, Tenjo, Tocancipá y Zipaquirá."
+        ext="3500, 3501, 3502 y 3511 Cel: 3204888214"
+        location="Calle 7 A #11 – 40 Barrio Algarra Zipaquirá, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Sabana Occidente"
+        cities="Bojacá, El Rosal, Facatativá, Funza, Madrid, Mosquera, Subachoque y Zipacón."
+        number={
+          <>
+            843 0590
+            <br />
+            843 5620
+            <br />
+            842 4836
+            <br />
+            842 2801
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="3600"
+        location="Carrera4#4–38 Facatativá, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Soacha"
+        cities="Sibaté y Soacha."
+        number={
+          <>
+            781 8948
+            <br />
+            781 8953
+            <br />
+            781 8966
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="3700"
+        location="Trasversal 7F #26 – 38 Barrio El Nogal Soacha, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 12:30 p.m.
+            <br />
+            1:30 p.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Sumapaz"
+        cities="Arbeláez, Cabrera, Fusagasugá, Granada, Pasca, Pandi, San Bernardo, Silvania, Tibacuy y Venecia."
+        number={
+          <>
+            867 6759
+            <br />
+            867 4084
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="3800"
+        location="Av. Las Palmas #15 – 17 Fusagasugá, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 1:00 p.m.
+            <br />
+            2:00 p.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Tequendama"
+        cities="Anapoima, Anolaima, Apulo, Cachipay, El Colegio, La Mesa, Quipile, San Antonio del Tequendama, Tena y Viotá."
+        number={
+          <>
+            847 0065
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="3900"
+        location="Carrera 21 - Calle 2 Esquina La Mesa, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 12:00 p.m.
+            <br />
+            1:00 p.m. a 5:00 p.m.
+          </>
+        }
+      />
+      <RowInfo
+        title="Dirección Regional Ubaté"
+        cities="Carmen de Carupa, Cucunubá, Fúquene, Guachetá, Lenguazaque, Simijaca, Susa, Sutatausa, Tausa y Ubaté."
+        number={
+          <>
+            847 0065
+            <br />
+            855 3609
+            <br />
+            <b>En bogotá:</b>
+            <br />
+            580 1111
+          </>
+        }
+        ext="4000"
+        location="Transversal 2 #1E – 40 Ubaté, Cundinamarca"
+        mail="sau@car.gov.co"
+        schedule={
+          <>
+            Lunes a viernes: <br />
+            8:00 a.m. a 5:00 p.m.
+          </>
+        }
+      />
+    </TableItems>
   </>
 );
 
@@ -198,361 +677,4 @@ const RowInfo = ({ title, cities, number, ext, location, mail, schedule }) => (
     <div className="item">{schedule}</div>
   </>
 );
-
-export default function DirectorioCorporativo() {
-  return (
-    <Layout
-      bannerSrc={
-        "http://sgccontratos.car.gov.co:8082/getImg/%7Bname%7D/%7Bmimetype%7D?name=Directorio_Corporativo_FriAug26103457COT2022.png&mimetype=image/png"
-      }
-    >
-      <TitleCar>
-        <b>Directorio áreas y Direcciones Regionales CAR</b>
-      </TitleCar>
-      <div className="pt-5 px-4">
-        <TableDirectories />
-        <TableItems className="text-main fs-responsive-xs">
-          <RowInfo
-            title="Dirección de Laboratorio e Innovación Ambiental"
-            ext="4300"
-            location="Centro Empresarial Santo Domingo (Avenida Troncal de Occidente
-            #18-76) Manzana C - Bodega 13 Mosquera, Cundinamarca"
-            mail="laboratorio@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Casa CAR - Centro de Documentación Ambiental"
-            ext="4200"
-            location="Carrera 20 #37 - 34 Barrio Teusaquillo"
-            mail="cendoc@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Bogotá - La Calera"
-            cities="Bogotá y La Calera."
-            ext="2700"
-            location="Carrera 10 #16 – 82 Piso 4, Edificio Manuel Mejía, Bogotá"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                7:30 a.m. a 4:30 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Almeidas y Guatavita"
-            cities="Chocontá, Guatavita, Machetá, Manta, Sesquilé, Suesca, Tibirita y Villapinzón."
-            number={
-              <>
-                856 1189 <br /> 856 1297
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="2800"
-            location="Carrera 5 #5 - 73 Piso 4 Chocontá, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Alto Magdalena"
-            cities="Agua de Dios, Nilo, Jerusalén, Tocaima, Ricaurte, Girardot, Guataquí y Nariño."
-            number={
-              <>
-                835 2042
-                <br />
-                835 2043
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="2900"
-            location="Calle 21 #8 – 23 Barrio Granada Girardot, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 12:00 p.m.
-                <br />
-                1:00 p.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Bajo Magdalena"
-            cities="Caparrapí, Guaduas y Puerto Salgar."
-            number={
-              <>
-                841 7246
-                <br /> 841 6821
-                <br /> 841 6077
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="3000"
-            location="Calle 4 #5 -68 Guaduas, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 12:30 m
-                <br />
-                1:30 p.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Chiquinquirá"
-            cities="Buenavista, Caldas, Chiquinquirá, Ráquira, Saboyá y San Miguel de Sema"
-            number={
-              <>
-                726 2425
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="3100"
-            location="Carrera 6 #9 – 40 Chiquinquirá, Boyacá"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Gualivá"
-            cities="Albán, La Peña, La Vega, Nimaima, Nocaima, Quebrada Negra, San Francisco, Sasaima, Supatá, Útica, Vergara y Villeta."
-            number={
-              <>
-                8444 660
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="3201, 3202 o 3203"
-            location="Calle8#10A–41 Barrio El Recreo Villeta, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 12:00 p.m.
-                <br />
-                1:00 p.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Magdalena Centro"
-            cities="Beltrán, Bituima, Changuaní, Guayabal de Síquima, Pulí, San Juan de Río Seco y Vianí."
-            ext="3300"
-            location="Carrera 5 #3 -02 Vianí, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Rionegro"
-            cities="El Peñón, La Palma, Pacho, Paime, San Cayetano, Topaipí, Villagómez y Yacopí."
-            number={
-              <>
-                854 2553
-                <br />
-                854 2554
-                <br />
-                854 1077
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="3400"
-            location="Calle10No.19–72 Barrio Antonio Nariño Pacho, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Sabana Centro"
-            cities="Cajicá, Chía, Cogua, Cota, Gachancipá, Nemocón, Sopó, Tabio, Tenjo, Tocancipá y Zipaquirá."
-            ext="3500, 3501, 3502 y 3511 Cel: 3204888214"
-            location="Calle 7 A #11 – 40 Barrio Algarra Zipaquirá, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Sabana Occidente"
-            cities="Bojacá, El Rosal, Facatativá, Funza, Madrid, Mosquera, Subachoque y Zipacón."
-            number={
-              <>
-                843 0590
-                <br />
-                843 5620
-                <br />
-                842 4836
-                <br />
-                842 2801
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="3600"
-            location="Carrera4#4–38 Facatativá, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Soacha"
-            cities="Sibaté y Soacha."
-            number={
-              <>
-                781 8948
-                <br />
-                781 8953
-                <br />
-                781 8966
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="3700"
-            location="Trasversal 7F #26 – 38 Barrio El Nogal Soacha, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 12:30 p.m.
-                <br />
-                1:30 p.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Sumapaz"
-            cities="Arbeláez, Cabrera, Fusagasugá, Granada, Pasca, Pandi, San Bernardo, Silvania, Tibacuy y Venecia."
-            number={
-              <>
-                867 6759
-                <br />
-                867 4084
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="3800"
-            location="Av. Las Palmas #15 – 17 Fusagasugá, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 1:00 p.m.
-                <br />
-                2:00 p.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Tequendama"
-            cities="Anapoima, Anolaima, Apulo, Cachipay, El Colegio, La Mesa, Quipile, San Antonio del Tequendama, Tena y Viotá."
-            number={
-              <>
-                847 0065
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="3900"
-            location="Carrera 21 - Calle 2 Esquina La Mesa, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 12:00 p.m.
-                <br />
-                1:00 p.m. a 5:00 p.m.
-              </>
-            }
-          />
-          <RowInfo
-            title="Dirección Regional Ubaté"
-            cities="Carmen de Carupa, Cucunubá, Fúquene, Guachetá, Lenguazaque, Simijaca, Susa, Sutatausa, Tausa y Ubaté."
-            number={
-              <>
-                847 0065
-                <br />
-                855 3609
-                <br />
-                <b>En bogotá:</b>
-                <br />
-                580 1111
-              </>
-            }
-            ext="4000"
-            location="Transversal 2 #1E – 40 Ubaté, Cundinamarca"
-            mail="sau@car.gov.co"
-            schedule={
-              <>
-                Lunes a viernes: <br />
-                8:00 a.m. a 5:00 p.m.
-              </>
-            }
-          />
-        </TableItems>
-      </div>
-    </Layout>
-  );
-}
+//#endregion

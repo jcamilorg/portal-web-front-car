@@ -127,7 +127,7 @@ const SearchBox = ({ handleSearch }) => (
       <input
         id="yearMonth"
         type="text"
-        className="px-2 py-0 my-0"
+        className="px-2 py-0 my-0 w-100"
         placeholder="mes / año"
         onClick={(e) => (e.target.type = "month")}
       />
@@ -316,7 +316,7 @@ export default function NewsCAR() {
           {createRecentNewsCAR(newsCAR_state || newsCAR)}
         </div>
         <TitleCar>
-          <b>Todas la ediciones</b>
+          <b>Todas las ediciones</b>
         </TitleCar>
         <div className="text-center text-main py-2">
           Descarga aquí en formato pdf
