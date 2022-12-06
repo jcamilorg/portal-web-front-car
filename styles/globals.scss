@@ -1,0 +1,233 @@
+/*Reset Styles*/
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  @font-face {
+    font-family: "antipasto";
+    src: url("/assets/fonts/antipasto/Antipasto_regular.otf");
+  }
+  
+  @font-face {
+    font-family: "antipasto-bold";
+    src: url("/assets/fonts/antipasto/Antipasto_extrabold.otf");
+  }
+  
+  @font-face {
+    font-family: "antipasto-light";
+    src: url("/assets/fonts/antipasto/Antipasto_extralight.otf");
+  }
+  
+  .f-antipasto{
+    font-family: antipasto;
+  }
+  
+  .f-antipasto-bold{
+    font-family: antipasto-bold;
+  }
+  
+  .f-antipasto-light{
+    font-family: antipasto-light;
+  }
+  
+  .f-antipasto b{
+    font-family: antipasto-bold;
+  }
+  
+  .negative {
+    filter: invert(1) ;
+  }
+  
+  /* Styles General*/
+  .bg-acua {
+    background-color: #017185 !important;
+  }
+  
+  .bg-acua-dark {
+    background-color: #005063;
+  }
+  
+  .bg-dark-blue {
+    background-color: #012b38;
+  }
+  
+  .bg-green {
+    background-color: #028371;
+  }
+  
+  .bg-green-f {
+    background-color: #89d335 !important;
+  }
+  
+  .bg-black-op{
+    background-color: #00000074;
+  }
+  
+  .bg-gray{
+    background-color:#E0EEF1;
+  }
+  
+  
+  .text-main {
+    color: #5c5c5f;
+  }
+  
+  .text-acua {
+    color: #017185;
+  }
+  
+  .text-green {
+    color: #14A296;
+  }
+  
+  .text-green-f {
+    color: #89d335;
+  }
+  
+  .vertical-line {
+    border: none;
+    border-left: 1px solid #fff;
+    width: 1px;
+    height: 20px;
+  }
+  
+  .rounded-car {
+    border-radius: 10px 10px 10px 10px;
+  }
+  
+  .rounded-top-car {
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .input {
+    height: 40px;
+  }
+  
+  .fs-responsive-m{
+    font-size: calc(0.5em + 0.7vw) 
+  }
+  
+  .fs-responsive-s{
+    font-size: calc(0.5em + 0.5vw) 
+  }
+  
+  .fs-responsive-xs{
+    font-size: calc(0.4em + 0.4vw)  
+  }
+  
+  .fs-responsive-l{
+    font-size: calc(1.1em + 0.5vw) 
+  }
+  
+  .fs-responsive-xl{
+    font-size: calc(1.2em + 1vw) 
+  }
+  
+  .topN15px{
+    top:-15px;
+  }
+  
+  .top-75{
+    top:75%;
+  }
+  
+  .start-75{
+    left: 75%;
+  }
+  
+  .z-index{
+    z-index: 1000;
+  }
+  
+  .border-dashed {
+    border-style: dashed !important;
+  }
+  
+  .mb-1px{
+    margin-bottom: 1px;
+  }
+  
+  .bg-counter-trees{
+    background-image: url("/assets/img/FondoBannerContadorDeArboles.svg");
+    background-size: cover;
+  }
+  
+  /*Styles header*/
+  .input-header {
+    width: 130px;
+    text-align: right;
+    border-radius: 5px;
+    
+  }
+  
+  .input-header::placeholder{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 600; 
+  }
+  
+  /*Styles for menu*/
+  
+  .menu-item:hover {
+    background-color: #89d335 !important;
+    text-shadow: 1px 1px 3px #012b38;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #89d335 !important;
+    color: #fff !important;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px #012b38;
+  }
+  /*Styles HomePage */
+  .Btn-News {
+    border-radius: 20px;
+    height: 14px;
+    background-color: #015a52;
+    width: 40%;
+    left: calc(100% - 40%);
+  }
+  
+  .Btn-News .type2 {
+    background-color: #9fe047;
+    width: 45%;
+  }
+  
+  .Btn-News .type3 {
+    background-color: #89d335;
+    width: 70%;
+  }
+  /* Styles for NestedDrowpdown TODO: Implementar el nested drowpdown*/  
+  .dropdown-menu li {
+    position: relative;
+  }
+  
+  .dropdown-menu .dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+  }
+  
+  .dropdown-menu .dropdown-submenu-left {
+    right: 100%;
+    left: auto;
+  }
+  
+  .dropdown-menu > li:hover > .dropdown-submenu {
+    display: block;
+  }
+  
+  /* Animation  */
+  @keyframes animation-footer {
+    0% {}
+    100% {transform: scale(1.25,1.25) rotate(10deg)}
+  }
+  
+  .footer-link :hover{
+    animation-name: animation-footer;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  
+  

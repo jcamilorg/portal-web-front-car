@@ -1,49 +1,34 @@
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# portalWebFront
+## Getting Started
 
-<a href="https://sidcar.car.gov.co/"><img src="https://carcundinamarca.maps.arcgis.com/sharing/rest/content/items/fb8302b93c704a05a335bad71d5d6166/resources/inConfig/4738865913432373.png" align="center" height="150" width="150"></a>
-# Colaboradores
-<table>
-    <tr>
-        <th>Rol</th>
-        <th>Responsable</th>
-    </tr>
-	 <tr>
-        <td>Lider de requerimientos</td>
-        <td>Natalia Acosta</td>
-    </tr>
-    <tr>
-        <td>Líder de desarrollo</td>
-        <td>Hilder Moscote</td>
-    </tr>
-    <tr>
-        <td>Arquitecto de software</td>
-        <td>Alvaro Castellano</td>
-    </tr>
-    <tr>
-        <td>Desarrolladores</td>
-        <td>
-            <ul>
-                <li>Juan Camilo Ramírez</li>
-            </ul>
-        </td>
-    </tr>
-</table>
+First, run the development server:
 
-# Control de cambios
-<table>
-    <tr>
-        <th>Versión</th>
-        <th>Fecha de Cambio</th>
-        <th>Cambios realizados</th>
-    </tr>
-    <tr>
-        <td>0.1.0</td>
-        <td>30-03-2022</td>
-        <td>Se crea el home siguendo los requirimientos establecidos segun el cronograma para la fecha del 31 de julio</td>
-    </tr>
-</table>
+```bash
+npm run dev
+# or
+yarn dev
+```
 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Todos los derechos reservados para la Corporación Autonóma Regional de Cundinamarca - &copy; 2022
->>>>>>> develop
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
