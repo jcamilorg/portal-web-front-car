@@ -16,10 +16,10 @@ const Tooltip = ({ children, content }) => (
   </>
 );
 
-export default function GifCompanion({ children, content, className, style }) {
+export default function GifCompanion({ content, className, style }) {
   return (
     <div className={className} style={style}>
-      <Tooltip children={children} content={content} />
+      <Tooltip content={content}></Tooltip>
     </div>
   );
 }

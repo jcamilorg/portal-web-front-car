@@ -144,7 +144,10 @@ export default function Noticias() {
   let noticiasItems = news.map((newsItem: any, index: number) => {
     if (index === 0) {
       return (
-        <div className="border-end-0 border-start-0 border-top-0 border">
+        <div
+          className="border-end-0 border-start-0 border-top-0 border"
+          key={index}
+        >
           <MainNew
             ImgSrc={newsItem.imageUrl}
             title={newsItem.name}
@@ -155,7 +158,7 @@ export default function Noticias() {
       );
     } else {
       return (
-        <div className="px-3 ">
+        <div className="px-3 " key={index}>
           <New
             ImgSrc={newsItem.imageUrl}
             title={newsItem.name}
