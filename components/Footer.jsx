@@ -1,5 +1,4 @@
 import Image from "./Image";
-// Importacion de las imagenes
 
 let year = new Date();
 year = year.getFullYear();
@@ -49,12 +48,12 @@ export default function Footer() {
             <div className="row col-12 col-lg-4 border-start ps-5">
               <Image
                 classNameDiv="col-9"
-                src={"/assets/logos//logo_car_letra_blanca.svg"}
+                src={"/assets/logos/./logo_car_letra_blanca.svg"}
                 alt="Logo CAR"
               />
               <div className="col-6 py-3">
                 <Image
-                  src={"assets/img/footer/footerSGS.svg"}
+                  src={"/assets/img//footer/footerSGS.svg"}
                   alt="Estandares SGS"
                 />
               </div>
@@ -68,7 +67,7 @@ export default function Footer() {
                 >
                   <img
                     className="img-fluid"
-                    src={"/assets/logos//footer_facebook.svg"}
+                    src={"/assets/logos/./footer_facebook.svg"}
                     alt="colombia"
                   />
                 </a>
@@ -78,7 +77,7 @@ export default function Footer() {
                 >
                   <img
                     className="img-fluid "
-                    src={"/assets/logos//footer_Instagram.svg"}
+                    src={"/assets/logos/./footer_Instagram.svg"}
                     alt="colombia"
                   />
                 </a>
@@ -88,7 +87,7 @@ export default function Footer() {
                 >
                   <img
                     className=" img-fluid "
-                    src={"/assets/logos//footer_twitter.svg"}
+                    src={"/assets/logos/./footer_twitter.svg"}
                     alt="colombia"
                   />
                 </a>
@@ -98,7 +97,7 @@ export default function Footer() {
                 >
                   <img
                     className=" img-fluid "
-                    src={"/assets/logos//footer_Youtube.svg"}
+                    src={"/assets/logos/./footer_Youtube.svg"}
                     alt="colombia"
                   />
                 </a>
@@ -111,12 +110,12 @@ export default function Footer() {
             <div className="col-2 py-2">
               <Image
                 classNameDiv="w-25 border-end pe-1 d-inline-block"
-                src={"assets/img/footer/footerCo.svg"}
+                src={"/assets/img//footer/footerCo.svg"}
                 alt="Co"
               />
               <Image
                 classNameDiv="w-75 d-inline-block"
-                src={"assets/img/footer/footerGov.svg"}
+                src={"/assets/img//footer/footerGov.svg"}
                 alt="Colombia"
               />
             </div>

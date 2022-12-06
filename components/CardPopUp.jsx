@@ -4,8 +4,6 @@ import styled from "styled-components";
 import Image from "./Image";
 import Popup from "reactjs-popup";
 
-const icons = require.context("../../assets/icons/", true);
-
 const Card = styled.div`
   border-radius: 10px;
   border: solid 1px #017185;
@@ -78,7 +76,7 @@ const ContentCardPopUP = ({ title, description, iconSrc, pdf }) => {
   return (
     <>
       <ImageContainer>
-        <Circle>{iconSrc ? <Image src={icons(iconSrc)}></Image> : null}</Circle>
+        <Circle>{iconSrc ? <Image src={iconSrc}></Image> : null}</Circle>
       </ImageContainer>
       {pdf ? (
         <TextContainer>
@@ -92,7 +90,7 @@ const ContentCardPopUP = ({ title, description, iconSrc, pdf }) => {
                   paddingRight: "10px",
                   marginRight: "10px",
                 }}
-                src={icons("./IconoPdf.svg")}
+                src={"/assets/icons/IconoPdf.svg"}
                 alt="imagenPdf"
               ></img>
               <div
@@ -122,7 +120,14 @@ const ContentCardPopUP = ({ title, description, iconSrc, pdf }) => {
   );
 };
 
-const CardPopUp = ({ title, description, iconSrc, children, pdf, href }) => {
+const CardPopUp = ({
+  title,
+  description,
+  iconSrc = "/assets/logos/logo_car_corto.svg",
+  children,
+  pdf,
+  href,
+}) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
 

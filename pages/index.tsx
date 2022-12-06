@@ -68,8 +68,8 @@ const SliderServices = () => {
       infinite={false}
       autoPlay={false}
       shouldResetAutoplay={false}
-      customRightArrow={<CustomRightArrow />}
-      customLeftArrow={<CustomLeftArrow />}
+      customRightArrow={<CustomRightArrow onClick={undefined} />}
+      customLeftArrow={<CustomLeftArrow onClick={undefined} />}
     >
       {services}
     </Carousel>
@@ -97,7 +97,7 @@ const responsive = {
   },
 };
 
-const CustomRightArrow = ({ onClick }) => {
+const CustomRightArrow = ({ onClick }: any) => {
   function handleClick() {
     onClick();
   }
@@ -114,7 +114,7 @@ const CustomRightArrow = ({ onClick }) => {
   );
 };
 
-const CustomLeftArrow = ({ onClick }) => {
+const CustomLeftArrow = ({ onClick }: any) => {
   function handleClick() {
     onClick();
   }
@@ -135,7 +135,7 @@ const CustomLeftArrow = ({ onClick }) => {
 //#region News
 const NewsCAR = () => {
   const data = useNewsApi();
-  const news2 = data.map((item, index) => {
+  const news2 = data.map((item: any, index: number) => {
     if (index === 0) {
       return (
         <MainNew
@@ -163,7 +163,7 @@ const NewsCAR = () => {
 
   return (
     <div className="row justify-content-center pb-0">
-      <TitleCar>
+      <TitleCar title={undefined} type2={undefined}>
         <b>Noticias</b> CAR
       </TitleCar>
       <div className="col-8 col-lg-5">{mainNew}</div>
@@ -174,7 +174,7 @@ const NewsCAR = () => {
 // #endregion
 
 //#region Counter trees
-const DigitCounterTree = (props) => {
+const DigitCounterTree = (props: any) => {
   return (
     <span className="bg-white text-main fs-responsive-xl rounded-3 px-2 mx-1  ">
       <b>{props.number}</b>
@@ -212,7 +212,7 @@ const CounterTrees = () => {
 //#endregion
 
 //#region micrositios
-const MicroSitio = (props) => {
+const MicroSitio = (props: any) => {
   return (
     <div className="col-4 mx-0 px-1 py-2">
       <a className="text-decoration-none" href={props.link}>
@@ -255,7 +255,7 @@ const responsiveCarrouselMicrositios = {
   },
 };
 
-const CustomRightArrowCarrouselMicrositos = ({ onClick }) => {
+const CustomRightArrowCarrouselMicrositos = ({ onClick }: any) => {
   function handleClick() {
     onClick();
   }
@@ -272,7 +272,7 @@ const CustomRightArrowCarrouselMicrositos = ({ onClick }) => {
   );
 };
 
-const CustomLeftArrowCarrouselMicrositos = ({ onClick }) => {
+const CustomLeftArrowCarrouselMicrositos = ({ onClick }: any) => {
   function handleClick() {
     onClick();
   }
@@ -292,7 +292,7 @@ const CustomLeftArrowCarrouselMicrositos = ({ onClick }) => {
 
 const MicrositiosGroup = () => {
   const data = useSliderApi("micrositios");
-  const microSitios = data.map((item, index) => {
+  const microSitios = data.map((item: any) => {
     return (
       <MicroSitio
         key={item.id}
@@ -304,7 +304,7 @@ const MicrositiosGroup = () => {
     );
   });
 
-  let micrositiosContainer = [];
+  let micrositiosContainer: any = [];
 
   let i = 0;
   let currentContainer = 0;
@@ -318,11 +318,13 @@ const MicrositiosGroup = () => {
     i++;
   }
 
-  let micrositiosContainers = micrositiosContainer.map((item, index) => (
-    <div key={index} className="mx-2 my-0 row ">
-      {item}
-    </div>
-  ));
+  let micrositiosContainers = micrositiosContainer.map(
+    (item: any, index: number) => (
+      <div key={index} className="mx-2 my-0 row ">
+        {item}
+      </div>
+    )
+  );
 
   return (
     <div className="ms-0 me-0 pe-0 row position-relative">
@@ -362,7 +364,7 @@ const SocialMedia = () => (
   </>
 );
 
-const BoletinNewsCar = (props) => {
+const BoletinNewsCar = (props: any) => {
   return (
     <div className="ms-0 me-0 pe-0 row ">
       <h4 className="text-main col-12 rounded-car py-2  fs-responsive-l f-antipasto">
@@ -376,7 +378,12 @@ const BoletinNewsCar = (props) => {
         <img width="40px" src={"/assets/icons/sucribirse.png"} alt="..." />{" "}
         <b>Suscribase al newsCAR</b>
       </button>
-      <Image src={props.imgSrc} classNameImg="rounded-3"></Image>
+      <Image
+        src={props.imgSrc}
+        classNameImg="rounded-3"
+        classNameDiv={undefined}
+        alt={"newsLetter car"}
+      ></Image>
     </div>
   );
 };
@@ -437,7 +444,7 @@ const DateTileStyle = styled.div`
   padding: 0 5px;
 `;
 
-const DateTile = ({ children, day }) => (
+const DateTile = ({ children, day }: any) => (
   <DateTileStyle className="py-1 fs-responsive-xs">
     <div>
       <b>{day}</b>
@@ -469,16 +476,11 @@ const CalendarCAR = () => {
 
   const datesToAddClassTo = [today, date2, date3, new Date("2022/08/24")];
 
-  function tileClassName({ date, view }: any) {
-    console.log("fecha", datesToAddClassTo[2]);
-    // Add class to tiles in month view only
-    if (view === "month") {
-      // Check if a date React-Calendar wants to check is on the list of dates to add class to
-      if (datesToAddClassTo.find((dDate) => isSameDay(dDate, date))) {
-        return "bg-green-f";
-      }
-    }
-  }
+  const tileClassName = ({ activeStartDate, date, view }: any) =>
+    view === "month" &&
+    datesToAddClassTo.find((dDate) => isSameDay(dDate, date))
+      ? "bg-green-f"
+      : null;
 
   return (
     <>
@@ -535,7 +537,7 @@ const responsiveSpecialsCar = {
   },
 };
 
-const RightArrowSpecialsCAR = ({ onClick, changeIndex }) => {
+const RightArrowSpecialsCAR = ({ onClick, changeIndex }: any) => {
   function handleClick() {
     onClick();
     changeIndex();
@@ -553,7 +555,7 @@ const RightArrowSpecialsCAR = ({ onClick, changeIndex }) => {
   );
 };
 
-const LeftArrowSpecialsCAR = ({ onClick, changeIndex }) => {
+const LeftArrowSpecialsCAR = ({ onClick, changeIndex }: any) => {
   function handleClick() {
     onClick();
     changeIndex();
@@ -571,7 +573,7 @@ const LeftArrowSpecialsCAR = ({ onClick, changeIndex }) => {
   );
 };
 
-const SpecialCar = (props) => {
+const SpecialCar = (props: any) => {
   return (
     <>
       <div className="px-1">
@@ -579,6 +581,7 @@ const SpecialCar = (props) => {
           classNameDiv="position-relative"
           src={props.imgSrc}
           alt="Especial CAR"
+          classNameImg={undefined}
         />
       </div>
     </>
@@ -589,7 +592,7 @@ const SpecialsCar = () => {
   const [index, setIndex] = useState(1);
   const data = useSliderApi("especialesCar");
 
-  let texts = data.map((item, index) => (
+  let texts = data.map((item: any, index: number) => (
     <p key={index} className=" f-antipasto text-acua fs-responsive-m">
       <b>{item.name}</b>
       <br />
@@ -615,7 +618,7 @@ const SpecialsCar = () => {
     }
   };
 
-  const inner = data.map((item) => (
+  const inner = data.map((item: any) => (
     <SpecialCar
       key={item.id}
       title={item.name}
@@ -626,7 +629,9 @@ const SpecialsCar = () => {
 
   return (
     <div className="row justify-content-center pt-4 mb-4 position-relative">
-      <TitleCar title={"Especiales CAR"} type2 />
+      <TitleCar title={null} type2>
+        Especiales CAR
+      </TitleCar>
 
       <div className="col-12">
         <Carousel
@@ -636,10 +641,16 @@ const SpecialsCar = () => {
           autoPlay={false}
           shouldResetAutoplay={false}
           customRightArrow={
-            <RightArrowSpecialsCAR changeIndex={changeIndexUp} />
+            <RightArrowSpecialsCAR
+              changeIndex={changeIndexUp}
+              onClick={undefined}
+            />
           }
           customLeftArrow={
-            <LeftArrowSpecialsCAR changeIndex={changeIndexDown} />
+            <LeftArrowSpecialsCAR
+              changeIndex={changeIndexDown}
+              onClick={undefined}
+            />
           }
         >
           {inner}
@@ -658,11 +669,16 @@ const SpecialsCar = () => {
 //#endregion
 
 //#region InteresLink
-const InteresLink = (props) => {
+const InteresLink = (props: any) => {
   return (
     <div className=" d-flex align-items-center" style={{ width: "20%" }}>
       <a href={props.link}>
-        <Image src={props.imgSrc} alt="Link de interes" />
+        <Image
+          src={props.imgSrc}
+          alt="Link de interes"
+          classNameDiv={undefined}
+          classNameImg={undefined}
+        />
       </a>
     </div>
   );
@@ -671,7 +687,7 @@ const InteresLink = (props) => {
 const InteresLinks = () => {
   const data = useSliderApi("enlacesInteres");
 
-  const links = data.map((item) => (
+  const links = data.map((item: any) => (
     <InteresLink
       key={item.id}
       imgSrc={item.imageURL}
@@ -681,7 +697,9 @@ const InteresLinks = () => {
 
   return (
     <div className="row justify-content-center pt-4">
-      <TitleCar title={"Enlaces de interés CAR"} />
+      <TitleCar title={null} type2={undefined}>
+        Enlaces de interés CAR
+      </TitleCar>
       <div className="row col-10 py-3">{links}</div>
     </div>
   );
