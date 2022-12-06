@@ -1,6 +1,7 @@
 import React from "react";
 import ButtonCAR from "./ButtonCAR";
 import Image from "./Image";
+import parse from "html-react-parser";
 
 const MainNew = (props) => {
   return (
@@ -12,7 +13,9 @@ const MainNew = (props) => {
       />
 
       <h5 className="text-main py-3 mb-0 fs-responsive-l">{props.title}</h5>
-      <p className="text-main fs-responsive-s ">{props.description}</p>
+      <div className="text-main fs-responsive-s ">
+        {parse(props.description)}
+      </div>
       <br />
 
       <div className="row justify-content-between">

@@ -391,6 +391,10 @@ const BoletinNewsCar = (props: any) => {
 //#region Calendar
 
 const CalendarStyle = styled.div`
+  button {
+    background-color: #0000;
+    border: none;
+  }
   .react-calendar {
     border-radius: 10px;
     font-size: 10px;
@@ -403,6 +407,7 @@ const CalendarStyle = styled.div`
     padding: 5px 10px;
     background-color: #017185;
     border-radius: 10px;
+    text-align: center;
   }
   .react-calendar__navigation__label__labelText {
     color: #fff;

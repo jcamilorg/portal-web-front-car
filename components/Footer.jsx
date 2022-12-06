@@ -53,7 +53,7 @@ export default function Footer() {
               />
               <div className="col-6 py-3">
                 <Image
-                  src={"/assets/img//footer/footerSGS.svg"}
+                  src={"/assets/img/footer/footerSGS.svg"}
                   alt="Estandares SGS"
                 />
               </div>
@@ -110,12 +110,12 @@ export default function Footer() {
             <div className="col-2 py-2">
               <Image
                 classNameDiv="w-25 border-end pe-1 d-inline-block"
-                src={"/assets/img//footer/footerCo.svg"}
+                src={"/assets/img/footer/footerCo.svg"}
                 alt="Co"
               />
               <Image
                 classNameDiv="w-75 d-inline-block"
-                src={"/assets/img//footer/footerGov.svg"}
+                src={"/assets/img/footer/footerGov.svg"}
                 alt="Colombia"
               />
             </div>
