@@ -15,6 +15,12 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "layouts/AudioTemplate.jsx",
+    "layouts/AudioTemplate.jsx"
+  ],
   "exclude": ["node_modules"]
 }
